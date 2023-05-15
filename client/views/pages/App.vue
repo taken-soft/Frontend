@@ -88,9 +88,12 @@ export default App;
 }
 
 .mainwrap {
-  margin: 20px 0px;
+  position: absolute;
+  margin: 0px 0px;
   padding: 1.5rem;
   width: 100%;
+  height: calc(100vh - 8.5rem);
+  background: #f3f6ff;
 }
 .mainwrap.expand {
   width: calc(100% - 300px);
