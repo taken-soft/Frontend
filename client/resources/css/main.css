@@ -1,0 +1,77 @@
+
+/* nav */
+.nav {
+  background: #e9e9e9;
+  height: -webkit-fill-available;
+  position: absolute;
+  width: 300px;
+  right: 0;
+  top: 55px;
+  padding: 4rem 2rem;
+}
+.nav input{
+  margin-top: 0.5rem;
+}
+.nav select{width: 100%; 
+  margin-top: 0.5rem;
+}
+.nav label{margin-bottom: 1rem;}
+.nav p {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.navhead {
+  background: #dfdfdf;
+  padding: 1.7rem 2rem;
+  text-align: end;
+  position: relative;
+  height: 3rem;
+}
+.navhead svg,
+.nav > svg {
+  position: absolute;
+  right: 20px;
+  top: 0;
+}
+[v-cloak] {
+  display: none;
+}
+
+/* .modal */
+
+.modal select {
+  width: 63% !important;
+}
+
+.modal_header {
+  background: #000000;
+  padding: 1rem;
+}
+.modal_header svg{cursor: pointer;}
+.modal_body {
+  padding: 1rem;
+  width: 50rem;
+}
+.modal_body p {
+  font-size: 15px;
+}
+
+.modal_header button {
+  font-size: 15px;
+  background: none;
+  border: none;
+}
+
+/* 그외 */
+.editpage {
+  background: #ffffff;
+  border-left: 1px solid #dfdfdf;
+  height: -webkit-fill-available;
+  position: fixed;
+  width: 300px;
+  right: 0;
+  top: 89px;
+  padding: 4rem 2rem;
+}
+

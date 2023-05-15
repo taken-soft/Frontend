@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "GmarketSansMedium";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+      format("woff");
+  }
+  #root{height: -webkit-fill-available;}
+  #root > div{height: -webkit-fill-available;}
+  html {
+    width: 100%;
+    height: 100%;
+    font-size: 10px;
+    overflow-anchor: none;
+  }
+  
+  body {
+    width: 100%;
+    height: 100%;
+    color: #333333;
+    overflow-anchor: none;
+  }
+  
+  ul,
+  ol,
+  li {
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+    color: #333333;
+  }
+  
+ .flex{display: flex; justify-content: space-between; align-items: center;}
