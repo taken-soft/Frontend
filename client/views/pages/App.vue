@@ -1,7 +1,7 @@
 <template>
   <div v-cloak>
     <Header></Header>
-    <div class="navhead">
+    <div class="navhead flex">
       <svg
         v-on:click="hide"
         xmlns="http://www.w3.org/2000/svg"
@@ -13,9 +13,12 @@
           d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"
         />
       </svg>
+      <span>
+        여기에 대시보드 이름 추가 예정
+      </span>
     </div>
     <!-- nav inner-->
-    <div class="nav" v-bind:style="{ display: displayStyle }">
+    <div class="nav flex" v-bind:style="{ display: displayStyle }">
       <svg
         v-on:click="hide"
         xmlns="http://www.w3.org/2000/svg"
