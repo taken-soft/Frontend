@@ -5,37 +5,27 @@
 </template>
 
 <script>
-import Layout from '../../component/Layout.vue';
+import Layout from "../../component/Layout.vue";
 
 export default {
-    data () {
+    data() {
         return {
             activeTab: "tab1",
-        }
+        };
     },
-    components:{
-        Layout
+    components: {
+        Layout,
     },
     methods: {
         setActiveTab(tab) {
-      this.activeTab = tab;
+            this.activeTab = tab;
+        },
     },
-    },
-    watch: {
-    },
-    computed: {
-
-    },
+    watch: {},
+    computed: {},
     mounted() {
-        console.log('Main2 mounted');
-    }
-}
+        console.log("Main2 mounted");
+    },
+};
 </script>
-<style scoped>
-
-</style>
-
-
-
-
-
+<style scoped></style>

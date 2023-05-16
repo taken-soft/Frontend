@@ -4,21 +4,14 @@
 
 <script>
 export default {
-    data () {
-        return {
-        }
+    data() {
+        return {};
     },
-    methods: {
-
-    },
-    watch: {
-
-    },
-    computed: {
-
-    },
+    methods: {},
+    watch: {},
+    computed: {},
     mounted() {
-        console.log('Footer mounted');
-    }
-}
+        console.log("Footer mounted");
+    },
+};
 </script>

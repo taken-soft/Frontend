@@ -9,62 +9,57 @@
                 <Widget></Widget>
             </div>
         </div>
-        
     </div>
 </template>
 
 <script>
-import { useEditorStore } from '../../stores/store'
-import Widget from './Widget.vue';
+import { useEditorStore } from "../../stores/store";
+import Widget from "./Widget.vue";
 
 export default {
     data() {
-        return {
-            
-        }
+        return {};
     },
-    props:[
-        "layoutSeq"
-    ],
-    components:{
-        Widget
+    props: ["layoutSeq"],
+    components: {
+        Widget,
     },
     setup() {
         const editorStore = useEditorStore();
 
         const selectLayout = (layoutSeq) => {
-            editorStore.setSelectedLayout(layoutSeq)
+            editorStore.setSelectedLayout(layoutSeq);
             console.log(editorStore.selectedLayout);
         };
 
         return {
-            selectLayout
+            selectLayout,
         };
     },
-    computed:{
-        selected(){
+    computed: {
+        selected() {
             const editorStore = useEditorStore();
-            return this.layoutSeq===editorStore.selectedLayout;
-        }
-    }
-}
+            return this.layoutSeq === editorStore.selectedLayout;
+        },
+    },
+};
 </script>
 
 <style scoped>
-.layout{
+.layout {
     background: white;
     min-height: 20rem;
     border-radius: 5px;
     height: calc(50vh - 6rem);
 }
-.layoutContainer{
+.layoutContainer {
     position: relative;
     width: 100%;
     padding-bottom: calc(100% * 10 / 23);
     top: -100%;
     z-index: 1;
 }
-.layoutContent{
+.layoutContent {
     position: absolute;
     background: #f5f5f5;
     border-color: #f0f0f0;
@@ -76,14 +71,14 @@ export default {
     height: 100%;
 }
 
-.layoutSelector{
+.layoutSelector {
     position: relative;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0);
     z-index: 2;
 }
-.selected{
+.selected {
     top: 0;
 }
 </style>
