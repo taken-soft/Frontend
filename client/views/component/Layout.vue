@@ -4,13 +4,17 @@
         <!-- 23:10 -->
         <div class="layoutContainer">
             <div class="layoutContent">
-                {{ layoutSeq }}
+                    {{ layoutSeq }}
             </div>
-            
         </div>
+        <div class="layoutSelector" @click="selectLayout()"></div>
     </div>
 </template>
+
 <script>
+import { useEditorStore } from '../../stores/store'
+import { onMounted } from 'vue'
+
 export default {
     data() {
         return {
@@ -23,7 +27,23 @@ export default {
     components:{
 
     },
-    
+    setup() {
+        const editorStore = useEditorStore();
+
+        onMounted(() => {
+            editorStore.setSelectedLayout(this.layoutSeq);
+            console.log(editorStore.getSelectedLayout());
+        });
+
+        const selectLayout = () => {
+            console.log(this.layoutSeq);
+            console.log(editorStore.getSelectedLayout());
+        };
+
+        return {
+            selectLayout
+        };
+    }
 }
 </script>
 
@@ -47,6 +67,12 @@ export default {
     border-radius: 5px;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.layoutSelector{
+    position: relative;
     width: 100%;
     height: 100%;
 }
