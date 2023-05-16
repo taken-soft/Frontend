@@ -2,12 +2,13 @@
     <div class="layout">
         <!-- {{ item }} -->
         <!-- 23:10 -->
-        <div class="layoutContainer">
+        <div class="layoutSelector" @click="selectLayout(layoutSeq)" v-if="!selected"></div>
+        <div :class="[selected ? 'layoutContainer selected' : 'layoutContainer']">
             <div class="layoutContent">
-                    {{ layoutSeq }}
+                {{ layoutSeq }}
             </div>
         </div>
-        <div class="layoutSelector" @click="selectLayout()"></div>
+        
     </div>
 </template>
 
@@ -30,19 +31,20 @@ export default {
     setup() {
         const editorStore = useEditorStore();
 
-        onMounted(() => {
-            editorStore.setSelectedLayout(this.layoutSeq);
-            console.log(editorStore.getSelectedLayout());
-        });
-
-        const selectLayout = () => {
-            console.log(this.layoutSeq);
-            console.log(editorStore.getSelectedLayout());
+        const selectLayout = (layoutSeq) => {
+            editorStore.setSelectedLayout(layoutSeq)
+            console.log(editorStore.selectedLayout);
         };
 
         return {
             selectLayout
         };
+    },
+    computed:{
+        selected(){
+            const editorStore = useEditorStore();
+            return this.layoutSeq===editorStore.selectedLayout;
+        }
     }
 }
 </script>
@@ -58,6 +60,8 @@ export default {
     position: relative;
     width: 100%;
     padding-bottom: calc(100% * 10 / 23);
+    top: -100%;
+    z-index: 1;
 }
 .layoutContent{
     position: absolute;
@@ -75,5 +79,10 @@ export default {
     position: relative;
     width: 100%;
     height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 2;
+}
+.selected{
+    top: 0;
 }
 </style>
