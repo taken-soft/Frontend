@@ -33,7 +33,7 @@ export default {
 }
 </script>
 <style scoped>
-.grid2_2 >div{ background: #f3f3f3;
+.grid2_2 > div{ background: #f3f3f3;
   min-height: 20rem;
   border-radius: 5px;}
 </style>
