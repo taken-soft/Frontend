@@ -49,8 +49,8 @@ const App = {
     return {
       modalVisible: false,
       showDiv: false,
-      displayStyle: "block",
-      divClass: 'mainwrap expand'
+      displayStyle: "none",
+      divClass: 'mainwrap'
     };
   },
   methods: {

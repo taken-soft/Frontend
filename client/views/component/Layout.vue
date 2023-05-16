@@ -6,6 +6,7 @@
         <div :class="[selected ? 'layoutContainer selected' : 'layoutContainer']">
             <div class="layoutContent">
                 {{ layoutSeq }}
+                <Widget></Widget>
             </div>
         </div>
         
@@ -14,7 +15,7 @@
 
 <script>
 import { useEditorStore } from '../../stores/store'
-import { onMounted } from 'vue'
+import Widget from './Widget.vue';
 
 export default {
     data() {
@@ -26,7 +27,7 @@ export default {
         "layoutSeq"
     ],
     components:{
-
+        Widget
     },
     setup() {
         const editorStore = useEditorStore();
