@@ -1,7 +1,8 @@
 <template>
   <div v-cloak>
     <Header></Header>
-    <div class="navhead flex">
+    <div><Menu :menuList="menuList"></Menu></div>
+    <!-- <div class="navhead flex">
       <svg
         v-on:click="hide"
         xmlns="http://www.w3.org/2000/svg"
@@ -16,9 +17,9 @@
       <span>
         여기에 대시보드 이름 추가 예정
       </span>
-    </div>
+    </div> -->
     <!-- nav inner-->
-    <div class="nav flex" v-bind:style="{ display: displayStyle }">
+    <!-- <div class="nav flex" v-bind:style="{ display: displayStyle }">
       <svg
         v-on:click="hide"
         xmlns="http://www.w3.org/2000/svg"
@@ -34,15 +35,16 @@
     </div>
     <div :class="divClass">
       <router-view />
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import Modal from "../pages/main/Modal.vue";
 import Header from "../layout/Header.vue";
-import Menu from "../layout/Menu.vue";
+//import Menu from "../layout/Menu.vue";
 import Footer from "../layout/Footer.vue";
+import Menu from "../menu/Menu.vue"
 
 const App = {
   data: () => {
@@ -50,7 +52,8 @@ const App = {
       modalVisible: false,
       showDiv: false,
       displayStyle: "block",
-      divClass: 'mainwrap expand'
+      divClass: 'mainwrap expand',
+      menuList: []
     };
   },
   methods: {
