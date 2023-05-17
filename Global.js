@@ -6,6 +6,8 @@ const SERVICE_STATUS = process.env.NODE_ENV;//development, production
 const PORT = 80;
 const API_SERVER_HOST = 'localhost:80';
 
+require("dotenv").config();
+
 module.exports = {
     PROJECT_NAME,
     PROJECT_VERSION,
