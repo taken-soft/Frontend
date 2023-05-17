@@ -4,6 +4,7 @@
 			<menu-item :menu-entity=item v-if="item.type == 'item'"></menu-item>
 			<menu-button :menu-entity=item v-if="item.type == 'button'"></menu-button>
 		</div>
+		<div></div>
 	</div>
 </template>
 <script>
@@ -25,4 +26,13 @@ export default {
 	},
 }
 </script>
-<style scoped></style>
+<style scoped>
+.img-l {
+  width: 30px;
+  height: 30px;
+}
+img {
+  width: 20px;
+  height: 20px;
+}
+</style>

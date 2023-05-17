@@ -32,7 +32,14 @@ module.exports = {
             loader: "url-loader",
             options: {
               limit: 8192,
-              fallback: require.resolve("file-loader"),
+              fallback: {
+                loader: "file-loader",
+                options: {
+                  name: "[name].[contenthash:8].[ext]",
+                  esModule: false,
+                },
+              },
+              esModule: false,
             },
           },
         ],

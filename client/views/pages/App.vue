@@ -2,34 +2,20 @@
   <div v-cloak>
     <Header></Header>
     <div class="navhead flex">
-      <svg
-        v-on:click="hide"
-        xmlns="http://www.w3.org/2000/svg"
-        height="30"
-        viewBox="0 96 960 960"
-        width="30"
-      >
-        <path
-          d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"
-        />
+      <svg v-on:click="hide" xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30">
+        <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
       </svg>
       <span :innerHTML="getDashboard()">
       </span>
     </div>
     <!-- nav inner-->
     <div class="nav flex" v-bind:style="{ display: displayStyle }">
-      <svg
-        v-on:click="hide"
-        xmlns="http://www.w3.org/2000/svg"
-        height="30"
-        viewBox="0 96 960 960"
-        width="30"
-      >
-        <path
-          d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"
-        />
+      <svg v-on:click="hide" xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30">
+        <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
       </svg>
-      <div><Menu :menuList="menuList"></Menu></div>
+      <div>
+        <Menu :menuList="curruentMode() ? curruentRoute() : menuList"></Menu>
+      </div>
     </div>
     <div :class="divClass">
       <router-view />
@@ -41,30 +27,47 @@
 import Modal from "../pages/main/Modal.vue";
 import Header from "../layout/Header.vue";
 import Footer from "../layout/Footer.vue";
+//import Menu from "../layout/Menu.vue"
 import Menu from "../layout/menu/Menu.vue";
 import MenuEntity from "../layout/menu/menuEntity";
 
 import { useDashboardStore } from '../../stores/dashboardStore';
+import { useModeStore } from '../../stores/modeStore';
+import { useEditMenuStore } from "../../stores/editMenuStore";
+import EditMenu from "../layout/menu/editMenu";
 
 const App = {
   setup() {
-		const dashboardStore = useDashboardStore();
-		const dashboardList = dashboardStore.dashboardList;
-		const selectDashboard = (dashboardId) => {
-			dashboardStore.setSelectedDashBoard(dashboardId);
-		};
+    const dashboardStore = useDashboardStore();
+    const modeStore = useModeStore();
+    const editMenuStore = useEditMenuStore();
+
+    const dashboardList = dashboardStore.dashboardList;
+    const selectDashboard = (dashboardId) => {
+      dashboardStore.setSelectedDashBoard(dashboardId);
+    };
     const getDashboard = () => {
       return dashboardStore.getSelectedDashBoard;
     }
-    
+
+    const curruentMode = () => {
+      return modeStore.curruentMode;
+    }
+    const changeMode = () => {
+      modeStore.changeMode();
+      editMenuStore.push(new EditMenu().root);
+    }
+
+    const curruentRoute = () => {
+      return editMenuStore.curruentRoute;
+    }
+
     let menuList = [];
 
-    for(let dashboard of dashboardList) {
-      console.log(`${dashboard[0]}, ${dashboard[1]}`);
+    for (let dashboard of dashboardList) {
       menuList.push(
-        new MenuEntity(dashboard[1], "../../resources/images/back.png", ()  => selectDashboard(dashboard[0]),() => console.log("icon clicked"), "item" )
+        new MenuEntity(dashboard[1], "edit", () => selectDashboard(dashboard[0]), () => changeMode(), "item")
       );
-      console.log(menuList.length);
     }
 
     return {
@@ -72,8 +75,10 @@ const App = {
       selectDashboard,
       getDashboard,
       menuList,
+      curruentMode,
+      curruentRoute,
     }
-	},
+  },
 
   data: () => {
     return {
@@ -84,7 +89,7 @@ const App = {
     };
   },
   methods: {
-   showModal() {
+    showModal() {
       this.modalVisible = true;
     },
     closeModal() {
@@ -125,6 +130,7 @@ export default App;
   height: calc(100vh - 8.5rem);
   background: #f3f6ff;
 }
+
 .mainwrap.expand {
   width: calc(100% - 300px);
 }
