@@ -1,14 +1,15 @@
 <template>
 	<div class="flex title" @click="menuEntity.onClick">
 		<p :innerHTML="menuEntity.text"></p>
-		<img class="img-l" @click="menuEntity.onIconClick" :src="require(`../../../resources/images/${menuEntity.icon}.png`)" alt="" />
+		<img class="img-l" @click="menuEntity.onIconClick" :src="require(`../../../../resources/images/${menuEntity.icon}.png`)" alt="" />
 	</div>
 </template>
 <script>
-import MenuEntity from './menuEntity';
+import MenuItemEntity from '../item/menuItemEntity';
+
 export default {
 	props: {
-		menuEntity:MenuEntity
+		menuEntity: MenuItemEntity
 	}
 }
 </script>

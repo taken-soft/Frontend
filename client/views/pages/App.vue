@@ -27,14 +27,16 @@
 import Modal from "../pages/main/Modal.vue";
 import Header from "../layout/Header.vue";
 import Footer from "../layout/Footer.vue";
-//import Menu from "../layout/Menu.vue"
+//import Menu from "../layout/Menu.vue";
 import Menu from "../layout/menu/Menu.vue";
-import MenuEntity from "../layout/menu/menuEntity";
 
-import { useDashboardStore } from '../../stores/dashboardStore';
+import MenuButtonEntity from "../layout/menu/button/menuButtonEntity";
+import MenuItemEntity from "../layout/menu/item/menuItemEntity";
+
+import { useDashboardStore } from "../../stores/dashboardStore"; 
 import { useModeStore } from '../../stores/modeStore';
 import { useEditMenuStore } from "../../stores/editMenuStore";
-import EditMenu from "../layout/menu/editMenu";
+import EditMenuRoot from "../layout/menu/editMenuRoute/editMenuRoot";
 
 const App = {
   setup() {
@@ -53,9 +55,10 @@ const App = {
     const curruentMode = () => {
       return modeStore.curruentMode;
     }
-    const changeMode = () => {
+    const changeMode = (dashboardId) => {
+      dashboardStore.setSelectedDashBoard(dashboardId);
+      editMenuStore.push(new EditMenuRoot().route);
       modeStore.changeMode();
-      editMenuStore.push(new EditMenu().root);
     }
 
     const curruentRoute = () => {
@@ -66,9 +69,13 @@ const App = {
 
     for (let dashboard of dashboardList) {
       menuList.push(
-        new MenuEntity(dashboard[1], "edit", () => selectDashboard(dashboard[0]), () => changeMode(), "item")
+        new MenuItemEntity(dashboard[1], "edit", () => selectDashboard(dashboard[0]), () => changeMode(dashboard[0]))
       );
     }
+    
+    menuList.push(
+      new MenuButtonEntity("데시보드 추가", "add", null)
+    );
 
     return {
       dashboardList,
