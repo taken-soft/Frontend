@@ -20,7 +20,11 @@ export const useEditMenuStore = defineStore("editMenuStore", {
       this.editMenuRouter.push(menuList);
     },
     pop() {
-      return this.editMenuRouter.pop();
+      this.editMenuRouter.pop();
     },
+    replace(menuList) {
+      this.editMenuRouter.pop();
+      this.editMenuRouter.push(menuList);
+    }
   },
 });
