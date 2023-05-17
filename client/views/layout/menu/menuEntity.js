@@ -8,13 +8,13 @@ export default class MenuEntity {
   constructor(
     text,
     icon,
-    dashbordId,
+    onClick,
     onIconClick,
     type,
   ) {
     this.text = text;
     this.icon = icon;
-    this.onClick = () => console.log(dashbordId);
+    this.onClick = onClick;
     this.onIconClick = onIconClick;
     this.type = type;
   }

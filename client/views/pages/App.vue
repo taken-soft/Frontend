@@ -13,7 +13,7 @@
           d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"
         />
       </svg>
-      <span :innerHTML="''">
+      <span :innerHTML="getDashboard()">
       </span>
     </div>
     <!-- nav inner-->
@@ -40,23 +40,47 @@
 <script>
 import Modal from "../pages/main/Modal.vue";
 import Header from "../layout/Header.vue";
-//import Menu from "../layout/Menu.vue";
 import Footer from "../layout/Footer.vue";
 import Menu from "../layout/menu/Menu.vue";
 import MenuEntity from "../layout/menu/menuEntity";
 
+import { useDashboardStore } from '../../stores/dashboardStore';
+
 const App = {
+  setup() {
+		const dashboardStore = useDashboardStore();
+		const dashboardList = dashboardStore.dashboardList;
+		const selectDashboard = (dashboardId) => {
+			dashboardStore.setSelectedDashBoard(dashboardId);
+		};
+    const getDashboard = () => {
+      return dashboardStore.getSelectedDashBoard;
+    }
+    
+    let menuList = [];
+
+    for(let dashboard of dashboardList) {
+      console.log(`${dashboard[0]}, ${dashboard[1]}`);
+      menuList.push(
+        new MenuEntity(dashboard[1], "../../resources/images/back.png", ()  => selectDashboard(dashboard[0]),() => console.log("icon clicked"), "item" )
+      );
+      console.log(menuList.length);
+    }
+
+    return {
+      dashboardList,
+      selectDashboard,
+      getDashboard,
+      menuList,
+    }
+	},
+
   data: () => {
     return {
       modalVisible: false,
       showDiv: false,
       displayStyle: "block",
       divClass: 'mainwrap expand',
-      menuList: [
-        new MenuEntity("item1", "../../resources/images/back.png", "item1", () => console.log("icon clicked"), "item"),
-        new MenuEntity("item2", "../../resources/images/back.png", "item2", () => console.log("icon clicked"), "item"),
-        new MenuEntity("button", "../../resources/images/back.png", "button1", null, "button"),
-      ],
     };
   },
   methods: {

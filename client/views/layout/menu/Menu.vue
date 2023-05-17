@@ -9,7 +9,7 @@
 <script>
 import MenuItem from "./MenuItem.vue";
 import MenuButton from "./MenuButton.vue";
-import MenuEntity from "./menuEntity";
+
 
 export default {
 	data() {
@@ -22,7 +22,7 @@ export default {
 	components: {
 		MenuItem: MenuItem,
 		MenuButton: MenuButton,
-	}
+	},
 }
 </script>
 <style scoped></style>
