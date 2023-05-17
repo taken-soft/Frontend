@@ -13,8 +13,7 @@
           d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"
         />
       </svg>
-      <span>
-        여기에 대시보드 이름 추가 예정
+      <span :innerHTML="''">
       </span>
     </div>
     <!-- nav inner-->
@@ -30,7 +29,7 @@
           d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"
         />
       </svg>
-      <div><Menu></Menu></div>
+      <div><Menu :menuList="menuList"></Menu></div>
     </div>
     <div :class="divClass">
       <router-view />
@@ -41,8 +40,10 @@
 <script>
 import Modal from "../pages/main/Modal.vue";
 import Header from "../layout/Header.vue";
-import Menu from "../layout/Menu.vue";
+//import Menu from "../layout/Menu.vue";
 import Footer from "../layout/Footer.vue";
+import Menu from "../layout/menu/Menu.vue";
+import MenuEntity from "../layout/menu/menuEntity";
 
 const App = {
   data: () => {
@@ -50,7 +51,12 @@ const App = {
       modalVisible: false,
       showDiv: false,
       displayStyle: "block",
-      divClass: 'mainwrap expand'
+      divClass: 'mainwrap expand',
+      menuList: [
+        new MenuEntity("item1", "../../resources/images/back.png", "item1", () => console.log("icon clicked"), "item"),
+        new MenuEntity("item2", "../../resources/images/back.png", "item2", () => console.log("icon clicked"), "item"),
+        new MenuEntity("button", "../../resources/images/back.png", "button1", null, "button"),
+      ],
     };
   },
   methods: {
