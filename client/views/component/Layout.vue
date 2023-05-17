@@ -8,6 +8,7 @@
                 {{ layoutSeq }}
                 <Widget></Widget>
             </div>
+            <WidgetGrid></WidgetGrid>
         </div>
     </div>
 </template>
@@ -15,6 +16,7 @@
 <script>
 import { useEditorStore } from "../../stores/store";
 import Widget from "./Widget.vue";
+import WidgetGrid from "./WidgetGrid.vue";
 
 export default {
     data() {
@@ -23,6 +25,7 @@ export default {
     props: ["layoutSeq"],
     components: {
         Widget,
+        WidgetGrid,
     },
     setup() {
         const editorStore = useEditorStore();
