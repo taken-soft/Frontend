@@ -42,7 +42,6 @@
 import Modal from "../pages/main/Modal.vue";
 import Header from "../layout/Header.vue";
 //import Menu from "../layout/Menu.vue";
-//import Menu from "../layout/Menu.vue";
 import Footer from "../layout/Footer.vue";
 import Menu from "../layout/menu/Menu.vue";
 import MenuEntity from "../layout/menu/menuEntity";

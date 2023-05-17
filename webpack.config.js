@@ -18,10 +18,6 @@ module.exports = {
         loader: "vue-loader",
       },
       {
-        test: /\.ts$/, // .ts파일을
-        loader: "ts-loader", // ts-loader로 해석
-      },
-      {
         test: /\.(js|jsx)?$/,
         loader: "babel-loader",
       },
