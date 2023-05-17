@@ -1,8 +1,7 @@
 <template>
   <div v-cloak>
     <Header></Header>
-    <div><Menu :menuList="menuList"></Menu></div>
-    <!-- <div class="navhead flex">
+    <div class="navhead flex">
       <svg
         v-on:click="hide"
         xmlns="http://www.w3.org/2000/svg"
@@ -16,9 +15,9 @@
       </svg>
       <span :innerHTML="''">
       </span>
-    </div> -->
+    </div>
     <!-- nav inner-->
-    <!-- <div class="nav flex" v-bind:style="{ display: displayStyle }">
+    <div class="nav flex" v-bind:style="{ display: displayStyle }">
       <svg
         v-on:click="hide"
         xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +33,7 @@
     </div>
     <div :class="divClass">
       <router-view />
-    </div> -->
+    </div>
   </div>
 </template>
 
