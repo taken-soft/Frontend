@@ -76,15 +76,22 @@ export default {
 };
 </script>
 <style scoped>
+.widgetGrid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 .gridIn {
     border: 1px solid rgb(180, 180, 180);
-    width: calc(1 / 23%);
+    width: calc(100% / 23);
     height: 100%;
 }
 .gridOut {
     position: relative;
     width: 100%;
-    height: 10%;
+    height: calc(100% / 10);
     display: flex;
 }
 </style>

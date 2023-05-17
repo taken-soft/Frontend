@@ -8,7 +8,7 @@
                 {{ layoutSeq }}
                 <Widget></Widget>
             </div>
-            <WidgetGrid></WidgetGrid>
+            <WidgetGrid v-if="selected"></WidgetGrid>
         </div>
     </div>
 </template>
