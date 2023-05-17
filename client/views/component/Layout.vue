@@ -5,7 +5,7 @@
         <div class="layoutSelector" @click="selectLayout(layoutSeq)" v-if="!selected"></div>
         <div :class="[selected ? 'layoutContainer selected' : 'layoutContainer']">
             <div class="layoutContent">
-                {{ layoutSeq }}
+                <!-- {{ layoutSeq }} -->
                 <Widget></Widget>
             </div>
             <WidgetGrid v-if="selected"></WidgetGrid>

@@ -1,7 +1,14 @@
-<template lang="">
+<template>
     <div class="widgetGrid">
         <div v-for="y in ySize" :key="y" class="gridOut">
-            <div v-for="x in xSize" :key="x" class="gridIn" @mousedown="gridClick(x, y)" @mouseup="gridOver()" @mouseenter="gridDrag(x, y)">
+            <div
+                v-for="x in xSize"
+                :key="x"
+                class="gridIn"
+                @mousedown="gridClick((y - 1) * ySize + x)"
+                @mouseup="gridOver((y - 1) * ySize + x)"
+                @mouseenter="gridDrag((y - 1) * ySize + x)"
+            >
                 <!-- {{y}}  {{x}} -->
             </div>
         </div>
@@ -16,8 +23,8 @@ export default {
             widgets: [],
             widget: {
                 type: "",
-                start: { x: 0, y: 0 },
-                end: { x: 0, y: 0 },
+                start: 0,
+                end: 0,
             },
             onDrag: false,
             widgetTypes: ["text", "chart", "rectangle"],
@@ -27,23 +34,27 @@ export default {
         setGrid: () => {
             let grid = [];
         },
-        gridClick: function (x, y) {
+        gridClick: function (startPos) {
             //console.log(x+ ","+y)
-            this.widget.start.x = x;
-            this.widget.start.y = y;
-            this.widget.end.x = x;
-            this.widget.end.y = y;
+            this.widget.start = startPos;
+            this.widget.end = startPos;
             this.onDrag = true;
+
+            // console.log(this.widget.start, this.widget.end);
         },
-        gridDrag: function (x, y) {
+        gridDrag: function (endPos) {
             if (this.onDrag) {
-                //console.log(x+ ","+y)
-                this.widget.end.x = x;
-                this.widget.end.y = y;
+                this.widget.end = endPos;
+                // console.log(this.widget.start, this.widget.end);
             }
         },
-        gridOver: function () {
+        gridOver: function (endPos) {
             this.onDrag = false;
+            if (endPos < this.widget.start) {
+                this.widget.end = this.widget.start;
+                this.widget.start = endPos;
+            }
+            // console.log(this.widget.start, this.widget.end);
         },
         selectType: function (type) {
             this.widget.type = type;
