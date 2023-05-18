@@ -1,6 +1,6 @@
-import MenuEntity from "../menuEntity";
+import MenuValueEntity from "../menuValueEntity";
 
-export default class MenuDropdownEntity extends MenuEntity {
+export default class MenuDropdownEntity extends MenuValueEntity {
   dropdownList;
   onDropdownChange;
   constructor(
@@ -8,8 +8,9 @@ export default class MenuDropdownEntity extends MenuEntity {
     icon,
     dropdownList,
     onDropdownChange,
+    currentValue,
   ) {
-    super(text, icon);
+    super(text, icon, currentValue);
     this.dropdownList = dropdownList;
     this.onDropdownChange = onDropdownChange;
   }

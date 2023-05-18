@@ -1,13 +1,14 @@
-import MenuEntity from "../menuEntity";
+import MenuValueEntity from "../menuValueEntity";
 
-export default class MenuFileEntity extends MenuEntity {
+export default class MenuFileEntity extends MenuValueEntity {
   accept;
   constructor(
     text,
     icon,
     accept,
+    currentValue,
   ) {
-    super(text, icon);
+    super(text, icon, currentValue);
     this.accept = accept;
   }
 }

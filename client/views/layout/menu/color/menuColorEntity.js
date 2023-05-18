@@ -1,5 +1,5 @@
-import MenuEntity from "../menuEntity";
+import MenuValueEntity from "../menuValueEntity";
 
-export default class MenuColorEntity extends MenuEntity {
+export default class MenuColorEntity extends MenuValueEntity {
 
 }
