@@ -2,13 +2,15 @@ import MenuItemEntity from "../item/menuItemEntity";
 import MenuButtonEntity from "../button/menuButtonEntity";
 import MenuInputEntity from "../input/menuInputEntity";
 import MenuDropdownEntity from "../dropdown/menuDropdownEntity";
-import MenuSensorEntity from "../sensor/menuSenorEntity";
+import MenuSensorEntity from "../sensor/menuSensorEntity";
+import MenuEventEntity from "../event/menuEventEntity";
 
 import EditMenuRoute from "./editMenuRoute";
 
 export default class EditMenuText extends EditMenuRoute {
   title = "텍스트";
   sensorList = [new MenuSensorEntity("센서", null)];
+  eventList = [];
 
   route = () => {
     if (this.isVanilla) {
@@ -31,12 +33,19 @@ export default class EditMenuText extends EditMenuRoute {
         ),
         ...this.sensorList,
         new MenuButtonEntity("센서추가", "add", () => this.addSensor()),
+        new MenuDropdownEntity("산술식", null, ["평균, 최대, 최소, 합"], null, "평균"),
+        ...this.eventList,
+        new MenuButtonEntity("이벤트추가", "add", () => this.addEvent()),
       ];
     }
   };
 
   addSensor() {
-    this.sensorList.splice(1, 0, new MenuSensorEntity("센서", null));
+    this.sensorList.push(new MenuSensorEntity("센서", null));
+    this.editMenuStore.refresh();
+  }
+  addEvent() {
+    this.eventList.push(new MenuEventEntity("이벤트", null));
     this.editMenuStore.refresh();
   }
 }

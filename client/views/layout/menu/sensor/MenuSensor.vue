@@ -6,7 +6,7 @@
   </div>
 </template>
 <script>
-import MenuSensorEntity from "./menuSenorEntity";
+import MenuSensorEntity from "./menuSensorEntity";
 
 import MenuItem from "../item/MenuItem.vue";
 import MenuButton from "../button/MenuButton.vue";

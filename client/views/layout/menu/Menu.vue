@@ -3,11 +3,6 @@
     <div v-if="!curruentMode()" v-for="(item, index) in menuList" v-bind:key="index">
       <menu-item :menu-entity=item v-if="item.constructor.name == 'MenuItemEntity'"></menu-item>
       <menu-button :menu-entity=item v-if="item.constructor.name == 'MenuButtonEntity'"></menu-button>
-      <menu-input :menu-entity=item v-if="item.constructor.name == 'MenuInputEntity'"></menu-input>
-      <menu-dropdown :menu-entity=item v-if="item.constructor.name == 'MenuDropdownEntity'"></menu-dropdown>
-      <menu-file :menu-entity=item v-if="item.constructor.name == 'MenuFileEntity'"></menu-file>
-      <menu-color :menu-entity=item v-if="item.constructor.name == 'MenuColorEntity'"></menu-color>
-      <menu-sensor :menu-entity=item v-if="item.constructor.name == 'MenuSensorEntity'"></menu-sensor>
     </div>
     <div v-if="curruentMode()" v-for="(item, index) in curruentRoute()" v-bind:key="index">
       <menu-item :menu-entity=item v-if="item.constructor.name == 'MenuItemEntity'"></menu-item>
@@ -17,6 +12,7 @@
       <menu-file :menu-entity=item v-if="item.constructor.name == 'MenuFileEntity'"></menu-file>
       <menu-color :menu-entity=item v-if="item.constructor.name == 'MenuColorEntity'"></menu-color>
       <menu-sensor :menu-entity=item v-if="item.constructor.name == 'MenuSensorEntity'"></menu-sensor>
+      <menu-event :menu-entity=item v-if="item.constructor.name == 'MenuEventEntity'"></menu-event>
     </div>
   </div>
 </template>
@@ -28,6 +24,7 @@ import MenuDropdown from "./dropdown/MenuDropdown.vue";
 import MenuFile from "./file/MenuFile.vue";
 import MenuColor from "./color/MenuColor.vue";
 import MenuSensor from "./sensor/MenuSensor.vue";
+import MenuEvent from "./event/MenuEvent.vue";
 
 import MenuButtonEntity from "../menu/button/menuButtonEntity";
 import MenuItemEntity from "../menu/item/menuItemEntity";
@@ -88,6 +85,7 @@ export default {
     MenuFile: MenuFile,
     MenuColor: MenuColor,
     MenuSensor: MenuSensor,
+    MenuEvent: MenuEvent,
   },
 }
 </script>
