@@ -9,22 +9,22 @@ export const useEditMenuStore = defineStore("editMenuStore", {
   },
   getters: {
     curruentRoute() {
-      return this.editMenuRouter[this.editMenuRouter.length - 1];
+      return this.editMenuRouter[this.editMenuRouter.length - 1].route();
     },
   },
   actions: {
     clear() {
       this.editMenuRouter = [];
     },
-    push(menuList) {
-      this.editMenuRouter.push(menuList);
+    push(editMenu) {
+      this.editMenuRouter.push(editMenu);
     },
     pop() {
       this.editMenuRouter.pop();
     },
-    replace(menuList) {
+    replace(editMenu) {
       this.editMenuRouter.pop();
-      this.editMenuRouter.push(menuList);
+      this.editMenuRouter.push(editMenu);
     },
     refresh() {
       this.editMenuRouter.push(this.editMenuRouter.pop());

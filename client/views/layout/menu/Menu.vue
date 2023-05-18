@@ -58,7 +58,7 @@ export default {
     }
     const changeMode = (dashboardId) => {
       dashboardStore.setSelectedDashBoard(dashboardId);
-      editMenuStore.push(new EditMenuRoot().route);
+      editMenuStore.push(new EditMenuRoot());
       modeStore.changeMode();
     }
 
