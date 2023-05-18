@@ -5,7 +5,7 @@ import MenuSensorEntity from "../sensor/menuSensorEntity";
 import EditMenuRoute from "./editMenuRoute";
 
 export default class EditMenuLine extends EditMenuRoute {
-  title = "꺾은선 그래프"
+  title = "꺾은선 그래프";
   route = () => {
     return [
       new MenuItemEntity(this.title, "back", null, () =>
@@ -18,7 +18,12 @@ export default class EditMenuLine extends EditMenuRoute {
   };
 
   addSensor() {
-    this.sensorList.splice(2, 0, new MenuSensorEntity("센서", null), new MenuColorEntity("막대색상", null));
+    this.sensorList.splice(
+      2,
+      0,
+      new MenuSensorEntity("센서", null),
+      new MenuColorEntity("막대색상", null)
+    );
     this.editMenuStore.refresh();
   }
 }

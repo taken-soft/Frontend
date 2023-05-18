@@ -8,14 +8,14 @@ export default class MenuSensorEntity extends MenuValueEntity {
     null,
     ["없음", "장치1", "장치2", "장치3"],
     (value) => this.onDeviceChange(value),
-    "없음",
+    "없음"
   );
   sensor = new MenuDropdownEntity(
     "센서",
     null,
     ["없음", "센서1", "센서2", "센서3"],
     (value) => this.onSensorChange(value),
-    "없음",
+    "없음"
   );
   onDeviceChange(value) {
     this.currentValue[0] = value;

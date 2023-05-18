@@ -7,7 +7,7 @@ export default class EditMenuRoute {
   modeStore = useModeStore();
   editMenuStore = useEditMenuStore();
 
-  route = function() {};
+  route = function () {};
 
   isVanilla = true;
   changeIsVanilla(value) {

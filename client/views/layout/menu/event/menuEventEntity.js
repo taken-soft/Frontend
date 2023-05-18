@@ -10,22 +10,25 @@ export default class MenuEventEntity extends MenuValueEntity {
     null,
     ["없음", "장치1", "장치2", "장치3"],
     (value) => this.onTypeChange(value),
-    "없음",
+    "없음"
   );
   color = new MenuColorEntity(
     "색상",
     null,
-    null,
+    (value) => this.onColorChange(value),
+    null
   );
   over = new MenuInputEntity(
     "임계값-초과",
     null,
-    "초과",
+    (value) => this.onOverChange(value),
+    "초과"
   );
   less = new MenuInputEntity(
     "임계값-이하",
     null,
-    "이하",
+    (value) => this.onLessChange(value),
+    "이하"
   );
   onTypeChange(value) {
     this.currentValue[0] = value;

@@ -33,7 +33,13 @@ export default class EditMenuText extends EditMenuRoute {
         ),
         ...this.sensorList,
         new MenuButtonEntity("센서추가", "add", () => this.addSensor()),
-        new MenuDropdownEntity("산술식", null, ["평균, 최대, 최소, 합"], null, "평균"),
+        new MenuDropdownEntity(
+          "산술식",
+          null,
+          ["평균, 최대, 최소, 합"],
+          null,
+          "평균"
+        ),
         ...this.eventList,
         new MenuButtonEntity("이벤트추가", "add", () => this.addEvent()),
       ];

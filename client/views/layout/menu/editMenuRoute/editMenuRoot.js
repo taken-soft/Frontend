@@ -2,8 +2,6 @@ import EditMenuAdd from "./editMenuAdd";
 
 import MenuItemEntity from "../item/menuItemEntity";
 import MenuButtonEntity from "../button/menuButtonEntity";
-import MenuInputEntity from "../input/menuInputEntity";
-import MenuDropdownEntity from "../dropdown/menuDropdownEntity";
 import EditMenuRoute from "./editMenuRoute";
 
 export default class EditMenuRoot extends EditMenuRoute {
