@@ -24,5 +24,20 @@ export default class EditMenuSquare {
       "센서",
       null,
     ),
+    new MenuButtonEntity(
+      "센서추가",
+      "add",
+      () => this.addSensor(),
+    ),
   ];
+
+  addSensor() {
+    this.route.push(
+      new MenuSensorEntity(
+        "센서",
+        null,
+      ),
+    );
+    console.log(this.route.length);    
+  }
 }
