@@ -1,8 +1,12 @@
 <template>
   <div class="m-b">
     <label for="" class="m-r" :innerHTML="menuEntity.text"></label>
-    <select name="" id="" @change="menuEntity.onDropdownChange">
-      <option v-for="(item, index) in menuEntity.dropdownList" v-bind:value="item" :innerHTML="item" v-bind:key="index">
+    <select name="" id="" @change="(value) => {
+        menuEntity.currentValue = value;
+        menuEntity.onDropdownChange();
+      }">
+      <option v-for="(item, index) in menuEntity.dropdownList" v-bind:value="item" :innerHTML="item" v-bind:key="index"
+        :selected="menuEntity.currentValue == item">
       </option>
     </select>
   </div>

@@ -2,7 +2,6 @@ import MenuValueEntity from "../menuValueEntity";
 
 export default class MenuDropdownEntity extends MenuValueEntity {
   dropdownList;
-  onDropdownChange;
   constructor(
     text,
     icon,

@@ -2,7 +2,7 @@
   <div class="m-b">
     <label for="" class="m-r" :innerHTML="menuEntity.text"></label>
     <div class="flex">
-      <input type="text" :placeholder="menuEntity.placeholder"/>
+      <input type="text" :placeholder="menuEntity.placeholder" :value="menuEntity.currentValue"/>
     </div>
   </div>
 </template>
