@@ -7,6 +7,8 @@ import MenuButtonEntity from "../button/menuButtonEntity";
 import MenuInputEntity from "../input/menuInputEntity";
 import MenuDropdownEntity from "../dropdown/menuDropdownEntity";
 
+import EditMenuSensorText from "./editMenuSensorText";
+
 export default class EditMenuText {
   dashboardStore = useDashboardStore();
   modeStore = useModeStore();
@@ -23,7 +25,11 @@ export default class EditMenuText {
       "장치",
       null,
       ["없음", "장치1", "장치2", "장치3",],
-      () => console.log("???"),
+      (value) => {
+        if(value != "없음") {
+          this.onNotNullSelect();
+        }
+      },
     ),
     new MenuInputEntity(
       "텍스트",
@@ -31,4 +37,8 @@ export default class EditMenuText {
       "텍스트",
     ),
   ];
+
+  onNotNullSelect() {
+    this.editMenuStore.replace(new EditMenuSensorText().route)
+  }
 }

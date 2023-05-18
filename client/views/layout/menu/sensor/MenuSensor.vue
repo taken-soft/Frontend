@@ -1,14 +1,8 @@
 <template>
   <div class="m-b">
     <label for="" class="m-r" :innerHTML="menuEntity.text"></label>
-    <div v-for="(item, index) in menuEntity.menuList" :key="index">
-      <menu-item :menu-entity=item v-if="item.constructor.name == 'MenuItemEntity'"></menu-item>
-      <menu-button :menu-entity=item v-if="item.constructor.name == 'MenuButtonEntity'"></menu-button>
-      <menu-input :menu-entity=item v-if="item.constructor.name == 'MenuInputEntity'"></menu-input>
-      <menu-dropdown :menu-entity=item v-if="item.constructor.name == 'MenuDropdownEntity'"></menu-dropdown>
-      <menu-file :menu-entity=item v-if="item.constructor.name == 'MenuFileEntity'"></menu-file>
-      <menu-color :menu-entity=item v-if="item.constructor.name == 'MenuColorEntity'"></menu-color>
-    </div>
+    <menu-dropdown :menu-entity=menuEntity.device></menu-dropdown>
+    <menu-dropdown :menu-entity=menuEntity.sensor></menu-dropdown>
   </div>
 </template>
 <script>

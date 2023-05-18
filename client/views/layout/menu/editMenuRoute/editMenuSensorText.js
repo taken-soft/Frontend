@@ -4,31 +4,17 @@ import { useEditMenuStore } from "../../../../stores/editMenuStore";
 
 import MenuItemEntity from "../item/menuItemEntity";
 import MenuButtonEntity from "../button/menuButtonEntity";
-import MenuInputEntity from "../input/menuInputEntity";
-import MenuDropdownEntity from "../dropdown/menuDropdownEntity";
 import MenuSensorEntity from "../sensor/menuSenorEntity";
 
-export default class EditMenuSquare {
+export default class EditMenuSensorText {
   dashboardStore = useDashboardStore();
   modeStore = useModeStore();
   editMenuStore = useEditMenuStore();
 
   route = [
-    new MenuItemEntity(
-      "사각형",
-      "back",
-      null,
-      () => this.editMenuStore.pop(),
-    ),
-    new MenuSensorEntity(
-      "센서",
-      null,
-    ),
-    new MenuButtonEntity(
-      "센서추가",
-      "add",
-      () => this.addSensor(),
-    ),
+    new MenuItemEntity("텍스트", "back", null, () => this.editMenuStore.pop()),
+    new MenuSensorEntity("센서", null),
+    new MenuButtonEntity("센서추가", "add", () => this.addSensor()),
   ];
 
   addSensor() {
