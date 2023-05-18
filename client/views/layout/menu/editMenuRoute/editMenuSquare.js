@@ -32,12 +32,14 @@ export default class EditMenuSquare {
   ];
 
   addSensor() {
+    const button = this.route.pop();
     this.route.push(
       new MenuSensorEntity(
         "센서",
         null,
       ),
+      button,
     );
-    console.log(this.route.length);    
+    this.editMenuStore.refresh();
   }
 }

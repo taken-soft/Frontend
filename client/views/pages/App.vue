@@ -14,7 +14,7 @@
         <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
       </svg>
       <div>
-        <Menu :menuList="curruentMode() ? curruentRoute() : menuList"></Menu>
+        <Menu></Menu>
       </div>
     </div>
     <div :class="divClass">
@@ -30,60 +30,18 @@ import Footer from "../layout/Footer.vue";
 //import Menu from "../layout/Menu.vue";
 import Menu from "../layout/menu/Menu.vue";
 
-import MenuButtonEntity from "../layout/menu/button/menuButtonEntity";
-import MenuItemEntity from "../layout/menu/item/menuItemEntity";
-
 import { useDashboardStore } from "../../stores/dashboardStore"; 
-import { useModeStore } from '../../stores/modeStore';
-import { useEditMenuStore } from "../../stores/editMenuStore";
-import EditMenuRoot from "../layout/menu/editMenuRoute/editMenuRoot";
 
 const App = {
   setup() {
     const dashboardStore = useDashboardStore();
-    const modeStore = useModeStore();
-    const editMenuStore = useEditMenuStore();
 
-    const dashboardList = dashboardStore.dashboardList;
-    const selectDashboard = (dashboardId) => {
-      dashboardStore.setSelectedDashBoard(dashboardId);
-    };
     const getDashboard = () => {
       return dashboardStore.getSelectedDashBoard;
     }
 
-    const curruentMode = () => {
-      return modeStore.curruentMode;
-    }
-    const changeMode = (dashboardId) => {
-      dashboardStore.setSelectedDashBoard(dashboardId);
-      editMenuStore.push(new EditMenuRoot().route);
-      modeStore.changeMode();
-    }
-
-    const curruentRoute = () => {
-      return editMenuStore.curruentRoute;
-    }
-
-    let menuList = [];
-
-    for (let dashboard of dashboardList) {
-      menuList.push(
-        new MenuItemEntity(dashboard[1], "edit", () => selectDashboard(dashboard[0]), () => changeMode(dashboard[0]))
-      );
-    }
-    
-    menuList.push(
-      new MenuButtonEntity("데시보드 추가", "add", null)
-    );
-
     return {
-      dashboardList,
-      selectDashboard,
       getDashboard,
-      menuList,
-      curruentMode,
-      curruentRoute,
     }
   },
 
@@ -108,7 +66,9 @@ const App = {
         this.divClass === "mainwrap" ? "mainwrap expand" : "mainwrap";
     },
   },
-  watch: {},
+  watch: {
+    
+  },
   computed: {},
   components: {
     Header: Header,

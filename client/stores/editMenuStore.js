@@ -25,6 +25,9 @@ export const useEditMenuStore = defineStore("editMenuStore", {
     replace(menuList) {
       this.editMenuRouter.pop();
       this.editMenuRouter.push(menuList);
+    },
+    refresh() {
+      this.editMenuRouter.push(this.editMenuRouter.pop());
     }
   },
 });
