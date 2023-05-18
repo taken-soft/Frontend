@@ -18,17 +18,11 @@ export default class MenuEventEntity extends MenuValueEntity {
     (value) => this.onColorChange(value),
     null
   );
-  over = new MenuInputEntity(
-    "임계값-초과",
-    null,
-    (value) => this.onOverChange(value),
-    "초과"
+  over = new MenuInputEntity("임계값-초과", null, "초과", (value) =>
+    this.onOverChange(value)
   );
-  less = new MenuInputEntity(
-    "임계값-이하",
-    null,
-    (value) => this.onLessChange(value),
-    "이하"
+  less = new MenuInputEntity("임계값-이하", null, "이하", (value) =>
+    this.onLessChange(value)
   );
   onTypeChange(value) {
     this.currentValue[0] = value;

@@ -9,11 +9,5 @@ export default class EditMenuRoute {
 
   route = function () {};
 
-  isVanilla = true;
-  changeIsVanilla(value) {
-    this.isVanilla = value;
-    this.editMenuStore.refresh();
-  }
-
   title;
 }

@@ -5,9 +5,9 @@ import MenuDropdownEntity from "../dropdown/menuDropdownEntity";
 import MenuSensorEntity from "../sensor/menuSensorEntity";
 import MenuEventEntity from "../event/menuEventEntity";
 
-import EditMenuRoute from "./editMenuRoute";
+import EditMenuWidgetRoute from "./editMenuWidgetRoute";
 
-export default class EditMenuCircle extends EditMenuRoute {
+export default class EditMenuCircle extends EditMenuWidgetRoute {
   title = "원";
   sensorList = [new MenuSensorEntity("센서", null)];
   eventList = [];
@@ -25,6 +25,7 @@ export default class EditMenuCircle extends EditMenuRoute {
           (value) => this.changeIsVanilla(value == "없음")
         ),
         new MenuInputEntity("텍스트", null, "텍스트"),
+        new MenuButtonEntity("위젯추가", "add", () => this.addWidget())
       ];
     } else {
       return [
@@ -42,6 +43,7 @@ export default class EditMenuCircle extends EditMenuRoute {
         ),
         ...this.eventList,
         new MenuButtonEntity("이벤트추가", "add", () => this.addEvent()),
+        new MenuButtonEntity("위젯추가", "add", () => this.addWidget())
       ];
     }
   };
