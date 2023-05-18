@@ -23,8 +23,8 @@ export default class EditMenuAdd {
     new MenuItemEntity(
       "위젯 추가",
       "back",
-      () => this.editMenuStore.pop(),
       null,
+      () => this.editMenuStore.pop(),
     ),
     new MenuItemEntity(
       "텍스트",
