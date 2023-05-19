@@ -1,25 +1,25 @@
 <template>
-    <div v-cloak>
-        <Header></Header>
-        <div class="navhead flex">
-            <svg v-on:click="hide" xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30">
-                <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
-            </svg>
-            <span :innerHTML="getDashboard()"> </span>
-        </div>
-        <!-- nav inner-->
-        <div class="nav flex" v-bind:style="{ display: displayStyle }">
-            <svg v-on:click="hide" xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30">
-                <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
-            </svg>
-            <div>
-                <Menu></Menu>
-            </div>
-        </div>
-        <div :class="divClass">
-            <router-view />
-        </div>
+  <div v-cloak>
+    <Header></Header>
+    <div class="navhead flex">
+      <svg v-on:click="hide" xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30">
+        <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
+      </svg>
+      <span :innerHTML="getDashboard()"> </span>
     </div>
+    <!-- nav inner-->
+    <div class="nav flex" v-bind:style="{ display: displayStyle }">
+      <svg v-on:click="hide" xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30">
+        <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
+      </svg>
+      <div>
+        <Menu></Menu>
+      </div>
+    </div>
+    <div :class="divClass">
+      <router-view />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -28,61 +28,62 @@ import Header from "../layout/Header.vue";
 import Footer from "../layout/Footer.vue";
 //import Menu from "../layout/Menu.vue";
 import Menu from "../layout/menu/Menu.vue";
-import { getTestData } from "../../axios/testAxios";
+import { getDashboardList } from "../../axios/dashboardListAxios";
 
 import { useDashboardStore } from "../../stores/dashboardStore";
 
 const App = {
-    data: () => {
-        return {
-            modalVisible: false,
-            showDiv: false,
-            displayStyle: "block",
-            divClass: "mainwrap expand",
-        };
+  data: () => {
+    return {
+      modalVisible: false,
+      showDiv: false,
+      displayStyle: "block",
+      divClass: "mainwrap expand",
+    };
+  },
+  methods: {
+    showModal() {
+      this.modalVisible = true;
     },
-    methods: {
-        showModal() {
-            this.modalVisible = true;
-        },
-        closeModal() {
-            this.modalVisible = false;
-        },
-        hide() {
-            this.displayStyle = this.displayStyle === "none" ? "block" : "none";
-            this.divClass = this.divClass === "mainwrap" ? "mainwrap expand" : "mainwrap";
-        },
+    closeModal() {
+      this.modalVisible = false;
     },
-    watch: {},
-    computed: {},
-    components: {
-        Header: Header,
-        Menu: Menu,
-        Footer: Footer,
-        Modal: Modal,
+    hide() {
+      this.displayStyle = this.displayStyle === "none" ? "block" : "none";
+      this.divClass = this.divClass === "mainwrap" ? "mainwrap expand" : "mainwrap";
     },
-    mounted: () => {
-        console.log("Vue mounted");
+  },
+  watch: {},
+  computed: {},
+  components: {
+    Header: Header,
+    Menu: Menu,
+    Footer: Footer,
+    Modal: Modal,
+  },
+  mounted: () => {
+    console.log("Vue mounted");
+  },
+  setup() {
+    const dashboardStore = useDashboardStore();
 
-        getTestData()
-            .then((result) => {
-                console.log(result.data)
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    },
-    setup() {
-        const dashboardStore = useDashboardStore();
+    getDashboardList()
+      .then((result) => {
+        console.log(result.data);
+        dashboardStore.setDashboardList(result.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-        const getDashboard = () => {
-            return dashboardStore.getSelectedDashBoard;
-        };
+    const getDashboard = () => {
+      return dashboardStore.getSelectedDashBoard;
+    };
 
-        return {
-            getDashboard,
-        };
-    },
+    return {
+      getDashboard,
+    };
+  },
 };
 
 export default App;
@@ -90,19 +91,19 @@ export default App;
 
 <style scoped>
 [v-cloak] {
-    display: none;
+  display: none;
 }
 
 .mainwrap {
-    position: absolute;
-    margin: 0px 0px;
-    padding: 1.5rem;
-    width: 100%;
-    height: calc(100vh - 8.5rem);
-    background: #f3f6ff;
+  position: absolute;
+  margin: 0px 0px;
+  padding: 1.5rem;
+  width: 100%;
+  height: calc(100vh - 8.5rem);
+  background: #f3f6ff;
 }
 
 .mainwrap.expand {
-    width: calc(100% - 300px);
+  width: calc(100% - 300px);
 }
 </style>

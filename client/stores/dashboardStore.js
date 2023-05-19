@@ -21,5 +21,13 @@ export const useDashboardStore = defineStore("dashboardStore", {
     setSelectedDashBoard(dashboardId) {
       this.selectedDashBoard = dashboardId;
     },
+    setDashboardList(dashboardList) {
+      this.dashboardList.clear();
+      for (let dashboard of dashboardList) {
+        console.log(dashboard);
+        this.dashboardList.set(dashboard["dashboardId"], dashboard["dashboardName"]);
+      }
+      this.selectedDashBoard = Array.from(this.dashboardList.keys())[0];
+    },
   },
 });
