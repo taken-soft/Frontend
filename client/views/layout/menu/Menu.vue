@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!curruentMode()" v-for="(item, index) in menuList" v-bind:key="index">
+    <div v-if="!curruentMode()" v-for="(item, index) in menuList()" v-bind:key="index">
       <menu-item :menu-entity=item v-if="item.constructor.name == 'MenuItemEntity'"></menu-item>
       <menu-button :menu-entity=item v-if="item.constructor.name == 'MenuButtonEntity'"></menu-button>
     </div>
@@ -31,7 +31,7 @@ import MenuItemEntity from "../menu/item/menuItemEntity";
 
 import EditMenuRoot from "../menu/editMenuRoute/editMenuRoot";
 
-import { useDashboardStore } from "../../../stores/dashboardStore"; 
+import { useDashboardStore } from "../../../stores/dashboardStore";
 import { useEditMenuStore } from "../../../stores/editMenuStore";
 import { useModeStore } from '../../../stores/modeStore';
 
@@ -59,22 +59,29 @@ export default {
       modeStore.changeMode();
     }
 
-    let menuList = [];
-
-    for (let dashboard of dashboardList) {
-      menuList.push(
-        new MenuItemEntity(dashboard[1], "edit", () => selectDashboard(dashboard[0]), () => changeMode(dashboard[0]))
-      );
-    }
-    
-    menuList.push(
-      new MenuButtonEntity("데시보드 추가", "add", null)
-    );
-
     return {
+      dashboardList,
+      selectDashboard,
       curruentRoute,
       curruentMode,
-      menuList,
+      changeMode,
+    }
+  },
+  methods: {
+    menuList() {
+      let menuList = [];
+
+      for (let dashboard of this.dashboardList) {
+        menuList.push(
+          new MenuItemEntity(dashboard[1], "edit", () => this.selectDashboard(dashboard[0]), () => this.changeMode(dashboard[0]))
+        );
+      }
+
+      menuList.push(
+        new MenuButtonEntity("대시보드 추가", "add", null)
+      );
+
+      return menuList;
     }
   },
   components: {
