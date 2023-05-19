@@ -1,6 +1,6 @@
 <template>
     <div>
-        <component :is="widgetType" />
+        <component :is="widgetType" class="widget"/>
     </div>
 </template>
 
@@ -30,4 +30,9 @@ export default {
 </script>
 
 <style scoped>
+.widget{
+    width: 100%;
+    height: 100%;
+}
+
 </style>
