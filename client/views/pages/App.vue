@@ -28,6 +28,7 @@ import Header from "../layout/Header.vue";
 import Footer from "../layout/Footer.vue";
 //import Menu from "../layout/Menu.vue";
 import Menu from "../layout/menu/Menu.vue";
+import { getTestData } from "../../axios/testAxios";
 
 import { useDashboardStore } from "../../stores/dashboardStore";
 
@@ -62,6 +63,14 @@ const App = {
     },
     mounted: () => {
         console.log("Vue mounted");
+
+        getTestData()
+            .then((result) => {
+                console.log(result.data)
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     },
     setup() {
         const dashboardStore = useDashboardStore();

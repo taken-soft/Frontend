@@ -1,12 +1,12 @@
-const PROJECT_NAME = 'NodeJS Web Server Framework(Vue)';
-const PROJECT_VERSION = '1.0';
+const PROJECT_NAME = "NodeJS Web Server Framework(Vue)";
+const PROJECT_VERSION = "1.0";
 const BASE_DIR = __dirname;
 const LOG_BASE_DIR = `${__dirname}/server/logs`;
-const SERVICE_STATUS = "development";//process.env.NODE_ENV;//development, production
+const SERVICE_STATUS = "development"; //process.env.NODE_ENV;//development, production
 const PORT = 80;
-const API_SERVER_HOST = 'localhost:80';
+const API_SERVER_HOST = "localhost:80";
 
-require("dotenv").config();
+//require("dotenv").config();
 
 module.exports = {
     PROJECT_NAME,
@@ -15,5 +15,5 @@ module.exports = {
     LOG_BASE_DIR,
     SERVICE_STATUS,
     PORT,
-    API_SERVER_HOST
-}
+    API_SERVER_HOST,
+};
