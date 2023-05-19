@@ -5,7 +5,6 @@
         <div class="layoutSelector" @click="selectLayout(layoutSeq)" v-if="!selected"></div>
         <div :class="[selected ? 'layoutContainer selected' : 'layoutContainer']">
             <div class="layoutContent">
-                <!-- {{ layoutSeq }} -->
                 <Widget></Widget>
             </div>
             <WidgetGrid v-if="selected"></WidgetGrid>
@@ -14,7 +13,7 @@
 </template>
 
 <script>
-import { useEditorStore } from "../../stores/store";
+import { useNewWidgetStore } from "../../stores/newWidgetStore";
 import Widget from "./Widget.vue";
 import WidgetGrid from "./WidgetGrid.vue";
 
@@ -28,11 +27,11 @@ export default {
         WidgetGrid,
     },
     setup() {
-        const editorStore = useEditorStore();
+        const newWidgetStore = useNewWidgetStore();
 
         const selectLayout = (layoutSeq) => {
-            editorStore.setSelectedLayout(layoutSeq);
-            console.log(editorStore.selectedLayout);
+            newWidgetStore.setSelectedLayout(layoutSeq);
+            console.log(newWidgetStore.selectedLayout);
         };
 
         return {

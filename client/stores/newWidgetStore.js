@@ -1,8 +1,12 @@
 import { defineStore } from "pinia";
 
-export const useEditorStore = defineStore("editorStore", {
+export const useNewWidgetStore = defineStore("newWidgetStore", {
     state: () => {
-        return { selectedLayout: 0 };
+        return {
+            selectedLayout: 0,
+            startPos: 0,
+            endPos: 0,
+        };
     },
     getters: {
         getSelectedLayout() {

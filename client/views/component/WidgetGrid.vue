@@ -15,55 +15,47 @@
     </div>
 </template>
 <script>
+import { useNewWidgetStore } from "../../stores/newWidgetStore";
+
 export default {
     data: () => {
         return {
             xSize: 23,
             ySize: 10,
-            widgets: [],
-            widget: {
-                type: "",
-                start: 0,
-                end: 0,
-            },
-            onDrag: false,
+
             widgetTypes: ["text", "chart", "rectangle"],
         };
     },
-    methods: {
-        setGrid: () => {
-            let grid = [];
-        },
-        gridClick: function (startPos) {
+    setup() {
+        let onDrag = false;
+        const newWidgetStore = useNewWidgetStore();
+        const gridClick = (startPos) => {
             //console.log(x+ ","+y)
-            this.widget.start = startPos;
-            this.widget.end = startPos;
-            this.onDrag = true;
+            newWidgetStore.startPos = startPos;
+            newWidgetStore.endPos = startPos;
+            onDrag = true;
 
-            // console.log(this.widget.start, this.widget.end);
-        },
-        gridDrag: function (endPos) {
+            // console.log(newWidgetStore.startPos, this.widget.end);
+        };
+        const gridDrag = (endPos) => {
             if (this.onDrag) {
-                this.widget.end = endPos;
-                // console.log(this.widget.start, this.widget.end);
+                newWidgetStore.endPos = endPos;
+                // console.log(newWidgetStore.startPos, newWidgetStore.endPos);
             }
-        },
-        gridOver: function (endPos) {
+        };
+        const gridOver = (endPos) => {
             this.onDrag = false;
-            if (endPos < this.widget.start) {
-                this.widget.end = this.widget.start;
-                this.widget.start = endPos;
+            if (endPos < newWidgetStore.startPos) {
+                newWidgetStore.endPos = newWidgetStore.startPos;
+                newWidgetStore.startPos = endPos;
             }
-            // console.log(this.widget.start, this.widget.end);
-        },
-        selectType: function (type) {
-            this.widget.type = type;
-        },
-        addWidget: function () {
+            // console.log(newWidgetStore.startPos, newWidgetStore.endPos);
+        };
+        const addWidget = () => {
             let newWidget = {
                 type: this.widget.type,
-                start: this.widget.start,
-                end: this.widget.end,
+                start: newWidgetStore.startPos,
+                end: newWidgetStore.endPos,
             };
             this.widgets.push(newWidget);
             this.widget = {
@@ -71,16 +63,10 @@ export default {
                 start: { x: 0, y: 0 },
                 end: { x: 0, y: 0 },
             };
-        },
-        innerStyle: function (widget) {
-            return {
-                left: Math.min(widget.start.x - 1, widget.end.x - 1) * 70 + "px",
-                top: Math.min(widget.start.y - 1, widget.end.y - 1) * 70 + "px",
-                width: (Math.abs(widget.end.x - widget.start.x) + 1) * 70 + "px",
-                height: (Math.abs(widget.end.y - widget.start.y) + 1) * 70 + "px",
-            };
-        },
+        };
+        return { gridClick, gridDrag, gridOver, addWidget };
     },
+    methods: {},
     mounted() {
         // console.log("hi")
     },
