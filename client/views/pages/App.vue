@@ -32,41 +32,38 @@ import Menu from "../layout/menu/Menu.vue";
 import { useDashboardStore } from "../../stores/dashboardStore";
 
 const App = {
-  data: () => {
-    return {
-      modalVisible: false,
-      showDiv: false,
-      displayStyle: "block",
-      divClass: 'mainwrap expand',
-    };
-  },
-  methods: {
-    showModal() {
-      this.modalVisible = true;
+    data: () => {
+        return {
+            modalVisible: false,
+            showDiv: false,
+            displayStyle: "block",
+            divClass: "mainwrap expand",
+        };
     },
-    closeModal() {
-      this.modalVisible = false;
+    methods: {
+        showModal() {
+            this.modalVisible = true;
+        },
+        closeModal() {
+            this.modalVisible = false;
+        },
+        hide() {
+            this.displayStyle = this.displayStyle === "none" ? "block" : "none";
+            this.divClass = this.divClass === "mainwrap" ? "mainwrap expand" : "mainwrap";
+        },
     },
-    hide() {
-      this.displayStyle = this.displayStyle === "none" ? "block" : "none";
-      this.divClass =
-        this.divClass === "mainwrap" ? "mainwrap expand" : "mainwrap";
+    watch: {},
+    computed: {},
+    components: {
+        Header: Header,
+        Menu: Menu,
+        Footer: Footer,
+        Modal: Modal,
     },
-  },
-  watch: {
-    
-  },
-  computed: {},
-  components: {
-    Header: Header,
-    Menu: Menu,
-    Footer: Footer,
-    Modal: Modal,
-  },
-  mounted: () => {
-    console.log("Vue mounted");
-  },
-  setup() {
+    mounted: () => {
+        console.log("Vue mounted");
+    },
+    setup() {
         const dashboardStore = useDashboardStore();
 
         const getDashboard = () => {
@@ -84,19 +81,19 @@ export default App;
 
 <style scoped>
 [v-cloak] {
-  display: none;
+    display: none;
 }
 
 .mainwrap {
-  position: absolute;
-  margin: 0px 0px;
-  padding: 1.5rem;
-  width: 100%;
-  height: calc(100vh - 8.5rem);
-  background: #f3f6ff;
+    position: absolute;
+    margin: 0px 0px;
+    padding: 1.5rem;
+    width: 100%;
+    height: calc(100vh - 8.5rem);
+    background: #f3f6ff;
 }
 
 .mainwrap.expand {
-  width: calc(100% - 300px);
+    width: calc(100% - 300px);
 }
 </style>
