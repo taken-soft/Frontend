@@ -1,39 +1,61 @@
 <template>
-    <div v-cloak>
-        <Header></Header>
-        <div class="navhead flex">
-            <svg v-on:click="hide" xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30">
-                <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
-            </svg>
-            <span> 여기에 대시보드 이름 추가 예정 </span>
-        </div>
-        <!-- nav inner-->
-        <div class="nav flex" v-bind:style="{ display: displayStyle }">
-            <svg v-on:click="hide" xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30">
-                <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
-            </svg>
-            <div><Menu></Menu></div>
-        </div>
-        <div :class="divClass">
-            <router-view />
-        </div>
+  <div v-cloak>
+    <Header></Header>
+    <div class="navhead flex">
+      <svg v-on:click="hide" xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30">
+        <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
+      </svg>
+      <span :innerHTML="getDashboard()">
+      </span>
     </div>
+    <!-- nav inner-->
+    <div class="nav flex" v-bind:style="{ display: displayStyle }">
+      <svg v-on:click="hide" xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30">
+        <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
+      </svg>
+      <div>
+        <Menu></Menu>
+      </div>
+    </div>
+    <div :class="divClass">
+      <router-view />
+    </div>
+  </div>
 </template>
 
 <script>
 import Modal from "../pages/main/Modal.vue";
 import Header from "../layout/Header.vue";
-import Menu from "../layout/Menu.vue";
 import Footer from "../layout/Footer.vue";
+//import Menu from "../layout/Menu.vue";
+import Menu from "../layout/menu/Menu.vue";
+
+import { useDashboardStore } from "../../stores/dashboardStore"; 
 
 const App = {
-    data: () => {
-        return {
-            modalVisible: false,
-            showDiv: false,
-            displayStyle: "none",
-            divClass: "mainwrap",
-        };
+  setup() {
+    const dashboardStore = useDashboardStore();
+
+    const getDashboard = () => {
+      return dashboardStore.getSelectedDashBoard;
+    }
+
+    return {
+      getDashboard,
+    }
+  },
+
+  data: () => {
+    return {
+      modalVisible: false,
+      showDiv: false,
+      displayStyle: "block",
+      divClass: 'mainwrap expand',
+    };
+  },
+  methods: {
+    showModal() {
+      this.modalVisible = true;
     },
     methods: {
         showModal() {
@@ -58,6 +80,7 @@ const App = {
     mounted: () => {
         console.log("Vue mounted");
     },
+  },
 };
 
 export default App;
@@ -76,6 +99,7 @@ export default App;
     height: calc(100vh - 8.5rem);
     background: #f3f6ff;
 }
+
 .mainwrap.expand {
     width: calc(100% - 300px);
 }

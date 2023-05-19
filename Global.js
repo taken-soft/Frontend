@@ -2,7 +2,7 @@ const PROJECT_NAME = 'NodeJS Web Server Framework(Vue)';
 const PROJECT_VERSION = '1.0';
 const BASE_DIR = __dirname;
 const LOG_BASE_DIR = `${__dirname}/server/logs`;
-const SERVICE_STATUS = process.env.NODE_ENV;//development, production
+const SERVICE_STATUS = "development";//process.env.NODE_ENV;//development, production
 const PORT = 80;
 const API_SERVER_HOST = 'localhost:80';
 
