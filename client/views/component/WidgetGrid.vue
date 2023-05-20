@@ -38,33 +38,20 @@ export default {
             // console.log(newWidgetStore.startPos, this.widget.end);
         };
         const gridDrag = (endPos) => {
-            if (this.onDrag) {
+            if (onDrag) {
                 newWidgetStore.endPos = endPos;
                 // console.log(newWidgetStore.startPos, newWidgetStore.endPos);
             }
         };
         const gridOver = (endPos) => {
-            this.onDrag = false;
+            onDrag = false;
             if (endPos < newWidgetStore.startPos) {
                 newWidgetStore.endPos = newWidgetStore.startPos;
                 newWidgetStore.startPos = endPos;
             }
             // console.log(newWidgetStore.startPos, newWidgetStore.endPos);
         };
-        const addWidget = () => {
-            let newWidget = {
-                type: this.widget.type,
-                start: newWidgetStore.startPos,
-                end: newWidgetStore.endPos,
-            };
-            this.widgets.push(newWidget);
-            this.widget = {
-                type: "",
-                start: { x: 0, y: 0 },
-                end: { x: 0, y: 0 },
-            };
-        };
-        return { gridClick, gridDrag, gridOver, addWidget };
+        return { gridClick, gridDrag, gridOver };
     },
     methods: {},
     mounted() {

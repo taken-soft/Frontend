@@ -40,8 +40,8 @@ export default {
     },
     computed: {
         selected() {
-            const editorStore = useEditorStore();
-            return this.layoutSeq === editorStore.selectedLayout;
+            const newWidgetStore = useNewWidgetStore();
+            return this.layoutSeq === newWidgetStore.selectedLayout;
         },
     },
 };
