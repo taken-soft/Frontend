@@ -3,9 +3,10 @@ import { defineStore } from "pinia";
 export const useNewWidgetStore = defineStore("newWidgetStore", {
     state: () => {
         return {
+            widgetType: "text",
             selectedLayout: 0,
-            startPos: 0,
-            endPos: 0,
+            startPos: 1,
+            endPos: 1,
         };
     },
     getters: {

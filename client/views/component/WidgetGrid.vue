@@ -5,9 +5,9 @@
                 v-for="x in xSize"
                 :key="x"
                 class="gridIn"
-                @mousedown="gridClick((y - 1) * ySize + x)"
-                @mouseup="gridOver((y - 1) * ySize + x)"
-                @mouseenter="gridDrag((y - 1) * ySize + x)"
+                @mousedown="gridClick((y - 1) * xSize + x)"
+                @mouseup="gridOver((y - 1) * xSize + x)"
+                @mouseenter="gridDrag((y - 1) * xSize + x)"
             >
                 <!-- {{y}}  {{x}} -->
             </div>

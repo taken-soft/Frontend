@@ -5,7 +5,12 @@
         <div class="layoutSelector" @click="selectLayout(layoutSeq)" v-if="!selected"></div>
         <div :class="[selected ? 'layoutContainer selected' : 'layoutContainer']">
             <div class="layoutContent">
-                <Widget></Widget>
+                <!-- v-for -->
+                <!--  -->
+
+                <!-- new widget -->
+                <Widget v-if="selected" :start-pos="newStartPos" :end-pos="newEndPos" :widget-type="newWidgetType"></Widget>
+                <!--  -->
             </div>
             <WidgetGrid v-if="selected"></WidgetGrid>
         </div>
@@ -42,6 +47,18 @@ export default {
         selected() {
             const newWidgetStore = useNewWidgetStore();
             return this.layoutSeq === newWidgetStore.selectedLayout;
+        },
+        newEndPos() {
+            const newWidgetStore = useNewWidgetStore();
+            return newWidgetStore.endPos;
+        },
+        newStartPos() {
+            const newWidgetStore = useNewWidgetStore();
+            return newWidgetStore.startPos;
+        },
+        newWidgetType() {
+            const newWidgetStore = useNewWidgetStore();
+            return newWidgetStore.widgetType;
         },
     },
 };
