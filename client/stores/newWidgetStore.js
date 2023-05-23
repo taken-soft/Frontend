@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 export const useNewWidgetStore = defineStore("newWidgetStore", {
     state: () => {
         return {
-            widgetType: "text",
+            widgetType: "BarChart",
             selectedLayout: 0,
             startPos: 1,
             endPos: 1,
