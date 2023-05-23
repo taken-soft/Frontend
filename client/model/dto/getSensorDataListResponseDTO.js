@@ -1,5 +1,4 @@
 import GetSensorDataResponseDTO from "./getSensorDataResponseDTO";
-import SensorValueDTO from "./sensorValueDTO";
 
 export default class GetSensorDataListResponseDTO {
   realtimeSensorDataList;
@@ -9,8 +8,9 @@ export default class GetSensorDataListResponseDTO {
   }
 
   static fromJson = (json) => {
+    let realtimeSensorDataList = Object.entries(json["realtimeSensorDataList"])
     return new GetSensorDataListResponseDTO(
-      json.get("realtimeSensorDataList").map((e) => GetSensorDataResponseDTO.fromJson(e))
+      realtimeSensorDataList.map((e) => GetSensorDataResponseDTO.fromJson(e[1]))
     );
   };
 }

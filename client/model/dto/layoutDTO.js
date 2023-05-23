@@ -20,10 +20,11 @@ export default class LayoutDTO {
   }
 
   static fromJson = (json) => {
-    return new LayoutWidgetDTO(
-      json.get("layoutId"),
-      json.get("layoutSequence"),
-      json.get("layoutWidgetDTOList").map((e) => LayoutWidgetDTO.fromJson(e))
+    let layoutWidgetDtoList = Object.entries(json["layoutWidgetDtoList"])
+    return new LayoutDTO(
+      json["layoutId"],
+      json["layoutSequence"],
+      layoutWidgetDtoList.map((e) => LayoutWidgetDTO.fromJson(e[1]))
     );
   };
 }

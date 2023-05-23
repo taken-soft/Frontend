@@ -22,10 +22,10 @@ export default class EventDTO {
 
   static fromJson = (json) => {
     return new EventDTO(
-      json.get("eventOver"),
-      json.get("eventUnder"),
-      json.get("eventColor"),
-      json.get("eventType")
+      json["eventOver"],
+      json["eventUnder"],
+      json["eventColor"],
+      json["eventType"]
     );
   };
 }

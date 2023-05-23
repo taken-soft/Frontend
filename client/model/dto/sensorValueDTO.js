@@ -8,8 +8,8 @@ export default class SensorValueDTO {
   
   static fromJson = (json) => {
     return new SensorValueDTO(
-      json.get("time"),
-      json.get("value"),
+      json["time"],
+      json["value"],
     );
   }
 }
