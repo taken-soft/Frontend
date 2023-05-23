@@ -16,6 +16,8 @@ const FS = require("fs");
 const Transform = require("stream").Transform;
 //Streaming 중인 자원에 새로운 데이터를 stream 공간에 추가하기 위한 라이브러리
 const newLineStream = require("new-line");
+//쿼리스트링을 파싱하기 위한 url라이브러리
+const url = require("url");
 
 /**
  * @author : 최정우
@@ -136,4 +138,19 @@ webServer.get("/dashboards/all", function (request, response, next) {
     //
 
     response.json(dashboardList);
+});
+
+// 테스트 데이터
+const dashboardDetail = require("../../json/Dashboard.json");
+
+/**
+ * @author : 나재현
+ * @since : 2023.05.19
+ * @dscription : 대시보드 정보
+ */
+webServer.get("/dashboard", function (request, response, next) {
+    let query = url.parse(request.url, true).query;
+    console.log(`dashboard id request :[${query.id}]`);
+
+    response.json(dashboardDetail);
 });
