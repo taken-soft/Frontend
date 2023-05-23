@@ -10,7 +10,7 @@ export default class CreateDashboardResponseDTO {
   }
 
   static fromJson = (json) => {
-    let layoutDtos = Object.entries(json["layoutDtos"]).map()
+    let layoutDtos = Object.entries(json["layoutDtos"])
     return new CreateDashboardResponseDTO(
       json["dashboardId"],
       layoutDtos.map((e) => LayoutDTO.fromJson(e))

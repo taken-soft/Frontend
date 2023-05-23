@@ -41,14 +41,16 @@ export default class LayoutWidgetDTO {
   }
 
   static fromJson = (json) => {
+    let eventDtoList = Object.entries(json["eventDtoList"])
+    let layoutWidgetSensorDtoList = Object.entries(json["layoutWidgetSensorDtoList"])
     return new LayoutWidgetDTO(
       json["layoutWidgetStartPos"],
       json["layoutWidgetEndPos"],
       json["layoutWidgetZPos"],
       json["layoutWidgetColor"],
       json["layoutWidgetProperty"],
-      json["eventDtoList"].map((e) => EventDTO.fromJson(e)),
-      json["layoutWidgetSensorDtoList"].map(e => LayoutWidgetSensorDTO.fromJson(e)),
+      eventDtoList.map((e) => EventDTO.fromJson(e)),
+      layoutWidgetSensorDtoList.map(e => LayoutWidgetSensorDTO.fromJson(e)),
     );
   };
 }

@@ -8,8 +8,9 @@ export default class SearchDashboardListResponseDTO {
   }
 
   static fromJson = (json) => {
+    let dashBoardList = Object.entries(json)
     return new SearchDashboardListResponseDTO(
-      json.map((e) => SearchDashboardDTO.fromJson(e))
+      dashBoardList.map((e) => SearchDashboardDTO.fromJson(e))
     );
   };
 }

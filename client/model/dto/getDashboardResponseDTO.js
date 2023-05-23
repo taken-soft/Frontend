@@ -22,12 +22,13 @@ export default class GetDashboardResponseDTO {
   }
 
   static fromJson = (json) => {
+    let layoutList = Object.entries(json["layoutList"])
     return new GetDashboardResponseDTO(
       json["dashboardId"],
       json["dashboardTitle"],
       json["dashboardType"],
       json["dashboardSequence"],
-      json["layoutList"].map((e) => LayoutDTO.fromJson(e))
+      layoutList.map((e) => LayoutDTO.fromJson(e))
     );
   };
 }
