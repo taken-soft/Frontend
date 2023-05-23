@@ -92,8 +92,8 @@ export default {
 
     onCreateDashboardClick() {
       console.log((new CreateDashboardRequestDTO("2x2", 1)).toJson());
-      createDashboard(new CreateDashboardRequestDTO("2x2", 1)).then((value) => {
-        console.log(CreateDashboardResponseDTO.fromJson(value));
+      createDashboard((new CreateDashboardRequestDTO("2x2", 1)).toJson()).then((response) => {
+        console.log(CreateDashboardResponseDTO.fromJson(JSON.parse(response.data)));
       })
     }
   },

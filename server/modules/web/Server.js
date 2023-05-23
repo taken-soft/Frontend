@@ -7,7 +7,7 @@ const { BASE_DIR, PORT, API_SERVER_HOST } = require("../../../Global");
 const Logger = require("../log/Logger"); //Logger(필수)
 
 const express = require("express");
-const webServer = express();
+const webServer = express.json();
 var expressProxy = require("express-http-proxy");
 
 //파일 시스템 관련 라이브러리
