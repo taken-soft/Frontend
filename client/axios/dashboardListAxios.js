@@ -7,7 +7,7 @@ export async function getDashboardList() {
 }
 
 export async function createDashboard(createDashboardRequestDTO) {
-  return axios.post("http://" + API_SERVER_HOST + "/dashboards/new", createDashboardRequestDTO.toJson());
+  return axios.post("http://" + API_SERVER_HOST + "/dashboards/new", JSON.stringify(createDashboardRequestDTO.toJson()));
 }
 
 export async function getDashboard(dashboardId) {
@@ -15,7 +15,7 @@ export async function getDashboard(dashboardId) {
 }
 
 export async function saveDashboard(saveDashboardRequestDTO) {
-  return axios.post("http://" + API_SERVER_HOST + `/dashboards/save`, saveDashboardRequestDTO.toJson());
+  return axios.post("http://" + API_SERVER_HOST + `/dashboards/save`, JSON.stringify(saveDashboardRequestDTO.toJson()));
 }
 
 export async function deleteDashboard(dashboardId) {
@@ -23,5 +23,5 @@ export async function deleteDashboard(dashboardId) {
 }
 
 export async function getSensorData(getSeneorDataListRequestDTO) {
-  return axios.post("http://" + API_SERVER_HOST + `/sensor/data`, getSeneorDataListRequestDTO.toJson());
+  return axios.post("http://" + API_SERVER_HOST + `/sensor/data`, JSON.stringify(getSeneorDataListRequestDTO.toJson()));
 }
