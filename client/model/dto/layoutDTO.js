@@ -23,7 +23,7 @@ export default class LayoutDTO {
     return new LayoutWidgetDTO(
       json.get("layoutId"),
       json.get("layoutSequence"),
-      json.get("layoutWidgetDTOList").map((e) => new LayoutWidgetDTO(e))
+      json.get("layoutWidgetDTOList").map((e) => LayoutWidgetDTO.fromJson(e))
     );
   };
 }

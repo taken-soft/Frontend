@@ -19,7 +19,7 @@ const newLineStream = require("new-line");
 //쿼리스트링을 파싱하기 위한 url라이브러리
 const url = require("url");
 
-import axios from "axios";
+const axios = require("axios");
 
 /**
  * @author : 최정우
@@ -27,7 +27,7 @@ import axios from "axios";
  * @dscription : HTTP Server start
  */
 webServer.listen(PORT, function () {
-  Logger.logging(`★★★ Node.js를 활용한 Web Server 구동(Port:${PORT}) ★★★`);
+    Logger.logging(`★★★ Node.js를 활용한 Web Server 구동(Port:${PORT}) ★★★`);
 });
 
 /**
@@ -36,11 +36,9 @@ webServer.listen(PORT, function () {
  * @dscription : Intercepter 역할을 하는 미들웨어 기능
  */
 webServer.use(function (request, response, next) {
-  let ip = request.headers["x-forwarded-for"] || request.socket.remoteAddress;
-  Logger.logging(
-    `[HTTP] ${request.url} (Method: ${request.method}, IP: ${ip})`
-  );
-  next();
+    let ip = request.headers["x-forwarded-for"] || request.socket.remoteAddress;
+    Logger.logging(`[HTTP] ${request.url} (Method: ${request.method}, IP: ${ip})`);
+    next();
 });
 
 /**
@@ -49,8 +47,8 @@ webServer.use(function (request, response, next) {
  * @dscription : ROOT URL -> index.html
  */
 webServer.get("/", function (request, response) {
-  //response.sendFile을 통한 HTTP html reponse (html내용 Streaming)
-  response.sendFile(`${BASE_DIR}/client/views/index.html`);
+    //response.sendFile을 통한 HTTP html reponse (html내용 Streaming)
+    response.sendFile(`${BASE_DIR}/client/views/index.html`);
 });
 
 /**
@@ -59,22 +57,19 @@ webServer.get("/", function (request, response) {
  * @dscription : 화면요청 URL 처리
  */
 webServer.get("*.page", function (request, response, next) {
-  //index.html 내용을 직접 Streaming하여 Response, Streaming 중간에 내용 수정
-  //수정 내용 : URL 요청이 아닌, 브라우저에 표시된 URL만 변경하여, 해당하는 URL PATH의 Vue Component를 routing하기 위함
-  const StreamTransform = new Transform();
-  StreamTransform._transform = function (data, encoding, done) {
-    let fileContent = data.toString();
-    let replaceBeforeContent = `<script id="app-start-vue-page">const APP_USER_HTTP_REQUEST_URL = '/';</script>`;
-    let replaceAfterContent = `<script id="app-start-vue-page">const APP_USER_HTTP_REQUEST_URL = '${request.params["0"]}.page';</script>`;
-    fileContent.replace(replaceBeforeContent, replaceAfterContent);
-    this.push(fileContent);
-    done();
-  };
-  //Streaming 진행
-  FS.createReadStream(`${BASE_DIR}/client/views/index.html`)
-    .pipe(newLineStream())
-    .pipe(StreamTransform)
-    .pipe(response);
+    //index.html 내용을 직접 Streaming하여 Response, Streaming 중간에 내용 수정
+    //수정 내용 : URL 요청이 아닌, 브라우저에 표시된 URL만 변경하여, 해당하는 URL PATH의 Vue Component를 routing하기 위함
+    const StreamTransform = new Transform();
+    StreamTransform._transform = function (data, encoding, done) {
+        let fileContent = data.toString();
+        let replaceBeforeContent = `<script id="app-start-vue-page">const APP_USER_HTTP_REQUEST_URL = '/';</script>`;
+        let replaceAfterContent = `<script id="app-start-vue-page">const APP_USER_HTTP_REQUEST_URL = '${request.params["0"]}.page';</script>`;
+        fileContent.replace(replaceBeforeContent, replaceAfterContent);
+        this.push(fileContent);
+        done();
+    };
+    //Streaming 진행
+    FS.createReadStream(`${BASE_DIR}/client/views/index.html`).pipe(newLineStream()).pipe(StreamTransform).pipe(response);
 });
 
 /**
@@ -83,13 +78,13 @@ webServer.get("*.page", function (request, response, next) {
  * @dscription : REST API 서버에 데이터 요청 보내기(Proxy)
  */
 webServer.use(
-  "*.json",
-  expressProxy(API_SERVER_HOST, {
-    proxyReqPathResolver: function (request) {
-      //console.log('request : ', request.url, request.params[0]);
-      return `${request.params["0"]}.json`;
-    },
-  })
+    "*.json",
+    expressProxy(API_SERVER_HOST, {
+        proxyReqPathResolver: function (request) {
+            //console.log('request : ', request.url, request.params[0]);
+            return `${request.params["0"]}.json`;
+        },
+    })
 );
 
 /**
@@ -98,7 +93,7 @@ webServer.use(
  * @dscription : ROOT URL, Router's, 화면요청 URL 등.. 이 외 나머지 정적 자원에 대한 처리 기능
  */
 webServer.get("*.*", function (request, response, next) {
-  response.sendFile(`${BASE_DIR}${request.params["0"]}.${request.params["1"]}`);
+    response.sendFile(`${BASE_DIR}${request.params["0"]}.${request.params["1"]}`);
 });
 
 /**
@@ -107,13 +102,11 @@ webServer.get("*.*", function (request, response, next) {
  * @dscription : Global Error Handler (*맨 마지막에 적용해야됨)
  */
 webServer.use(function (error, request, response, next) {
-  const errorCode = !error.statusCode ? 500 : error.statusCode;
-  response
-    .status(errorCode)
-    .send("에러가 발생하였습니다. 관리자에게 문의바랍니다.");
-  let message = `[Error:${errorCode}] ${request.url}/n ${error.stack}/n`;
-  Logger.logging(message);
-  //next();
+    const errorCode = !error.statusCode ? 500 : error.statusCode;
+    response.status(errorCode).send("에러가 발생하였습니다. 관리자에게 문의바랍니다.");
+    let message = `[Error:${errorCode}] ${request.url}/n ${error.stack}/n`;
+    Logger.logging(message);
+    //next();
 });
 
 /**
@@ -122,7 +115,7 @@ webServer.use(function (error, request, response, next) {
  * @dscription : 테스트 통신용
  */
 webServer.get("/test", function (request, response, next) {
-  response.json({ test: "success!" });
+    response.json({ test: "success!" });
 });
 
 // 테스트 데이터
@@ -134,13 +127,13 @@ const dashboardDetail = require("../../json/Dashboard.json");
  * @dscription : 대시보드 정보
  */
 webServer.get("/dashboard", function (request, response, next) {
-  let query = url.parse(request.url, true).query;
-  console.log(`dashboard id request :[${query.id}]`);
+    let query = url.parse(request.url, true).query;
+    console.log(`dashboard id request :[${query.id}]`);
 
-  response.json(dashboardDetail);
+    response.json(dashboardDetail);
 });
 
-let API_SERVER_HOST = "localhost:8080";
+let SERVER_HOST = "localhost:8080";
 
 /**
  * @author : 나재현
@@ -148,37 +141,39 @@ let API_SERVER_HOST = "localhost:8080";
  * @dscription : 전체 대시보드 리스트
  */
 webServer.get("/dashboards/all", function (request, response, next) {
-  axios
-    .get("http://" + API_SERVER_HOST + "/dashboards/all")
-    .then((result) => response.json(result));
+    axios
+        .get("http://" + SERVER_HOST + "/dashboards/all")
+        .then((result) => response.json(result))
+        .catch((err) => {
+            response.json(err);
+        });
+});
+
+/**
+ * @author : 나재현
+ * @since : 2023.05.19
+ * @dscription : 전체 대시보드 리스트
+ */
+webServer.get("/img/factory", function (request, response, next) {
+    response.sendFile("../../img/factory.gif")
 });
 
 webServer.post("/dashboards/new", function (request, response, next) {
-  axios
-    .post("http://" + API_SERVER_HOST + "/dashboards/new", request.body)
-    .then((result) => response.json(result));
+    axios.post("http://" + SERVER_HOST + "/dashboards/new", request.body).then((result) => response.json(result));
 });
 
 webServer.get("/dashboards/:dashboardId", function (request, response, next) {
-  axios
-    .get("http://" + API_SERVER_HOST + `/dashboards/${request.params.dashboardId}`)
-    .then((result) => response.json(result));
+    axios.get("http://" + SERVER_HOST + `/dashboards/${request.params.dashboardId}`).then((result) => response.json(result));
 });
 
 webServer.post("/dashboards/save", function (request, response, next) {
-  axios
-    .post("http://" + API_SERVER_HOST + `/dashboards/save`, request.body)
-    .then((result) => response.json(result));
+    axios.post("http://" + SERVER_HOST + `/dashboards/save`, request.body).then((result) => response.json(result));
 });
 
 webServer.delete("/dashboards/:dashboardId", function (request, response, next) {
-  axios
-    .delete("http://" + API_SERVER_HOST + `/dashboards/${request.params.dashboardId}`)
-    .then((result) => response.json(result));
+    axios.delete("http://" + SERVER_HOST + `/dashboards/${request.params.dashboardId}`).then((result) => response.json(result));
 });
 
 webServer.post(`/sensor/data`, function (request, response, next) {
-  axios
-    .post("http://" + API_SERVER_HOST + `/sensor/data`, request.body)
-    .then((result) => response.json(result));
+    axios.post("http://" + SERVER_HOST + `/sensor/data`, request.body).then((result) => response.json(result));
 });

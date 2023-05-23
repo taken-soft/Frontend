@@ -1,7 +1,7 @@
 <template>
   <div class="m-b">
     <label for="" class="m-r" :innerHTML="menuEntity.text"></label>
-    <input type="file" :accept="menuEntity.accept"/>
+    <input type="file" :accept="menuEntity.accept" @change="menuEntity.onValueChange"/>
   </div>
 </template>
 <script>
