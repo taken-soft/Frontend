@@ -55,6 +55,7 @@ export default class EditMenuWidgetRoute extends EditMenuRoute {
     }
 
     this.dashboardStore.addNewWidget(
+      this.newWidgetStore.selectedLayout,
       new LayoutWidgetDTO(
         this.newWidgetStore.startPos,
         this.newWidgetStore.endPos,
@@ -77,5 +78,6 @@ export default class EditMenuWidgetRoute extends EditMenuRoute {
         layoutWidgetSensorDtoList
       )
     );
+    this.editMenuStore.pop();
   };
 }

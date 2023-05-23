@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { getDashboard } from "../axios/dashboardListAxios";
-import CreateDashboardResponseDTO from "../model/dto/createDashboardResponseDTO";
+import GetDashboardResponseDTO from "../model/dto/getDashboardResponseDTO";
 
 export const useDashboardStore = defineStore("dashboardStore", {
   state: () => {
@@ -25,9 +25,7 @@ export const useDashboardStore = defineStore("dashboardStore", {
     setSelectedDashBoard(dashboardId) {
       this.selectedDashBoard = dashboardId;
       getDashboard(dashboardId).then((response) => {
-        this.currentDashboard = CreateDashboardResponseDTO.fromJson(
-          response.data
-        );
+        this.currentDashboard = GetDashboardResponseDTO.fromJson(response.data);
         console.log(this.currentDashboard);
       });
     },
@@ -41,9 +39,10 @@ export const useDashboardStore = defineStore("dashboardStore", {
         );
       }
       this.selectedDashBoard = Array.from(this.dashboardList.keys())[0];
+      this.setSelectedDashBoard(Array.from(this.dashboardList.keys())[0]);
     },
-    addNewWidget(layoutWidget) {
-      this.currentDashboard.layoutList.push(layoutWidget);
+    addNewWidget(selectedLayout, layoutWidget) {
+      this.currentDashboard.layoutList[selectedLayout].layoutWidgetDTOList.push(layoutWidget);
     },
   },
 });
