@@ -1,10 +1,15 @@
 import EditMenuRoute from "./editMenuRoute";
-import MenuItemEntity from "../item/menuItemEntity";
 import MenuColorEntity from "../color/menuColorEntity";
+
+import { useNewWidgetStore } from "../../../../stores/newWidgetStore";
 
 export default class EditMenuWidgetRoute extends EditMenuRoute {
   isVanilla = true;
+  backgroundColor;
+
   colorInput = new MenuColorEntity("배경색상", null);
+
+  newWidgetStore = useNewWidgetStore();
 
   changeIsVanilla(value) {
     this.isVanilla = value;
