@@ -49,8 +49,8 @@ export default class LayoutWidgetDTO {
       json["layoutWidgetZPos"],
       json["layoutWidgetColor"],
       json["layoutWidgetProperty"],
-      eventDtoList.map((e) => EventDTO.fromJson(e)),
-      layoutWidgetSensorDtoList.map(e => LayoutWidgetSensorDTO.fromJson(e)),
+      eventDtoList.map((e) => EventDTO.fromJson(e[1])),
+      layoutWidgetSensorDtoList.map(e => LayoutWidgetSensorDTO.fromJson(e[1])),
     );
   };
 }

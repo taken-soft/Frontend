@@ -1,5 +1,4 @@
 import GetSensorDataResponseDTO from "./getSensorDataResponseDTO";
-import SensorValueDTO from "./sensorValueDTO";
 
 export default class GetSensorDataListResponseDTO {
   realtimeSensorDataList;
