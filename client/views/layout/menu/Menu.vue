@@ -35,6 +35,12 @@ import { useDashboardStore } from "../../../stores/dashboardStore";
 import { useEditMenuStore } from "../../../stores/editMenuStore";
 import { useModeStore } from '../../../stores/modeStore';
 
+import { createDashboard } from "../../../axios/dashboardListAxios";
+
+import CreateDashboardRequestDTO from "../../../model/dto/createDashboardRequestDTO"
+import CreateDashboardResponseDTO from "../../../model/dto/createDashboardResponseDTO"
+
+
 export default {
   setup() {
     const dashboardStore = useDashboardStore();
@@ -78,10 +84,17 @@ export default {
       }
 
       menuList.push(
-        new MenuButtonEntity("대시보드 추가", "add", null)
+        new MenuButtonEntity("대시보드 추가", "add", this.onCreateDashboardClick)
       );
 
       return menuList;
+    },
+
+    onCreateDashboardClick() {
+      console.log((new CreateDashboardRequestDTO("2x2", 1)).toJson());
+      createDashboard(new CreateDashboardRequestDTO("2x2", 1)).then((value) => {
+        console.log(CreateDashboardResponseDTO.fromJson(value));
+      })
     }
   },
   components: {

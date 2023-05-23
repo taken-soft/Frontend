@@ -12,20 +12,31 @@ export default class EditMenuText extends EditMenuWidgetRoute {
   sensorList = [new MenuSensorEntity("센서", null)];
   eventList = [];
 
+  vanillaDropdown = new MenuDropdownEntity(
+    "장치",
+    null,
+    ["없음", "장치1", "장치2", "장치3"],
+    (value) => this.changeIsVanilla(value == "없음")
+  );
+  vanillaText = new MenuInputEntity("텍스트", null, "텍스트");
+  calculateDropdown = new MenuDropdownEntity(
+    "산술식",
+    null,
+    ["평균", "최대", "최소", "합"],
+    null,
+    "평균"
+  );
+
   route = () => {
     if (this.isVanilla) {
       return [
         new MenuItemEntity(this.title, "back", null, () =>
           this.editMenuStore.pop()
         ),
-        new MenuDropdownEntity(
-          "장치",
-          null,
-          ["없음", "장치1", "장치2", "장치3"],
-          (value) => this.changeIsVanilla(value == "없음")
-        ),
-        new MenuInputEntity("텍스트", null, "텍스트"),
-        new MenuButtonEntity("위젯추가", "add", () => this.addWidget())
+        this.vanillaDropdown,
+        this.vanillaText,
+        this.colorInput,
+        new MenuButtonEntity("위젯추가", "add", () => this.addWidget()),
       ];
     } else {
       return [
@@ -34,16 +45,11 @@ export default class EditMenuText extends EditMenuWidgetRoute {
         ),
         ...this.sensorList,
         new MenuButtonEntity("센서추가", "add", () => this.addSensor()),
-        new MenuDropdownEntity(
-          "산술식",
-          null,
-          ["평균, 최대, 최소, 합"],
-          null,
-          "평균"
-        ),
+        this.calculateDropdown,
         ...this.eventList,
         new MenuButtonEntity("이벤트추가", "add", () => this.addEvent()),
-        new MenuButtonEntity("위젯추가", "add", () => this.addWidget())
+        this.colorInput,
+        new MenuButtonEntity("위젯추가", "add", () => this.addWidget()),
       ];
     }
   };

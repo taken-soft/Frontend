@@ -18,5 +18,8 @@ export const useNewWidgetStore = defineStore("newWidgetStore", {
         setSelectedLayout(layoutSeq) {
             this.selectedLayout = layoutSeq;
         },
+        setWidgetType(type) {
+          this.widgetType = type;
+        }
     },
 });

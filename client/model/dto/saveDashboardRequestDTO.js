@@ -13,7 +13,7 @@ class SaveDashboardRequestDTO {
     return {
       dashboardId: this.dashboardId,
       dashboardTitle: this.dashboardTitle,
-      layoutDtoList: this.layoutDtoList.map((e) => e.toJson),
+      layoutDtoList: this.layoutDtoList.map((e) => e.toJson()),
     };
   };
 }
