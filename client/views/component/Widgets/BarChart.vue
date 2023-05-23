@@ -1,5 +1,5 @@
 <template>
-    <Bar :data="data" :options="options" />
+    <Bar class="barChart" :data="data" :options="options" />
 </template>
 
 <script>
@@ -15,12 +15,12 @@ export default {
     data() {
         return {
             data: {
-                labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                labels: ["January", "February", "March", "April", "May"],
                 datasets: [
                     {
                         label: "Data One",
                         backgroundColor: "#f87979",
-                        data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11],
+                        data: [40, 20, 12, 39, 10],
                     },
                 ],
             },
@@ -28,4 +28,9 @@ export default {
     },
 };
 </script>
-<style scoped></style>
+<style scoped>
+.barChart {
+    background-color: white;
+    border: solid 1px black;
+}
+</style>

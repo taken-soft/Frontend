@@ -1,13 +1,7 @@
 <template>
-    <div>
-        Img
-    </div>
+    <img src="http://localhost/img/factory" />
 </template>
 <script>
-export default {
-    
-}
+export default {};
 </script>
-<style scoped>
-    
-</style>
+<style scoped></style>
