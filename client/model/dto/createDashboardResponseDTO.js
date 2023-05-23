@@ -2,18 +2,18 @@ import LayoutDTO from "./layoutDTO";
 
 export default class CreateDashboardResponseDTO {
   dashboardId;
-  layoutDtos;
+  layoutList;
 
-  constructor(dashboardId, layoutDtos) {
+  constructor(dashboardId, layoutList) {
     this.dashboardId = dashboardId;
-    this.layoutDtos = layoutDtos;
+    this.layoutList = layoutList;
   }
 
   static fromJson = (json) => {
-    let layoutDtos = Object.entries(json["layoutDtos"])
+    let layoutList = Object.entries(json["layoutList"])
     return new CreateDashboardResponseDTO(
       json["dashboardId"],
-      layoutDtos.map((e) => LayoutDTO.fromJson(e[1]))
+      layoutList.map((e) => LayoutDTO.fromJson(e[1]))
     );
   };
 }
