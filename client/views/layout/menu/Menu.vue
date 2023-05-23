@@ -93,7 +93,7 @@ export default {
     onCreateDashboardClick() {
       console.log((new CreateDashboardRequestDTO("2x2", 1)));
       createDashboard((new CreateDashboardRequestDTO("2x2", 1))).then((response) => {
-        console.log(CreateDashboardResponseDTO.fromJson(JSON.parse(response.data)));
+        console.log(CreateDashboardResponseDTO.fromJson(response.data));
       })
     }
   },

@@ -10,9 +10,13 @@ export default class CreateDashboardResponseDTO {
   }
 
   static fromJson = (json) => {
+    let layoutDtos = [];
+    for(let layoutDto in json["layoutDtos"]) {
+      layoutDtos.push(LayoutDTO.fromJson(layoutDto));
+    }
     return new CreateDashboardResponseDTO(
       json["dashboardId"],
-      json["layoutDtos"].map((e) => LayoutDTO.fromJson(e))
+      layoutDtos//json["layoutDtos"].map((e) => LayoutDTO.fromJson(e))
     );
   };
 }
