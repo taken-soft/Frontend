@@ -7,6 +7,7 @@ import MenuEventEntity from "../event/menuEventEntity";
 import LayoutWidgetSensorDTO from "../../../../model/dto/layoutWidgetSensorDTO";
 import LayoutWidgetDTO from "../../../../model/dto/layoutWidgetDTO";
 import MenuSensorEntity from "../sensor/menuSensorEntity";
+import EventDTO from "../../../../model/dto/eventDTO";
 
 export default class EditMenuWidgetRoute extends EditMenuRoute {
   isVanilla = true;
@@ -32,6 +33,8 @@ export default class EditMenuWidgetRoute extends EditMenuRoute {
     let property = "";
 
     let eventDtoList = [];
+
+    let widgetId = 1; // widgetMap[this.title]
 
     for (let i = 0; i < route.length; i++) {
       if (route[i] instanceof MenuSensorEntity && !route[i].currentValue[1])
@@ -63,7 +66,8 @@ export default class EditMenuWidgetRoute extends EditMenuRoute {
         backgroundColor,
         property,
         eventDtoList,
-        layoutWidgetSensorDtoList
+        layoutWidgetSensorDtoList,
+        widgetId
       )
     )
 
@@ -75,7 +79,8 @@ export default class EditMenuWidgetRoute extends EditMenuRoute {
         backgroundColor,
         property,
         eventDtoList,
-        layoutWidgetSensorDtoList
+        layoutWidgetSensorDtoList,
+        widgetId
       )
     );
     this.editMenuStore.pop();

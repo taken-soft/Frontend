@@ -3,19 +3,19 @@ import LayoutWidgetDTO from "./layoutWidgetDTO";
 export default class LayoutDTO {
   layoutId;
   layoutSequence;
-  layoutWidgetDTOList;
+  layoutWidgetDtoList;
 
-  constructor(layoutId, layoutSequence, layoutWidgetDTOList) {
+  constructor(layoutId, layoutSequence, layoutWidgetDtoList) {
     this.layoutId = layoutId;
     this.layoutSequence = layoutSequence;
-    this.layoutWidgetDTOList = layoutWidgetDTOList;
+    this.layoutWidgetDtoList = layoutWidgetDtoList;
   }
 
   toJson() {
     return {
       layoutId: this.layoutId,
       layoutSequence: this.layoutSequence,
-      layoutWidgetDTOList: this.layoutWidgetDTOList.map((e) => e.toJson()),
+      layoutWidgetDtoList: this.layoutWidgetDtoList.map((e) => e.toJson()),
     };
   }
 

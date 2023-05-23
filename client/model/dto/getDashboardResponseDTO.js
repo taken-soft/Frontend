@@ -27,7 +27,7 @@ export default class GetDashboardResponseDTO {
       dashboardTitle: this.dashboardTitle,
       dashboardType: this.dashboardType,
       dashboardSequence: this.dashboardSequence,
-      layoutList: this.layoutList.map((e) => e.toJson),
+      layoutList: this.layoutList.map((e) => e.toJson()),
     };
   };
 

@@ -1,19 +1,19 @@
 class SaveDashboardRequestDTO {
   dashboardId;
   dashboardTitle;
-  layoutDtoList;
+  layoutList;
 
   constructor(dashboardId, dashboardTitle, layoutDtoList) {
     this.dashboardId = dashboardId;
     this.dashboardTitle = dashboardTitle;
-    this.layoutDtoList = layoutDtoList;
+    this.layoutList = layoutDtoList;
   }
 
   toJson = () => {
     return {
       dashboardId: this.dashboardId,
       dashboardTitle: this.dashboardTitle,
-      layoutDtoList: this.layoutDtoList.map((e) => e.toJson()),
+      layoutList: this.layoutList.map((e) => e.toJson()),
     };
   };
 }

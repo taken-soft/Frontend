@@ -9,6 +9,7 @@ export default class LayoutWidgetDTO {
   layoutWidgetProperty;
   eventDtoList;
   layoutWidgetSensorDtoList;
+  widgetId;
 
   constructor(
     layoutWidgetStartPos,
@@ -17,7 +18,8 @@ export default class LayoutWidgetDTO {
     layoutWidgetColor,
     layoutWidgetProperty,
     eventDtoList,
-    layoutWidgetSensorDtoList
+    layoutWidgetSensorDtoList,
+    widgetId
   ) {
     this.layoutWidgetStartPos = layoutWidgetStartPos;
     this.layoutWidgetEndPos = layoutWidgetEndPos;
@@ -26,6 +28,7 @@ export default class LayoutWidgetDTO {
     this.layoutWidgetProperty = layoutWidgetProperty;
     this.eventDtoList = eventDtoList;
     this.layoutWidgetSensorDtoList = layoutWidgetSensorDtoList;
+    this.widgetId = widgetId;
   }
 
   toJson() {
@@ -36,13 +39,18 @@ export default class LayoutWidgetDTO {
       layoutWidgetColor: this.layoutWidgetColor,
       layoutWidgetProperty: this.layoutWidgetProperty,
       eventDtoList: this.eventDtoList.map((e) => e.toJson()),
-      layoutWidgetSensorDtoList: this.layoutWidgetSensorDtoList.map((e) => e.toJson())
+      layoutWidgetSensorDtoList: this.layoutWidgetSensorDtoList.map((e) =>
+        e.toJson()
+      ),
+      widgetId: this.widgetId,
     };
   }
 
   static fromJson = (json) => {
-    let eventDtoList = Object.entries(json["eventDtoList"])
-    let layoutWidgetSensorDtoList = Object.entries(json["layoutWidgetSensorDtoList"])
+    let eventDtoList = Object.entries(json["eventDtoList"]);
+    let layoutWidgetSensorDtoList = Object.entries(
+      json["layoutWidgetSensorDtoList"]
+    );
     return new LayoutWidgetDTO(
       json["layoutWidgetStartPos"],
       json["layoutWidgetEndPos"],
@@ -50,7 +58,10 @@ export default class LayoutWidgetDTO {
       json["layoutWidgetColor"],
       json["layoutWidgetProperty"],
       eventDtoList.map((e) => EventDTO.fromJson(e[1])),
-      layoutWidgetSensorDtoList.map(e => LayoutWidgetSensorDTO.fromJson(e[1])),
+      layoutWidgetSensorDtoList.map((e) =>
+        LayoutWidgetSensorDTO.fromJson(e[1])
+      ),
+      json["widgetId"]
     );
   };
 }
