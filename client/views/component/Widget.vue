@@ -47,6 +47,5 @@ export default {
 <style scoped>
 .widget {
     position: absolute;
-    background-color: red;
 }
 </style>
