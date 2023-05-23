@@ -11,8 +11,8 @@ export default class CreateDashboardResponseDTO {
 
   static fromJson = (json) => {
     return new CreateDashboardResponseDTO(
-      json.get("dashboardId"),
-      json.get("layoutDtos").map((e) => LayoutDTO.fromJson(e))
+      json["dashboardId"],
+      json["layoutDtos"].map((e) => LayoutDTO.fromJson(e))
     );
   };
 }

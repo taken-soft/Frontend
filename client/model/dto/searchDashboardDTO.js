@@ -9,8 +9,8 @@ export default class SearchDashboardDTO {
 
   static fromJson = (json) => {
     return new SearchDashboardDTO(
-      json.get("dashboardId"),
-      json.get("dashBoardName"),
+      json["dashboardId"],
+      json["dashBoardName"],
     );
   };
 }

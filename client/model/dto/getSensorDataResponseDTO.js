@@ -11,8 +11,8 @@ export default class GetSensorDataResponseDTO {
 
   static fromJson = (json) => {
     return new GetSensorDataResponseDTO(
-      json.get("sensorId"),
-      json.get("sensorValues").map((e) => SensorValueDTO.fromJson(e))
+      json["sensorId"],
+      json["sensorValues"].map((e) => SensorValueDTO.fromJson(e))
     );
   };
 }

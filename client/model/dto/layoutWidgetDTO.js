@@ -42,13 +42,13 @@ export default class LayoutWidgetDTO {
 
   static fromJson = (json) => {
     return new LayoutWidgetDTO(
-      json.get("layoutWidgetStartPos"),
-      json.get("layoutWidgetEndPos"),
-      json.get("layoutWidgetZPos"),
-      json.get("layoutWidgetColor"),
-      json.get("layoutWidgetProperty"),
-      json.get("eventDtoList").map((e) => EventDTO.fromJson(e)),
-      json.get("layoutWidgetSensorDtoList").map(e => LayoutWidgetSensorDTO.fromJson(e)),
+      json["layoutWidgetStartPos"],
+      json["layoutWidgetEndPos"],
+      json["layoutWidgetZPos"],
+      json["layoutWidgetColor"],
+      json["layoutWidgetProperty"],
+      json["eventDtoList"].map((e) => EventDTO.fromJson(e)),
+      json["layoutWidgetSensorDtoList"].map(e => LayoutWidgetSensorDTO.fromJson(e)),
     );
   };
 }

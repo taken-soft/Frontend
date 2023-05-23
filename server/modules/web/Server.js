@@ -155,7 +155,7 @@ let SERVER_HOST = "localhost:8080";
 webServer.get("/dashboards/all", function (request, response, next) {
   axios
     .get("http://" + SERVER_HOST + "/dashboards/all")
-    .then((result) => response.json(result))
+    .then((result) => response.json(result.data))
     .catch((err) => {
       response.json(err);
     });
@@ -173,7 +173,7 @@ webServer.get("/img/factory", function (request, response, next) {
 webServer.post("/dashboards/new", function (request, response, next) {
   axios
     .post("http://" + SERVER_HOST + "/dashboards/new", request.body)
-    .then((result) => response.json(result))
+    .then((result) => response.json(result.data))
     .catch((err) => {
       response.json(err);
     });
@@ -182,7 +182,7 @@ webServer.post("/dashboards/new", function (request, response, next) {
 webServer.get("/dashboards/:dashboardId", function (request, response, next) {
   axios
     .get("http://" + SERVER_HOST + `/dashboards/${request.params.dashboardId}`)
-    .then((result) => response.json(result))
+    .then((result) => response.json(result.data))
     .catch((err) => {
       response.json(err);
     });
@@ -191,7 +191,7 @@ webServer.get("/dashboards/:dashboardId", function (request, response, next) {
 webServer.post("/dashboards/save", function (request, response, next) {
   axios
     .post("http://" + SERVER_HOST + `/dashboards/save`, request.body)
-    .then((result) => response.json(result))
+    .then((result) => response.json(result.data))
     .catch((err) => {
       response.json(err);
     });
@@ -204,7 +204,7 @@ webServer.delete(
       .delete(
         "http://" + SERVER_HOST + `/dashboards/${request.params.dashboardId}`
       )
-      .then((result) => response.json(result))
+      .then((result) => response.json(result.data))
       .catch((err) => {
         response.json(err);
       });
@@ -214,7 +214,7 @@ webServer.delete(
 webServer.post(`/sensor/data`, function (request, response, next) {
   axios
     .post("http://" + SERVER_HOST + `/sensor/data`, request.body)
-    .then((result) => response.json(result))
+    .then((result) => response.json(result.data))
     .catch((err) => {
       response.json(err);
     });
