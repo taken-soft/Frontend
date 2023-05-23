@@ -28,6 +28,16 @@ export default {
                         backgroundColor: "#79f879",
                         data: [10, 29, 40, 80, 19, 70, 60],
                     },
+                    {
+                        label: "데이터 3",
+                        backgroundColor: "#79f879",
+                        data: [12, 14, 70, 50, 99, 30, 10],
+                    },
+                    {
+                        label: "데이터 4",
+                        backgroundColor: "#79f879",
+                        data: [60, 69, 10, 40, 69, 30, 20],
+                    },
                 ],
             },
 

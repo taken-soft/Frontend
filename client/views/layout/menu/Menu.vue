@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="Menu">
     <div v-if="!curruentMode()" v-for="(item, index) in menuList()" v-bind:key="index">
       <menu-item :menu-entity=item v-if="item.constructor.name == 'MenuItemEntity'"></menu-item>
       <menu-button :menu-entity=item v-if="item.constructor.name == 'MenuButtonEntity'"></menu-button>
@@ -118,5 +118,10 @@ export default {
 img {
   width: 20px;
   height: 20px;
+}
+
+.Menu{
+  height: calc(100vh - 9.5rem);
+  overflow-y: auto;
 }
 </style>
