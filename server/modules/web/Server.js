@@ -165,7 +165,7 @@ webServer.get("/dashboards/all", function (request, response, next) {
  * @dscription : 전체 대시보드 리스트
  */
 webServer.get("/img/factory", function (request, response, next) {
-  response.sendFile("../../img/factory.gif");
+  response.sendFile(`${BASE_DIR}/server/img/factory.gif`);
 });
 
 webServer.post("/dashboards/new", function (request, response, next) {

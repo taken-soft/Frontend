@@ -5,8 +5,6 @@
 </template>
 
 <script>
-import { useNewWidgetStore } from "../../stores/newWidgetStore";
-
 import Text from "./Widgets/Text.vue";
 import Rect from "./Widgets/Rect.vue";
 import Circle from "./Widgets/Circle.vue";
@@ -38,6 +36,7 @@ export default {
                 left: `calc(100% / 23 * ${startX})`,
                 width: `calc(100% / 23 * ${endX - startX})`,
                 height: (endY - startY + 1) * 10 + "%",
+                fontSize: (endY - startY) * 2 + 1.8 + "em",
             };
         },
     },
