@@ -37,7 +37,7 @@ export default class EditMenuBar extends EditMenuWidgetRoute {
     let route = this.route();
     let layoutWidgetSensorDtoList = [];
     let layoutWidgetSensorSequence = 1;
-    
+
     for (let i = 0; i < route.length; i++) {
       if (!(route[i] instanceof MenuValueEntity)) continue;
       if (route[i] instanceof MenuSensorEntity)
@@ -47,6 +47,7 @@ export default class EditMenuBar extends EditMenuWidgetRoute {
             route[i].currentValue[1]
           )
         );
+        
     }
     console.log(layoutWidgetSensorDtoList);
   };

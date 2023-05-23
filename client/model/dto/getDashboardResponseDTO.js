@@ -28,7 +28,7 @@ export default class GetDashboardResponseDTO {
       json["dashboardTitle"],
       json["dashboardType"],
       json["dashboardSequence"],
-      layoutList.map((e) => LayoutDTO.fromJson(e))
+      layoutList.map((e) => LayoutDTO.fromJson(e[1]))
     );
   };
 }

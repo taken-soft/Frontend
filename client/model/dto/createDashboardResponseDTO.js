@@ -13,7 +13,7 @@ export default class CreateDashboardResponseDTO {
     let layoutDtos = Object.entries(json["layoutDtos"])
     return new CreateDashboardResponseDTO(
       json["dashboardId"],
-      layoutDtos.map((e) => LayoutDTO.fromJson(e))
+      layoutDtos.map((e) => LayoutDTO.fromJson(e[1]))
     );
   };
 }

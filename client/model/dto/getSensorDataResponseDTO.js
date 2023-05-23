@@ -13,7 +13,7 @@ export default class GetSensorDataResponseDTO {
     let sensorValues = Object.entries(json["sensorValues"])
     return new GetSensorDataResponseDTO(
       json["sensorId"],
-      sensorValues.map((e) => SensorValueDTO.fromJson(e))
+      sensorValues.map((e) => SensorValueDTO.fromJson(e[1]))
     );
   };
 }
