@@ -9,7 +9,7 @@ export default class SearchDashboardListResponseDTO {
 
   static fromJson = (json) => {
     return new SearchDashboardListResponseDTO(
-      json.map(e => SearchDashboardDTO.fromJson(e))
+      json.map((e) => SearchDashboardDTO.fromJson(e))
     );
   };
 }

@@ -1,21 +1,29 @@
 import LayoutWidgetDTO from "./layoutWidgetDTO";
 
 export default class LayoutDTO {
-  id;
-  sequence;
-  layoutWidgetDtoList;
+  layoutId;
+  layoutSequence;
+  layoutWidgetDTOList;
 
-  constructor(id, sequence, layoutWidgetDtoList) {
-    this.id = id;
-    this.sequence = sequence;
-    this.layoutWidgetDtoList = layoutWidgetDtoList;
+  constructor(layoutId, layoutSequence, layoutWidgetDTOList) {
+    this.layoutId = layoutId;
+    this.layoutSequence = layoutSequence;
+    this.layoutWidgetDTOList = layoutWidgetDTOList;
+  }
+
+  toJson() {
+    return {
+      layoutId: this.layoutId,
+      layoutSequence: this.layoutSequence,
+      layoutWidgetDTOList: this.layoutWidgetDTOList.map((e) => e.toJson()),
+    };
   }
 
   static fromJson = (json) => {
-    return new LayoutDTO(
-      json.get("id"),
-      json.get("sequence"),
-      json.get("layoutWidgetDtoList").map((e) => LayoutWidgetDTO.fromJson(e))
+    return new LayoutWidgetDTO(
+      json.get("layoutId"),
+      json.get("layoutSequence"),
+      json.get("layoutWidgetDTOList").map((e) => new LayoutWidgetDTO(e))
     );
   };
 }
