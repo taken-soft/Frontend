@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="circleWidget">
         Circle
     </div>
 </template>
@@ -9,5 +9,7 @@ export default {
 }
 </script>
 <style scoped>
-    
+.circleWidget{
+    border-radius: 100%;
+}
 </style>
