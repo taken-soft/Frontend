@@ -4,6 +4,7 @@
  * @dscription : Express 라이브러리 활용 HTTP Web Server 모듈입니다.
  */
 const { BASE_DIR, PORT, API_SERVER_HOST } = require("../../../Global");
+const SERVER_HOST = "localhost:8080"
 const Logger = require("../log/Logger"); //Logger(필수)
 
 const express = require("express");
@@ -143,7 +144,19 @@ webServer.get("/dashboards/all", function (request, response, next) {
     .get("http://" + SERVER_HOST + "/dashboards/all")
     .then((result) => response.json(result.data))
     .catch((err) => {
-      response.json(err);
+      // response.json(err);
+      response.json(
+        [
+          {
+              "dashboardId": 1,
+              "dashboardName": "New Dashboard"
+          },
+          {
+              "dashboardId": 2,
+              "dashboardName": "New Dashboard"
+          }
+      ]
+      )
     });
 });
 
