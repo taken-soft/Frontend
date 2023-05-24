@@ -20,7 +20,7 @@ export default class LayoutDTO {
   }
 
   static fromJson = (json) => {
-    let layoutWidgetDtoList = Object.entries(json["layoutWidgetDtoList"])
+    let layoutWidgetDtoList = !json["layoutWidgetDtoList"] ? [] : Object.entries(json["layoutWidgetDtoList"])
     return new LayoutDTO(
       json["layoutId"],
       json["layoutSequence"],

@@ -1,4 +1,19 @@
 <template>
+  <modal :modalController="saveModalController">
+    <div class="modal_body">
+      <p style="margin-bottom: 1rem">레이아웃 배치</p>
+      <div class="flex">
+        <select name="" id="" class="m-r" @change="(event) => {
+          changeSelectedCreateDashboardType(event.target.value);
+        }">
+          <option v-for="(item, index) in ['2x2', '4x2']" v-bind:value="item" :innerHTML="item" v-bind:key="index"
+            :selected="selectedCreateDashboardType == item"></option>
+        </select>
+        <button @click="afterCreateDashboardClick">생성</button>
+      </div>
+    </div>
+  </modal>
+
   <div>
     <div v-if="!curruentMode()" v-for="(item, index) in menuList()" v-bind:key="index">
       <menu-item :menu-entity=item v-if="item.constructor.name == 'MenuItemEntity'"></menu-item>
@@ -26,6 +41,8 @@ import MenuColor from "./color/MenuColor.vue";
 import MenuSensor from "./sensor/MenuSensor.vue";
 import MenuEvent from "./event/MenuEvent.vue";
 
+import Modal from "../../pages/main/Modal.vue";
+
 import MenuButtonEntity from "../menu/button/menuButtonEntity";
 import MenuItemEntity from "../menu/item/menuItemEntity";
 
@@ -39,7 +56,6 @@ import { createDashboard } from "../../../axios/dashboardListAxios";
 
 import CreateDashboardRequestDTO from "../../../model/dto/createDashboardRequestDTO"
 import CreateDashboardResponseDTO from "../../../model/dto/createDashboardResponseDTO"
-
 
 export default {
   setup() {
@@ -65,12 +81,38 @@ export default {
       modeStore.changeMode();
     }
 
+    const saveModalController = editMenuStore.saveModalController;
+
+    let selectedCreateDashboardType = '2x2';
+
+    const changeSelectedCreateDashboardType = (value) => {
+      console.log(value);
+      selectedCreateDashboardType = value;
+    }
+
+    const afterCreateDashboardClick = () => {
+      console.log(selectedCreateDashboardType);
+      let createDashboardRequestDTO = new CreateDashboardRequestDTO(selectedCreateDashboardType, 1)
+      createDashboard(createDashboardRequestDTO).then((response) => {
+        let data = response.data;
+        data["dashboardTitle"] = "New Dashboard";
+        data["dashboardType"] = createDashboardRequestDTO.dashboardType;
+        data["dashboardSequence"] = createDashboardRequestDTO.dashboardSequence;
+        changeMode(data["dashboardId"]);
+        saveModalController.close();
+      })
+    }
+
     return {
       dashboardList,
       selectDashboard,
       curruentRoute,
       curruentMode,
       changeMode,
+      saveModalController,
+      afterCreateDashboardClick,
+      selectedCreateDashboardType,
+      changeSelectedCreateDashboardType
     }
   },
   methods: {
@@ -91,17 +133,11 @@ export default {
     },
 
     onCreateDashboardClick() {
-      let createDashboardRequestDTO = new CreateDashboardRequestDTO("2x2", 1)
-      createDashboard(createDashboardRequestDTO).then((response) => {
-        let data = response.data;
-        data["dashboardTitle"] = "New Dashboard";
-        data["dashboardType"] = createDashboardRequestDTO.dashboardType;
-        data["dashboardSequence"] = createDashboardRequestDTO.dashboardSequence;
-        console.log(CreateDashboardResponseDTO.fromJson(data));
-      })
-    }
+      this.saveModalController.show();
+    },
   },
   components: {
+    Modal: Modal,
     MenuItem: MenuItem,
     MenuButton: MenuButton,
     MenuInput: MenuInput,

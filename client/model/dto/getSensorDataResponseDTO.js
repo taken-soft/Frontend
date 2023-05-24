@@ -10,7 +10,7 @@ export default class GetSensorDataResponseDTO {
   }
 
   static fromJson = (json) => {
-    let sensorValues = Object.entries(json["sensorValues"])
+    let sensorValues = !json["sensorValues"] ? [] : Object.entries(json["sensorValues"])
     return new GetSensorDataResponseDTO(
       json["sensorId"],
       sensorValues.map((e) => SensorValueDTO.fromJson(e[1]))

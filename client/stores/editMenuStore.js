@@ -1,10 +1,16 @@
 import { defineStore } from "pinia";
+import ModalController from "../views/pages/main/modalController";
+import CreateDashboardRequestDTO from "../model/dto/createDashboardRequestDTO";
+import CreateDashboardResponseDTO from "../model/dto/createDashboardResponseDTO";
+import { createDashboard } from "../axios/dashboardListAxios";
 
 export const useEditMenuStore = defineStore("editMenuStore", {
   state: () => {
     let editMenuRouter = [];
+    let saveModalController = new ModalController("대시보드 생성");
     return {
       editMenuRouter,
+      saveModalController,
     };
   },
   getters: {
@@ -28,6 +34,6 @@ export const useEditMenuStore = defineStore("editMenuStore", {
     },
     refresh() {
       this.editMenuRouter.push(this.editMenuRouter.pop());
-    }
+    },
   },
 });

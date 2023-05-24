@@ -8,7 +8,7 @@ export default class GetSensorDataListResponseDTO {
   }
 
   static fromJson = (json) => {
-    let realtimeSensorDataList = Object.entries(json["realtimeSensorDataList"])
+    let realtimeSensorDataList = !json["realtimeSensorDataList"] ? [] : Object.entries(json["realtimeSensorDataList"])
     return new GetSensorDataListResponseDTO(
       realtimeSensorDataList.map((e) => GetSensorDataResponseDTO.fromJson(e[1]))
     );

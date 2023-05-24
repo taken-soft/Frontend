@@ -47,7 +47,9 @@ export default class LayoutWidgetDTO {
   }
 
   static fromJson = (json) => {
-    let eventDtoList = Object.entries(json["eventDtoList"]);
+    let eventDtoList = !json["eventDtoList"]
+      ? []
+      : Object.entries(json["eventDtoList"]);
     let layoutWidgetSensorDtoList = Object.entries(
       json["layoutWidgetSensorDtoList"]
     );

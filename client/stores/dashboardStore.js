@@ -4,11 +4,7 @@ import GetDashboardResponseDTO from "../model/dto/getDashboardResponseDTO";
 
 export const useDashboardStore = defineStore("dashboardStore", {
   state: () => {
-    let dashboardList = new Map([
-      ["dashboard1", "dashboard1"],
-      ["dashboard2", "dashboard2"],
-      ["dashboard3", "dashboard3"],
-    ]);
+    let dashboardList = new Map();
     let currentDashboard;
     return {
       dashboardList,
@@ -25,9 +21,9 @@ export const useDashboardStore = defineStore("dashboardStore", {
     setSelectedDashBoard(dashboardId) {
       this.selectedDashBoard = dashboardId;
       getDashboard(dashboardId).then((response) => {
+        console.log("getDashboard");
         console.log(response.data);
         this.currentDashboard = GetDashboardResponseDTO.fromJson(response.data);
-        console.log(this.currentDashboard);
       });
     },
     setDashboardList(dashboardList) {

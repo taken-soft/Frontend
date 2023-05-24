@@ -5,20 +5,20 @@ export default class GetDashboardResponseDTO {
   dashboardTitle;
   dashboardType;
   dashboardSequence;
-  layoutList;
+  layoutDtoList;
 
   constructor(
     dashboardId,
     dashboardTitle,
     dashboardType,
     dashboardSequence,
-    layoutList
+    layoutDtoList
   ) {
     this.dashboardId = dashboardId;
     this.dashboardTitle = dashboardTitle;
     this.dashboardType = dashboardType;
     this.dashboardSequence = dashboardSequence;
-    this.layoutList = layoutList;
+    this.layoutDtoList = layoutDtoList;
   }
 
   toJson = () => {
@@ -27,18 +27,18 @@ export default class GetDashboardResponseDTO {
       dashboardTitle: this.dashboardTitle,
       dashboardType: this.dashboardType,
       dashboardSequence: this.dashboardSequence,
-      layoutList: this.layoutList.map((e) => e.toJson()),
+      layoutDtoList: this.layoutDtoList.map((e) => e.toJson()),
     };
   };
 
   static fromJson = (json) => {
-    let layoutList = Object.entries(json["layoutList"]);
+    let layoutDtoList = !json["layoutDtoList"] ? [] : Object.entries(json["layoutDtoList"]);
     return new GetDashboardResponseDTO(
       json["dashboardId"],
       json["dashboardTitle"],
       json["dashboardType"],
       json["dashboardSequence"],
-      layoutList.map((e) => LayoutDTO.fromJson(e[1]))
+      layoutDtoList.map((e) => LayoutDTO.fromJson(e[1]))
     );
   };
 }
