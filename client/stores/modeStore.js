@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-export const useModeStore = defineStore("modeSore", {
+export const useModeStore = defineStore("modeStore", {
   state: () => {
     let isEditMode = false;
     return {

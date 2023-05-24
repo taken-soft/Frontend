@@ -1,16 +1,14 @@
 <template>
     <div>
-        <div class="grid2_2">
-            <div :class="{ active: activeTab === 'tab1' }" @click="activeTab = 'tab1'">1</div>
-            <div :class="{ active: activeTab === 'tab2' }" @click="activeTab = 'tab2'">2</div>
-            <div :class="{ active: activeTab === 'tab3' }" @click="activeTab = 'tab3'">3</div>
-            <div :class="{ active: activeTab === 'tab4' }" @click="activeTab = 'tab4'">4</div>
-        </div>
+        <component :is="dashboardStyle"></component>
     </div>
 </template>
 
 <script>
-import TestCompoent from "../../component/test/TestCompoent.vue";
+import Dashboard1 from "./DashBoard1.vue";
+import Dashboard2 from "./DashBoard2.vue";
+
+import { useDashboardStore } from "../../../stores/dashboardStore";
 
 export default {
     data() {
@@ -18,9 +16,22 @@ export default {
     },
     methods: {},
     watch: {},
-    computed: {},
+    computed: {
+        dashboardStyle(){
+            const dashboardStore = useDashboardStore()
+            let componentName = "div"
+            if(dashboardStore.currentDashboard.dashboardType === "2x2"){
+                componentName = "Dashboard1"
+            }
+            if(dashboardStore.currentDashboard.dashboardType === "2x4"){
+                componentName = "Dashboard2"
+            }
+            return componentName
+        }
+    },
     components: {
-        TestCompoent: TestCompoent,
+        Dashboard1: Dashboard1,
+        Dashboard2: Dashboard2,
     },
     mounted() {
         console.log("main mounted");

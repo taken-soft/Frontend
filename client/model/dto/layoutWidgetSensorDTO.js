@@ -15,7 +15,7 @@ export default class LayoutWidgetSensorDTO {
   }
 
   static fromJson(json) {
-    return LayoutWidgetSensorDTO(
+    return new LayoutWidgetSensorDTO(
       json["layoutWidgetSensorSequence"],
       json["sensorId"]
     );
