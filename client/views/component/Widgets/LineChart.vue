@@ -1,5 +1,7 @@
 <template>
-    <Line class="lineChart" :data="data" :options="options"/>
+    <div>
+        <Line class="lineChart" :data="data" :options="options" />
+    </div>
 </template>
 
 <script>
@@ -51,7 +53,7 @@ export default {
 </script>
 
 <style scoped>
-.lineChart{
+.lineChart {
     background-color: white;
     border: solid 1px black;
 }

@@ -3,7 +3,7 @@
   "dashboardTitle": "",
   "dashboardType": "2x2",
   "dashboardSequence": 1,
-  "layoutList": [
+  "layoutDtoList": [
       {
           "layoutId": 102,
           "layoutSequence": 2,
@@ -38,8 +38,8 @@
           "layoutWidgetDtoList": [
               {
                   "layoutWidgetId": 305,
-                  "layoutWidgetStartPos": 9,
-                  "layoutWidgetEndPos": 5,
+                  "layoutWidgetStartPos": 5,
+                  "layoutWidgetEndPos": 9,
                   "layoutWidgetZPos": 3,
                   "layoutWidgetColor": null,
                   "layoutWidgetProperty": null,
@@ -109,7 +109,7 @@
       },
       {
           "layoutId": 153,
-          "layoutSequence": 2,
+          "layoutSequence": 3,
           "layoutWidgetDtoList": [
               {
                   "layoutWidgetId": 355,
@@ -137,12 +137,12 @@
       },
       {
           "layoutId": 152,
-          "layoutSequence": 1,
+          "layoutSequence": 4,
           "layoutWidgetDtoList": [
               {
                   "layoutWidgetId": 353,
-                  "layoutWidgetStartPos": 9,
-                  "layoutWidgetEndPos": 5,
+                  "layoutWidgetStartPos": 5,
+                  "layoutWidgetEndPos": 9,
                   "layoutWidgetZPos": 3,
                   "layoutWidgetColor": null,
                   "layoutWidgetProperty": null,
