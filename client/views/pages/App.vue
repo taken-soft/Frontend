@@ -31,6 +31,7 @@ import Menu from "../layout/menu/Menu.vue";
 import { getDashboardList } from "../../axios/dashboardListAxios";
 
 import { useDashboardStore } from "../../stores/dashboardStore";
+import { useWidgetDataStore } from "../../stores/widgetDataStore";
 
 const App = {
   data: () => {
@@ -66,9 +67,13 @@ const App = {
   },
   setup() {
     const dashboardStore = useDashboardStore();
+    const widgetDataStore = useWidgetDataStore();
+
+    setInterval(widgetDataStore.getSensorDataList, 1000);
 
     getDashboardList()
       .then((result) => {
+        console.log("????");
         console.log(result.data);
         dashboardStore.setDashboardList(result.data);
       })

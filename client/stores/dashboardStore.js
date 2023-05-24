@@ -26,9 +26,9 @@ export const useDashboardStore = defineStore("dashboardStore", {
         this.currentDashboard = GetDashboardResponseDTO.fromJson(response.data);
       });
     },
-    setDashboardList(dashboardList) {
+    setDashboardList(newDashboardList) {
       this.dashboardList.clear();
-      for (let dashboard of dashboardList) {
+      for (let dashboard of newDashboardList) {
         console.log(dashboard);
         this.dashboardList.set(
           dashboard["dashboardId"],

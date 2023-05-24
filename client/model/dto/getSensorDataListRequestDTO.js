@@ -6,7 +6,7 @@ export default class GetSeneorDataListRequestDTO {
 
   toJson = () => {
     return {
-      "sensorDataList" : sensorDataList.map(e => e.toJson())
+      "sensorDataList" : this.sensorDataList.map(e => e.toJson())
     }
   }
 }
