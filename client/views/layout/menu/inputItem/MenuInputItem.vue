@@ -1,7 +1,8 @@
 <template>
 	<div class="flex title" @click="menuEntity.onClick">
-		<p :innerHTML="menuEntity.text" v-if="!getIsClicked" @click="menuEntity.changeIsClicked"></p>
-    <div class="flex" v-if="getIsClicked">
+		<!-- <p :innerHTML="menuEntity.text" v-if="!menuEntity.isClicked"></p> -->
+    <!-- <div class="flex" v-if="menuEntity.isClicked"> -->
+    <div class="flex">
       <input type="text" :placeholder="menuEntity.placeholder" :value="menuEntity.currentValue" @change="menuEntity.onValueChange"/>
     </div>
     <img class="img-l" @click="menuEntity.onIconClick" :src="require(`../../../../resources/images/${menuEntity.icon}.png`)" alt="" />
@@ -11,12 +12,6 @@
 import MenuInputItemEntity from './MenuInputItemEntity';
 
 export default {
-  computed: {
-    getIsClicked() {
-      console.log(this.menuEntity.isClicked);
-      return this.menuEntity.isClicked;
-    }
-  },
 	props: {
 		menuEntity: MenuInputItemEntity
 	}

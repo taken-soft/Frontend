@@ -21,15 +21,12 @@ export const useDashboardStore = defineStore("dashboardStore", {
     setSelectedDashBoard(dashboardId) {
       this.selectedDashBoard = dashboardId;
       getDashboard(dashboardId).then((response) => {
-        console.log("getDashboard");
-        console.log(response.data);
         this.currentDashboard = GetDashboardResponseDTO.fromJson(response.data);
       });
     },
     setDashboardList(newDashboardList) {
       this.dashboardList.clear();
       for (let dashboard of newDashboardList) {
-        console.log(dashboard);
         this.dashboardList.set(
           dashboard["dashboardId"],
           dashboard["dashboardName"]
@@ -41,5 +38,9 @@ export const useDashboardStore = defineStore("dashboardStore", {
     addNewWidget(selectedLayout, layoutWidget) {
       this.currentDashboard.layoutDtoList[selectedLayout].layoutWidgetDtoList.push(layoutWidget);
     },
+    setDashboardTitle(value) {
+      this.currentDashboard.dashboardTitle = value;
+      console.log(this.currentDashboard.dashboardTitle);
+    }
   },
 });
