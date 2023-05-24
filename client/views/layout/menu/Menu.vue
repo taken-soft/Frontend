@@ -159,4 +159,9 @@ img {
   width: 20px;
   height: 20px;
 }
+
+.Menu{
+  height: calc(100vh - 9.5rem);
+  overflow-y: auto;
+}
 </style>

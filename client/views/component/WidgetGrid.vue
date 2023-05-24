@@ -12,6 +12,12 @@
                 <!-- {{y}}  {{x}} -->
             </div>
         </div>
+        <a :style="deleteStyle" @click="deleteWidget" v-if="isDeleteButton"
+            ><img
+                width="20"
+                alt="Icons8 flat delete generic"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Icons8_flat_delete_generic.svg/256px-Icons8_flat_delete_generic.svg.png"
+        /></a>
     </div>
 </template>
 <script>
@@ -22,7 +28,6 @@ export default {
         return {
             xSize: 23,
             ySize: 10,
-
             widgetTypes: ["text", "chart", "rectangle"],
         };
     },
@@ -51,11 +56,34 @@ export default {
             }
             // console.log(newWidgetStore.startPos, newWidgetStore.endPos);
         };
-        return { gridClick, gridDrag, gridOver };
+        const deleteWidget = () => {
+            console.log("deleteButton");
+        };
+        return { gridClick, gridDrag, gridOver, deleteWidget };
     },
     methods: {},
     mounted() {
         // console.log("hi")
+        console.log(this.onDrag);
+    },
+    computed: {
+        deleteStyle() {
+            const newWidgetStore = useNewWidgetStore();
+
+            let startPos = newWidgetStore.startPos;
+            let endPos = newWidgetStore.endPos;
+            let startY = parseInt((startPos - 1) / 23);
+            let endX = endPos % 23;
+            return {
+                top: `calc(${startY * 10 + "%"} - 15px)`,
+                left: `calc(${endX * 100}% / 23 - 10px)`,
+                position: "absolute",
+            };
+        },
+        isDeleteButton() {
+            const newWidgetStore = useNewWidgetStore();
+            return newWidgetStore.widgetType !== null;
+        },
     },
 };
 </script>

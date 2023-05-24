@@ -1,5 +1,7 @@
 <template>
-    <Bar class="barChart" :data="data" :options="options" />
+    <div>
+        <Bar class="barChart" :data="data" :options="options" />
+    </div>
 </template>
 
 <script>
@@ -32,5 +34,7 @@ export default {
 .barChart {
     background-color: white;
     border: solid 1px black;
+    width: full;
+    height: full;
 }
 </style>
