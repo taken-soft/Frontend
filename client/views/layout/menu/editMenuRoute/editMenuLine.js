@@ -6,7 +6,11 @@ import MenuSensorEntity from "../sensor/menuSensorEntity";
 import EditMenuWidgetRoute from "./editMenuWidgetRoute";
 
 export default class EditMenuLine extends EditMenuWidgetRoute {
-  title = "꺾은선 그래프";
+  constructor() {
+    super();
+    this.title = "꺾은선 그래프";
+    this.newWidgetStore.setWidgetType(this.widgetMap.get(this.title));
+  }
   sensorList = [
     new MenuSensorEntity("센서", null),
     new MenuColorEntity("꺾은선 색상", null),
