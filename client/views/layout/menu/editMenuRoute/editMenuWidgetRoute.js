@@ -1,5 +1,6 @@
 import EditMenuRoute from "./editMenuRoute";
 import MenuColorEntity from "../color/menuColorEntity";
+import MenuFileEntity from "../file/menuFileEntity"
 
 import { useNewWidgetStore } from "../../../../stores/newWidgetStore";
 import MenuInputEntity from "../input/menuInputEntity";
@@ -65,6 +66,8 @@ export default class EditMenuWidgetRoute extends EditMenuRoute {
           )
         );
       else if (route[i] instanceof MenuInputEntity)
+        property = route[i].currentValue;
+      else if (route[i] instanceof MenuFileEntity)
         property = route[i].currentValue;
     }
 
