@@ -130,22 +130,8 @@ webServer.get("/test", function (request, response, next) {
   response.json({ test: "success!" });
 });
 
-// 테스트 데이터
+// 테스트 데이터(대시보드 정보)
 const dashboardDetail = require("../../json/Dashboard.json");
-
-/**
- * @author : 나재현
- * @since : 2023.05.19
- * @dscription : 대시보드 정보
- */
-webServer.get("/dashboard", function (request, response, next) {
-  let query = url.parse(request.url, true).query;
-  console.log(`dashboard id request :[${query.id}]`);
-
-  response.json(dashboardDetail);
-});
-
-let SERVER_HOST = "localhost:8080";
 
 /**
  * @author : 나재현
@@ -164,12 +150,17 @@ webServer.get("/dashboards/all", function (request, response, next) {
 /**
  * @author : 나재현
  * @since : 2023.05.19
- * @dscription : 전체 대시보드 리스트
+ * @dscription : factory.gif 접근용
  */
 webServer.get("/img/factory", function (request, response, next) {
   response.sendFile(`${BASE_DIR}/server/img/factory.gif`);
 });
 
+/**
+ * @author : 나재현
+ * @since : 2023.05.19
+ * @dscription : 신규 대시보드 생성
+ */
 webServer.post("/dashboards/new", function (request, response, next) {
   axios
     .post("http://" + SERVER_HOST + "/dashboards/new", request.body)
@@ -179,15 +170,26 @@ webServer.post("/dashboards/new", function (request, response, next) {
     });
 });
 
+/**
+ * @author : 나재현
+ * @since : 2023.05.19
+ * @dscription : 대시보드 정보
+ */
 webServer.get("/dashboards/:dashboardId", function (request, response, next) {
   axios
     .get("http://" + SERVER_HOST + `/dashboards/${request.params.dashboardId}`)
     .then((result) => response.json(result.data))
     .catch((err) => {
-      response.json(err);
+      // response.json(err);
+      response.json(dashboardDetail)
     });
 });
 
+/**
+ * @author : 나재현
+ * @since : 2023.05.19
+ * @dscription : 대시보드 업데이트(저장)
+ */
 webServer.post("/dashboards/save", function (request, response, next) {
   axios
     .post("http://" + SERVER_HOST + `/dashboards/save`, request.body)
@@ -197,6 +199,11 @@ webServer.post("/dashboards/save", function (request, response, next) {
     });
 });
 
+/**
+ * @author : 나재현
+ * @since : 2023.05.19
+ * @dscription : 대시보드 삭제
+ */
 webServer.delete(
   "/dashboards/:dashboardId",
   function (request, response, next) {
@@ -211,6 +218,11 @@ webServer.delete(
   }
 );
 
+/**
+ * @author : 나재현
+ * @since : 2023.05.19
+ * @dscription : 센서 데이터 가져오는 api
+ */
 webServer.post(`/sensor/data`, function (request, response, next) {
   axios
     .post("http://" + SERVER_HOST + `/sensor/data`, request.body)

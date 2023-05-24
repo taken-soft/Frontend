@@ -1,98 +1,215 @@
 {
-    "dashboardId": 1,
-    "dashboardTitle": "대시보드 1",
-    "layoutDtoList": [
-        {
-            "layoutId": 10,
-            "layoutSequence": 20,
-            "layoutWidgetDtoList": [
-                {
-                    "layoutWidgetStartPos": 30,
-                    "layoutWidgetEndPos": 40,
-                    "layoutWidgetZPos": 50,
-                    "layoutWidgetColor": null,
-                    "layoutWidgetProperty": null,
-                    "eventDtoList": [
-                        {
-                            "eventOver": 60,
-                            "eventUnder": 70,
-                            "eventColor": null,
-                            "eventType": null
-                        },
-                        {
-                            "eventOver": 80,
-                            "eventUnder": 90,
-                            "eventColor": null,
-                            "eventType": null
-                        }
-                    ],
-                    "layoutWidgetSensorDtoList": [
-                        {
-                            "layoutWidgetSensorSequence": 100,
-                            "sensorId": 1
-                        },
-                        {
-                            "layoutWidgetSensorSequence": 110,
-                            "sensorId": 2
-                        }
-                    ],
-                    "widgetId": 3
-                },
-                {
-                    "layoutWidgetStartPos": 9,
-                    "layoutWidgetEndPos": 5,
-                    "layoutWidgetZPos": 3,
-                    "layoutWidgetColor": null,
-                    "layoutWidgetProperty": null,
-                    "eventDtoList": [
-                        {
-                            "eventOver": 5,
-                            "eventUnder": 2,
-                            "eventColor": null,
-                            "eventType": null
-                        },
-                        {
-                            "eventOver": 4,
-                            "eventUnder": 3,
-                            "eventColor": null,
-                            "eventType": null
-                        }
-                    ],
-                    "layoutWidgetSensorDtoList": [
-                        {
-                            "layoutWidgetSensorSequence": 120,
-                            "sensorId": 5
-                        }
-                    ],
-                    "widgetId": 3
-                }
-            ]
-        },
-        {
-            "layoutId": 30,
-            "layoutSequence": 40,
-            "layoutWidgetDtoList": [
-                {
-                    "layoutWidgetStartPos": 7,
-                    "layoutWidgetEndPos": 8,
-                    "layoutWidgetZPos": 6,
-                    "layoutWidgetColor": null,
-                    "layoutWidgetProperty": null,
-                    "eventDtoList": [],
-                    "layoutWidgetSensorDtoList": [],
-                    "widgetId": null
-                },
-                {
-                    "layoutWidgetStartPos": 3,
-                    "layoutWidgetEndPos": 4,
-                    "layoutWidgetZPos": 5,
-                    "layoutWidgetColor": null,
-                    "layoutWidgetProperty": null,
-                    "eventDtoList": [],
-                    "layoutWidgetSensorDtoList": [],
-                    "widgetId": null
-                }
-            ]
-        }
-    ]
+  "dashboardId": 52,
+  "dashboardTitle": "",
+  "dashboardType": "2x2",
+  "dashboardSequence": 1,
+  "layoutList": [
+      {
+          "layoutId": 102,
+          "layoutSequence": 2,
+          "layoutWidgetDtoList": [
+              {
+                  "layoutWidgetId": 303,
+                  "layoutWidgetStartPos": 3,
+                  "layoutWidgetEndPos": 4,
+                  "layoutWidgetZPos": 5,
+                  "layoutWidgetColor": null,
+                  "layoutWidgetProperty": null,
+                  "eventDtoList": [],
+                  "layoutWidgetSensorDtoList": [],
+                  "widgetId": 1
+              },
+              {
+                  "layoutWidgetId": 302,
+                  "layoutWidgetStartPos": 7,
+                  "layoutWidgetEndPos": 8,
+                  "layoutWidgetZPos": 6,
+                  "layoutWidgetColor": null,
+                  "layoutWidgetProperty": null,
+                  "eventDtoList": [],
+                  "layoutWidgetSensorDtoList": [],
+                  "widgetId": 2
+              }
+          ]
+      },
+      {
+          "layoutId": 103,
+          "layoutSequence": 1,
+          "layoutWidgetDtoList": [
+              {
+                  "layoutWidgetId": 305,
+                  "layoutWidgetStartPos": 9,
+                  "layoutWidgetEndPos": 5,
+                  "layoutWidgetZPos": 3,
+                  "layoutWidgetColor": null,
+                  "layoutWidgetProperty": null,
+                  "eventDtoList": [
+                      {
+                          "eventId": 254,
+                          "eventOver": 5,
+                          "eventUnder": 2,
+                          "eventColor": null,
+                          "eventType": null
+                      },
+                      {
+                          "eventId": 255,
+                          "eventOver": 4,
+                          "eventUnder": 3,
+                          "eventColor": null,
+                          "eventType": null
+                      }
+                  ],
+                  "layoutWidgetSensorDtoList": [
+                      {
+                          "layoutWidgetSensorId": 254,
+                          "layoutWidgetSensorSequence": 120,
+                          "sensorId": 5
+                      }
+                  ],
+                  "widgetId": 3
+              },
+              {
+                  "layoutWidgetId": 304,
+                  "layoutWidgetStartPos": 30,
+                  "layoutWidgetEndPos": 40,
+                  "layoutWidgetZPos": 50,
+                  "layoutWidgetColor": null,
+                  "layoutWidgetProperty": null,
+                  "eventDtoList": [
+                      {
+                          "eventId": 252,
+                          "eventOver": 80,
+                          "eventUnder": 90,
+                          "eventColor": null,
+                          "eventType": null
+                      },
+                      {
+                          "eventId": 253,
+                          "eventOver": 60,
+                          "eventUnder": 70,
+                          "eventColor": null,
+                          "eventType": null
+                      }
+                  ],
+                  "layoutWidgetSensorDtoList": [
+                      {
+                          "layoutWidgetSensorId": 252,
+                          "layoutWidgetSensorSequence": 110,
+                          "sensorId": 2
+                      },
+                      {
+                          "layoutWidgetSensorId": 253,
+                          "layoutWidgetSensorSequence": 100,
+                          "sensorId": 1
+                      }
+                  ],
+                  "widgetId": 3
+              }
+          ]
+      },
+      {
+          "layoutId": 153,
+          "layoutSequence": 2,
+          "layoutWidgetDtoList": [
+              {
+                  "layoutWidgetId": 355,
+                  "layoutWidgetStartPos": 3,
+                  "layoutWidgetEndPos": 4,
+                  "layoutWidgetZPos": 5,
+                  "layoutWidgetColor": null,
+                  "layoutWidgetProperty": null,
+                  "eventDtoList": [],
+                  "layoutWidgetSensorDtoList": [],
+                  "widgetId": 1
+              },
+              {
+                  "layoutWidgetId": 354,
+                  "layoutWidgetStartPos": 7,
+                  "layoutWidgetEndPos": 8,
+                  "layoutWidgetZPos": 6,
+                  "layoutWidgetColor": null,
+                  "layoutWidgetProperty": null,
+                  "eventDtoList": [],
+                  "layoutWidgetSensorDtoList": [],
+                  "widgetId": 2
+              }
+          ]
+      },
+      {
+          "layoutId": 152,
+          "layoutSequence": 1,
+          "layoutWidgetDtoList": [
+              {
+                  "layoutWidgetId": 353,
+                  "layoutWidgetStartPos": 9,
+                  "layoutWidgetEndPos": 5,
+                  "layoutWidgetZPos": 3,
+                  "layoutWidgetColor": null,
+                  "layoutWidgetProperty": null,
+                  "eventDtoList": [
+                      {
+                          "eventId": 304,
+                          "eventOver": 5,
+                          "eventUnder": 2,
+                          "eventColor": null,
+                          "eventType": null
+                      },
+                      {
+                          "eventId": 305,
+                          "eventOver": 4,
+                          "eventUnder": 3,
+                          "eventColor": null,
+                          "eventType": null
+                      }
+                  ],
+                  "layoutWidgetSensorDtoList": [
+                      {
+                          "layoutWidgetSensorId": 304,
+                          "layoutWidgetSensorSequence": 120,
+                          "sensorId": 5
+                      }
+                  ],
+                  "widgetId": 3
+              },
+              {
+                  "layoutWidgetId": 352,
+                  "layoutWidgetStartPos": 30,
+                  "layoutWidgetEndPos": 40,
+                  "layoutWidgetZPos": 50,
+                  "layoutWidgetColor": null,
+                  "layoutWidgetProperty": null,
+                  "eventDtoList": [
+                      {
+                          "eventId": 303,
+                          "eventOver": 60,
+                          "eventUnder": 70,
+                          "eventColor": null,
+                          "eventType": null
+                      },
+                      {
+                          "eventId": 302,
+                          "eventOver": 80,
+                          "eventUnder": 90,
+                          "eventColor": null,
+                          "eventType": null
+                      }
+                  ],
+                  "layoutWidgetSensorDtoList": [
+                      {
+                          "layoutWidgetSensorId": 303,
+                          "layoutWidgetSensorSequence": 110,
+                          "sensorId": 2
+                      },
+                      {
+                          "layoutWidgetSensorId": 302,
+                          "layoutWidgetSensorSequence": 100,
+                          "sensorId": 1
+                      }
+                  ],
+                  "widgetId": 3
+              }
+          ]
+      }
+  ]
 }
+ 
