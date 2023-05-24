@@ -73,8 +73,6 @@ const App = {
 
     getDashboardList()
       .then((result) => {
-        console.log("????");
-        console.log(result.data);
         dashboardStore.setDashboardList(result.data);
       })
       .catch((err) => {

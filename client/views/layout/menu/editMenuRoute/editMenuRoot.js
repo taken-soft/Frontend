@@ -29,7 +29,10 @@ export default class EditMenuRoot extends EditMenuRoute {
         "back",
         "대시보드 명",
         this.title,
-        null,
+        (event) => {
+          this.title = event.target.value;
+          this.dashboardStore.setDashboardTitle(event.target.value);
+        },
         null,
         () => {
           this.onBackPressed();
