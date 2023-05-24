@@ -19,7 +19,7 @@ export default class MenuInputItemEntity extends MenuValueEntity {
   ) {
     super(text, icon, onValueChange, currentValue);
     this.placeholder = placeholder;
-    this.onClick = onClick;
+    this.onClick = onClick ? onClick : this.changeIsClicked;
     this.onIconClick = onIconClick;
   }
 }
