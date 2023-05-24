@@ -39,7 +39,9 @@ export const useDashboardStore = defineStore("dashboardStore", {
       this.setSelectedDashBoard(Array.from(this.dashboardList.keys())[0]);
     },
     addNewWidget(selectedLayout, layoutWidget) {
-      this.currentDashboard.layoutList[selectedLayout].layoutWidgetDtoList.push(layoutWidget);
+      console.log(this.currentDashboard.layoutDtoList);
+      console.log(selectedLayout);
+      this.currentDashboard.layoutDtoList[selectedLayout].layoutWidgetDtoList.push(layoutWidget);
     },
   },
 });

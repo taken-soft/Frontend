@@ -6,7 +6,7 @@
         <select name="" id="" class="m-r" @change="(event) => {
           changeSelectedCreateDashboardType(event.target.value);
         }">
-          <option v-for="(item, index) in ['2x2', '4x2']" v-bind:value="item" :innerHTML="item" v-bind:key="index"
+          <option v-for="(item, index) in ['2x2', '2x4']" v-bind:value="item" :innerHTML="item" v-bind:key="index"
             :selected="selectedCreateDashboardType == item"></option>
         </select>
         <button @click="afterCreateDashboardClick">생성</button>
