@@ -8,7 +8,7 @@ import GetSensorDataListResponseDTO from "../model/dto/getSensorDataListResponse
 export const useWidgetDataStore = defineStore("widgetDataStore", {
   state: () => {
     let getSeneorDataListRequestDTO = new GetSeneorDataListRequestDTO([
-      new GetSensorDataRequestDTO(1, false),
+      new GetSensorDataRequestDTO(1, true),
     ]);
     let getSensorDataListResponseDTO = new GetSensorDataListResponseDTO([]);
     return {
@@ -22,6 +22,7 @@ export const useWidgetDataStore = defineStore("widgetDataStore", {
       getSensorData(this.getSeneorDataListRequestDTO).then((response) => {
         this.getSensorDataListResponseDTO =
           GetSensorDataListResponseDTO.fromJson(response.data);
+        console.log(this.getSensorDataListResponseDTO);
       });
     },
   },

@@ -28,6 +28,7 @@
       <menu-color :menu-entity=item v-if="item.constructor.name == 'MenuColorEntity'"></menu-color>
       <menu-sensor :menu-entity=item v-if="item.constructor.name == 'MenuSensorEntity'"></menu-sensor>
       <menu-event :menu-entity=item v-if="item.constructor.name == 'MenuEventEntity'"></menu-event>
+      <menu-input-item :menu-entity=item v-if="item.constructor.name == 'MenuInputItemEntity'"></menu-input-item>
     </div>
   </div>
 </template>
@@ -40,6 +41,7 @@ import MenuFile from "./file/MenuFile.vue";
 import MenuColor from "./color/MenuColor.vue";
 import MenuSensor from "./sensor/MenuSensor.vue";
 import MenuEvent from "./event/MenuEvent.vue";
+import MenuInputItem from "./inputItem/MenuInputItem.vue";
 
 import Modal from "../../pages/main/Modal.vue";
 
@@ -55,7 +57,6 @@ import { useModeStore } from '../../../stores/modeStore';
 import { createDashboard } from "../../../axios/dashboardListAxios";
 
 import CreateDashboardRequestDTO from "../../../model/dto/createDashboardRequestDTO"
-import CreateDashboardResponseDTO from "../../../model/dto/createDashboardResponseDTO"
 
 export default {
   setup() {
@@ -146,6 +147,7 @@ export default {
     MenuColor: MenuColor,
     MenuSensor: MenuSensor,
     MenuEvent: MenuEvent,
+    MenuInputItem: MenuInputItem
   },
 }
 </script>

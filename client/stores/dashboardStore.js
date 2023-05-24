@@ -35,12 +35,10 @@ export const useDashboardStore = defineStore("dashboardStore", {
           dashboard["dashboardName"]
         );
       }
-      this.selectedDashBoard = Array.from(this.dashboardList.keys())[0];
+//      this.selectedDashBoard = Array.from(this.dashboardList.keys())[0];
       this.setSelectedDashBoard(Array.from(this.dashboardList.keys())[0]);
     },
     addNewWidget(selectedLayout, layoutWidget) {
-      console.log(this.currentDashboard.layoutDtoList);
-      console.log(selectedLayout);
       this.currentDashboard.layoutDtoList[selectedLayout].layoutWidgetDtoList.push(layoutWidget);
     },
   },
