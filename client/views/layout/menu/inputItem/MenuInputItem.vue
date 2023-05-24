@@ -40,7 +40,8 @@ input {
     border: 0.1rem solid #9eaab6;
 }
 p {
-    margin-top: 1.2rem;
+    margin-top: 0.6rem;
+    margin-bottom: 0.6rem;
     margin-left: 0.5rem;
 }
 .dashboardTitle{
