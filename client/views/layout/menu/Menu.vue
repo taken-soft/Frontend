@@ -91,9 +91,13 @@ export default {
     },
 
     onCreateDashboardClick() {
-      console.log((new CreateDashboardRequestDTO("2x2", 1)));
-      createDashboard((new CreateDashboardRequestDTO("2x2", 1))).then((response) => {
-        console.log(CreateDashboardResponseDTO.fromJson(response.data));
+      let createDashboardRequestDTO = new CreateDashboardRequestDTO("2x2", 1)
+      createDashboard(createDashboardRequestDTO).then((response) => {
+        let data = response.data;
+        data["dashboardTitle"] = "New Dashboard";
+        data["dashboardType"] = createDashboardRequestDTO.dashboardType;
+        data["dashboardSequence"] = createDashboardRequestDTO.dashboardSequence;
+        console.log(CreateDashboardResponseDTO.fromJson(data));
       })
     }
   },

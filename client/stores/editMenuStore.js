@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 
 export const useEditMenuStore = defineStore("editMenuStore", {
   state: () => {
-    let editMenuRouter = new Array();
+    let editMenuRouter = [];
     return {
       editMenuRouter,
     };

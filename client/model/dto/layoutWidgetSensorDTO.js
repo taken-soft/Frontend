@@ -9,8 +9,8 @@ export default class LayoutWidgetSensorDTO {
 
   toJson() {
     return {
-      "layoutWidgetSensorSequence": this.layoutWidgetSensorSequence,
-      "sensorId": this.sensorId,
+      layoutWidgetSensorSequence: this.layoutWidgetSensorSequence,
+      sensorId: this.sensorId,
     };
   }
 
@@ -18,6 +18,6 @@ export default class LayoutWidgetSensorDTO {
     return LayoutWidgetSensorDTO(
       json["layoutWidgetSensorSequence"],
       json["sensorId"]
-    )
+    );
   }
 }

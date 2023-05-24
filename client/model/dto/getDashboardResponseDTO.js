@@ -21,8 +21,18 @@ export default class GetDashboardResponseDTO {
     this.layoutList = layoutList;
   }
 
+  toJson = () => {
+    return {
+      dashboardId: this.dashboardId,
+      dashboardTitle: this.dashboardTitle,
+      dashboardType: this.dashboardType,
+      dashboardSequence: this.dashboardSequence,
+      layoutList: this.layoutList.map((e) => e.toJson()),
+    };
+  };
+
   static fromJson = (json) => {
-    let layoutList = Object.entries(json["layoutList"])
+    let layoutList = Object.entries(json["layoutList"]);
     return new GetDashboardResponseDTO(
       json["dashboardId"],
       json["dashboardTitle"],

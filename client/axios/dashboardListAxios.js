@@ -15,6 +15,7 @@ export async function getDashboard(dashboardId) {
 }
 
 export async function saveDashboard(saveDashboardRequestDTO) {
+  console.log(saveDashboardRequestDTO);
   return axios.post("http://" + API_SERVER_HOST + `/dashboards/save`, saveDashboardRequestDTO.toJson());
 }
 

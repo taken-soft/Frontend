@@ -2,7 +2,9 @@ import MenuEntity from "./menuEntity";
 
 export default class MenuValueEntity extends MenuEntity {
   currentValue = "";
-  onValueChange;
+  onValueChange = (event) => {
+    this.currentValue = event.target.value;
+  };
 
   constructor(
     text,
@@ -11,7 +13,7 @@ export default class MenuValueEntity extends MenuEntity {
     currentValue,
   ) {
     super(text, icon);
-    this.onValueChange = onValueChange;
-    this.currentValue = currentValue;
+    if(onValueChange) this.onValueChange = onValueChange;
+    if(currentValue) this.currentValue = currentValue;
   }
 }
