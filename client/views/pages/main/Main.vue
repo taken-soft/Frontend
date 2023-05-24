@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import Dashboard1 from "./DashBoard1.vue";
-import Dashboard2 from "./DashBoard2.vue";
+import Dashboard1 from "./Dashboard1.vue";
+import Dashboard2 from "./Dashboard2.vue";
 
 import { useDashboardStore } from "../../../stores/dashboardStore";
 
