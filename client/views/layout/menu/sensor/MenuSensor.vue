@@ -1,8 +1,23 @@
 <template>
   <div class="m-b">
     <label for="" class="m-r" :innerHTML="menuEntity.text"></label>
-    <menu-dropdown :menu-entity=menuEntity.device></menu-dropdown>
-    <menu-dropdown :menu-entity=menuEntity.sensor></menu-dropdown>
+    <label for="" class="m-r" :innerHTML="장치"></label>
+    <select name="" id="" @change="(event) => {
+        menuEntity.onDeviceChange(event.target.value);
+        this.$forceUpdate();
+      }">
+      <option v-for="(_, key) in menuEntity.device" v-bind:value="key" :innerHTML="key" v-bind:key="key"
+        :selected="menuEntity.currentValue[0] == key">
+      </option>
+    </select>
+    <label for="" class="m-r" :innerHTML="센서"></label>
+    <select name="" id="" @change="(event) => {
+        menuEntity.onSensorChange(event.target.value);
+      }">
+      <option v-for="(equipment, key) in menuEntity.sensor()" v-bind:value="equipment" :innerHTML="key" v-bind:key="key"
+        :selected="menuEntity.currentValue[1] == key">
+      </option>
+    </select>
   </div>
 </template>
 <script>
@@ -18,6 +33,9 @@ import MenuColor from "../color/MenuColor.vue";
 export default {
   props: {
     menuEntity: MenuSensorEntity
+  },
+  methods: {
+
   },
   components: {
     MenuItem: MenuItem,

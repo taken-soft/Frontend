@@ -1,6 +1,6 @@
 import EditMenuRoute from "./editMenuRoute";
 import MenuColorEntity from "../color/menuColorEntity";
-import MenuFileEntity from "../file/menuFileEntity"
+import MenuFileEntity from "../file/menuFileEntity";
 
 import { useNewWidgetStore } from "../../../../stores/newWidgetStore";
 import MenuInputEntity from "../input/menuInputEntity";
@@ -44,17 +44,17 @@ export default class EditMenuWidgetRoute extends EditMenuRoute {
 
     let eventDtoList = [];
 
-    let widgetId = this.widgetMap.get(this.title)[0]
+    let widgetId = this.widgetMap.get(this.title)[0];
 
     for (let i = 0; i < route.length; i++) {
-      if (route[i] instanceof MenuSensorEntity && !route[i].currentValue[1])
+      if (route[i] instanceof MenuSensorEntity && route[i].currentValue[1]) {
         layoutWidgetSensorDtoList.push(
           new LayoutWidgetSensorDTO(
             layoutWidgetSensorSequence++,
             route[i].currentValue[1]
           )
         );
-      else if (route[i] instanceof MenuColorEntity)
+      } else if (route[i] instanceof MenuColorEntity)
         backgroundColor = route[i].currentValue;
       else if (route[i] instanceof MenuEventEntity)
         eventDtoList.push(
