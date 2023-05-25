@@ -29,7 +29,6 @@ import { useDashboardStore } from "../../stores/dashboardStore";
 import { useModeStore } from "../../stores/modeStore";
 import Widget from "./Widget.vue";
 import WidgetGrid from "./WidgetGrid.vue";
-import BarChart from "./Widgets/BarChart.vue";
 
 export default {
     data() {

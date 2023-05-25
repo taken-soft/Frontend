@@ -62,10 +62,7 @@ export default {
         return { gridClick, gridDrag, gridOver, deleteWidget };
     },
     methods: {},
-    mounted() {
-        // console.log("hi")
-        console.log(this.onDrag);
-    },
+    mounted() {},
     computed: {
         deleteStyle() {
             const newWidgetStore = useNewWidgetStore();
