@@ -22,6 +22,8 @@ export const useDashboardStore = defineStore("dashboardStore", {
       this.selectedDashBoard = dashboardId;
       getDashboard(dashboardId).then((response) => {
         this.currentDashboard = GetDashboardResponseDTO.fromJson(response.data);
+        console.log("setSelectedDashBoard");
+        console.log(this.currentDashboard);
       });
     },
     setDashboardList(newDashboardList) {
