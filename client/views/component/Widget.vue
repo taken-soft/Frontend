@@ -1,6 +1,6 @@
 <template>
     <div>
-        <component class="widget" :is="widgetType" :style="widgetStyle" :eventList="eventList" :color="color" :property="property" :sensorList="sensorList" />
+        <component class="widget" :is="widgetType" v-if="isVisible" :style="widgetStyle" :eventList="eventList" :color="color" :property="property" :sensorList="sensorList" />
     </div>
 </template>
 
@@ -38,6 +38,12 @@ export default {
                 height: (endY - startY + 1) * 10 + "%",
                 fontSize: (endY - startY) * 2 + 1.8 + "em",
             };
+        },
+        isVisible() {
+            if (this.startPos < 1) {
+                return false
+            }
+            return true
         },
     },
 };

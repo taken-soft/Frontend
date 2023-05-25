@@ -5,8 +5,8 @@ export const useNewWidgetStore = defineStore("newWidgetStore", {
         return {
             widgetType: "BarChart",
             selectedLayout: 0,
-            startPos: 1,
-            endPos: 1,
+            startPos: 0,
+            endPos: 0,
         };
     },
     getters: {
