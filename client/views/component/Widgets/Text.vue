@@ -10,7 +10,7 @@ export default {
         sensorText() {
             // sensorData 가져와야함
             let data = 10;
-            return `${data}${this.sensorList ? unit[this.sensorList[0].sensorId] : null}`;
+            return `${data}${this.sensorList === [] ? unit[this.sensorList[0].sensorId] : ""}`;
         },
     },
 };

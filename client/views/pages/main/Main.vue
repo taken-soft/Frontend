@@ -9,6 +9,7 @@ import Dashboard1 from "./Dashboard1.vue";
 import Dashboard2 from "./Dashboard2.vue";
 
 import { useDashboardStore } from "../../../stores/dashboardStore";
+import { useWidgetDataStore } from "../../../stores/widgetDataStore";
 
 export default {
     data() {
@@ -17,17 +18,42 @@ export default {
     methods: {},
     watch: {},
     computed: {
-        dashboardStyle(){
-            const dashboardStore = useDashboardStore()
-            let componentName = "div"
-            if(dashboardStore.currentDashboard.dashboardType === "2x2"){
-                componentName = "Dashboard1"
+        dashboardStyle() {
+            const dashboardStore = useDashboardStore();
+            let componentName = "div";
+            if (dashboardStore.currentDashboard.dashboardType === "2x2") {
+                componentName = "Dashboard1";
             }
-            if(dashboardStore.currentDashboard.dashboardType === "2x4"){
-                componentName = "Dashboard2"
+            if (dashboardStore.currentDashboard.dashboardType === "2x4") {
+                componentName = "Dashboard2";
             }
-            return componentName
-        }
+            return componentName;
+        },
+        sensorDataList() {
+            const dashboardStore = useDashboardStore();
+            const widgetDataStore = useWidgetDataStore();
+            let sensorList = [];
+            for (let layout of dashboardStore.currentDashboard.layoutDtoList) {
+                for (let widget of layout.layoutWidgetDtoList) {
+                    let graph = false;
+                    if (widget.widgetId == 3) {
+                        graph = true;
+                    }
+                    for (let sensor of widget.layoutWidgetSensorDtoList) {
+                        // console.log(sensor.sensorId, widget.widgetId);
+                        let sensorData = { sensorId: sensor.sensorId, graph: graph };
+                        sensorList.push(sensorData);
+                    }
+                }
+            }
+            console.log("asdf");
+            const uniqueSensorList = sensorList.filter(
+                (obj, index, self) => index === self.findIndex((t) => t.sensorId === obj.sensorId && t.graph === obj.graph)
+            );
+            // console.log(uniqueSensorList)
+            widgetDataStore.setSensorList(uniqueSensorList);
+            return dashboardStore.currentDashboard;
+        },
     },
     components: {
         Dashboard1: Dashboard1,
