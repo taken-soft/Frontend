@@ -26,7 +26,7 @@
                     :sensor-list="[]"
                     :color="''"
                     :event-list="[]"
-                    :property="{}"
+                    :property="null"
                 ></Widget>
                 <!--  -->
             </div>
