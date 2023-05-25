@@ -15,10 +15,11 @@ export default {
     components: {
         Line,
     },
+    props: ["eventList", "color", "property", "sensorList"],
     data() {
         return {
             data: {
-                labels: ["1", "2", "3", "4", "5", "6", "7"],
+                labels: ["12:56", "12:57", "12:58", "12:59", "13:00"],
                 datasets: [
                     {
                         label: "데이터 1",

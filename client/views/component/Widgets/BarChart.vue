@@ -14,19 +14,28 @@ export default {
     components: {
         Bar,
     },
+    props: ["eventList", "color", "property", "sensorList"],
     data() {
         return {
-            data: {
-                labels: ["January", "February", "March", "April", "May"],
+            chartLabels: ["1", "2", "3", "4", "5"],
+            chartData: [40, 20, 12, 39, 10],
+        };
+    },
+    computed: {
+        data() {
+            
+            let chartData = {
+                labels: this.chartLabels,
                 datasets: [
                     {
-                        label: "Data One",
+                        label: "데이터",
                         backgroundColor: "#f87979",
-                        data: [40, 20, 12, 39, 10],
+                        data: this.chartData,
                     },
                 ],
-            },
-        };
+            };
+            return chartData;
+        },
     },
 };
 </script>
