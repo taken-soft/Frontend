@@ -69,12 +69,10 @@ const App = {
     const dashboardStore = useDashboardStore();
     const widgetDataStore = useWidgetDataStore();
 
-    // setInterval(widgetDataStore.getSensorDataList, 1000);
+    //setInterval(widgetDataStore.getSensorDataList, 1000);
 
     getDashboardList()
       .then((result) => {
-        console.log("????");
-        console.log(result.data);
         dashboardStore.setDashboardList(result.data);
       })
       .catch((err) => {

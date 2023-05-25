@@ -5,7 +5,12 @@ import MenuSensorEntity from "../sensor/menuSensorEntity";
 import EditMenuWidgetRoute from "./editMenuWidgetRoute";
 
 export default class EditMenuBar extends EditMenuWidgetRoute {
-  title = "막대 그래프";
+  constructor() {
+    super();
+    this.title = "막대 그래프";
+    this.newWidgetStore.setWidgetType(this.widgetMap.get(this.title));
+  }
+
   sensorList = [new MenuSensorEntity("센서")];
   route = () => {
     return [

@@ -8,7 +8,11 @@ import MenuEventEntity from "../event/menuEventEntity";
 import EditMenuWidgetRoute from "./editMenuWidgetRoute";
 
 export default class EditMenuText extends EditMenuWidgetRoute {
-  title = "텍스트";
+  constructor() {
+    super();
+    this.title = "텍스트";
+    this.newWidgetStore.setWidgetType(this.widgetMap.get(this.title));
+  }
   sensorList = [new MenuSensorEntity("센서", null)];
   eventList = [];
 

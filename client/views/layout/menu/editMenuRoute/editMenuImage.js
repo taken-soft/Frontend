@@ -5,7 +5,11 @@ import MenuButtonEntity from "../button/menuButtonEntity";
 import EditMenuWidgetRoute from "./editMenuWidgetRoute";
 
 export default class EditMenuImage extends EditMenuWidgetRoute {
-  title = "이미지";
+  constructor() {
+    super();
+    this.title = "이미지";
+    this.newWidgetStore.setWidgetType(this.widgetMap.get(this.title));
+  }
 
   imageInput = new MenuFileEntity("이미지", null, "image/*");
 

@@ -1,5 +1,6 @@
 import EditMenuRoute from "./editMenuRoute";
 import MenuColorEntity from "../color/menuColorEntity";
+import MenuFileEntity from "../file/menuFileEntity"
 
 import { useNewWidgetStore } from "../../../../stores/newWidgetStore";
 import MenuInputEntity from "../input/menuInputEntity";
@@ -10,6 +11,15 @@ import MenuSensorEntity from "../sensor/menuSensorEntity";
 import EventDTO from "../../../../model/dto/eventDTO";
 
 export default class EditMenuWidgetRoute extends EditMenuRoute {
+  widgetMap = new Map([
+    ["텍스트", "Text"],
+    ["이미지", "Img"],
+    ["사각형", "Rect"],
+    ["원", "Circle"],
+    ["막대 그래프", "BarChar"],
+    ["꺾은선 그래프", "LineChar"],
+  ]);
+
   isVanilla = true;
   backgroundColor;
 
@@ -46,14 +56,18 @@ export default class EditMenuWidgetRoute extends EditMenuRoute {
         );
       else if (route[i] instanceof MenuColorEntity)
         backgroundColor = route[i].currentValue;
-      else if(route[i] instanceof MenuEventEntity)
-        eventDtoList.push(new EventDTO(
-          route[i].currentValue[2],
-          route[i].currentValue[3],
-          route[i].currentValue[1],
-          route[i].currentValue[0]
-        ))
-      else if(route[i] instanceof MenuInputEntity)
+      else if (route[i] instanceof MenuEventEntity)
+        eventDtoList.push(
+          new EventDTO(
+            route[i].currentValue[2],
+            route[i].currentValue[3],
+            route[i].currentValue[1],
+            route[i].currentValue[0]
+          )
+        );
+      else if (route[i] instanceof MenuInputEntity)
+        property = route[i].currentValue;
+      else if (route[i] instanceof MenuFileEntity)
         property = route[i].currentValue;
     }
 
@@ -69,7 +83,7 @@ export default class EditMenuWidgetRoute extends EditMenuRoute {
         layoutWidgetSensorDtoList,
         widgetId
       )
-    )
+    );
 
     console.log(
       new LayoutWidgetDTO(

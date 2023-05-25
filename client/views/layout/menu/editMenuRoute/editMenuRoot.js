@@ -9,6 +9,7 @@ import {
   getDashboardList,
   deleteDashboard,
 } from "../../../../axios/dashboardListAxios";
+import MenuInputItemEntity from "../inputItem/MenuInputItemEntity";
 
 export default class EditMenuRoot extends EditMenuRoute {
   title = this.dashboardStore.getSelectedDashBoard;
@@ -23,9 +24,20 @@ export default class EditMenuRoot extends EditMenuRoute {
 
   route = () => {
     return [
-      new MenuItemEntity(this.title, "back", null, () => {
-        this.onBackPressed();
-      }),
+      new MenuInputItemEntity(
+        this.title,
+        "back",
+        "대시보드 명",
+        this.title,
+        (event) => {
+          this.title = event.target.value;
+          this.dashboardStore.setDashboardTitle(event.target.value);
+        },
+        null,
+        () => {
+          this.onBackPressed();
+        }
+      ),
       new MenuItemEntity(
         "위젯 추가",
         "add",
