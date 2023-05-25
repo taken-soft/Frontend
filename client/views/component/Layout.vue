@@ -10,8 +10,11 @@
                     :start-pos="item.layoutWidgetStartPos"
                     :end-pos="item.layoutWidgetEndPos"
                     :widget-type="widgetName(item.widgetId)"
+                    :sensor-list="item.layoutWidgetSensorDtoList"
+                    :color="item.layoutWidgetColor"
+                    :event-list="item.eventDtoList"
+                    :property="item.layoutWidgetProperty"
                 ></Widget>
-                <!-- <div v-for="(item, index) in widgets" :key="index">{{ item.layoutWidgetStartPos }} {{ item.layoutWidgetEndPos }} {{ item.widgetId }}</div> -->
                 <!--  -->
 
                 <!-- new widget -->

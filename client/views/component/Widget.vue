@@ -1,6 +1,6 @@
 <template>
     <div>
-        <component :is="widgetType" class="widget" :style="widgetStyle" />
+        <component class="widget" :is="widgetType" :style="widgetStyle" :eventList="eventList" :color="color" :property="property" :sensorList="sensorList" />
     </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
     data() {
         return {};
     },
-    props: ["startPos", "endPos", "widgetType"],
+    props: ["startPos", "endPos", "widgetType", "eventList", "color", "property", "sensorList"],
     components: {
         Text,
         Rect,
