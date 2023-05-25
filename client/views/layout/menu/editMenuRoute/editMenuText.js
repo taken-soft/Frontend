@@ -7,6 +7,9 @@ import MenuEventEntity from "../event/menuEventEntity";
 
 import EditMenuWidgetRoute from "./editMenuWidgetRoute";
 
+import Device from "../../../../json/Devices.json";
+import Calculate from "../../../../json/Calculate.json"
+
 export default class EditMenuText extends EditMenuWidgetRoute {
   constructor() {
     super();
@@ -16,17 +19,20 @@ export default class EditMenuText extends EditMenuWidgetRoute {
   sensorList = [new MenuSensorEntity("센서", null)];
   eventList = [];
 
+  vanillaText = new MenuInputEntity("텍스트", null, "텍스트");
+
   vanillaDropdown = new MenuDropdownEntity(
     "장치",
     null,
-    ["없음", "장치1", "장치2", "장치3"],
-    (value) => this.changeIsVanilla(value == "없음")
+    Device,
+    (value) => this.changeIsVanilla(value == "없음"),
+    "없음"
   );
-  vanillaText = new MenuInputEntity("텍스트", null, "텍스트");
+
   calculateDropdown = new MenuDropdownEntity(
     "산술식",
     null,
-    ["평균", "최대", "최소", "합"],
+    Calculate,
     null,
     "평균"
   );
