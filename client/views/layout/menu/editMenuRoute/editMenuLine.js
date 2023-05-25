@@ -9,7 +9,7 @@ export default class EditMenuLine extends EditMenuWidgetRoute {
   constructor() {
     super();
     this.title = "꺾은선 그래프";
-    this.newWidgetStore.setWidgetType(this.widgetMap.get(this.title));
+    this.newWidgetStore.setWidgetType(this.widgetMap.get(this.title)[1]);
   }
   sensorList = [
     new MenuSensorEntity("센서", null),

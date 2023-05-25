@@ -12,12 +12,12 @@ import EventDTO from "../../../../model/dto/eventDTO";
 
 export default class EditMenuWidgetRoute extends EditMenuRoute {
   widgetMap = new Map([
-    ["텍스트", "Text"],
-    ["이미지", "Img"],
-    ["사각형", "Rect"],
-    ["원", "Circle"],
-    ["막대 그래프", "BarChar"],
-    ["꺾은선 그래프", "LineChar"],
+    ["텍스트", [1, "Text"]],
+    ["이미지", [2, "Img"]],
+    ["꺾은선 그래프", [3, "LineChar"]],
+    ["막대 그래프", [4, "BarChar"]],
+    ["사각형", [5, "Rect"]],
+    ["원", [6, "Circle"]],
   ]);
 
   isVanilla = true;
@@ -44,7 +44,7 @@ export default class EditMenuWidgetRoute extends EditMenuRoute {
 
     let eventDtoList = [];
 
-    let widgetId = 1; // widgetMap[this.title]
+    let widgetId = this.widgetMap.get(this.title)[0]
 
     for (let i = 0; i < route.length; i++) {
       if (route[i] instanceof MenuSensorEntity && !route[i].currentValue[1])

@@ -8,7 +8,7 @@ export default class EditMenuImage extends EditMenuWidgetRoute {
   constructor() {
     super();
     this.title = "이미지";
-    this.newWidgetStore.setWidgetType(this.widgetMap.get(this.title));
+    this.newWidgetStore.setWidgetType(this.widgetMap.get(this.title)[1]);
   }
 
   imageInput = new MenuFileEntity("이미지", null, "image/*");
