@@ -11,7 +11,7 @@ export default class EditMenuSquare extends EditMenuWidgetRoute {
   constructor() {
     super();
     this.title = "사각형";
-    this.newWidgetStore.setWidgetType(this.widgetMap.get(this.title));
+    this.newWidgetStore.setWidgetType(this.widgetMap.get(this.title)[1]);
   }
   sensorList = [new MenuSensorEntity("센서", null)];
   eventList = [];
