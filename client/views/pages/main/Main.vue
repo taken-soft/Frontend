@@ -1,6 +1,6 @@
 <template>
     <div>
-        <component :is="dashboardStyle"></component>
+        <component :is="dashboardStyle" :key="sensorDataList"></component>
     </div>
 </template>
 
@@ -52,7 +52,7 @@ export default {
             );
             // console.log(uniqueSensorList)
             widgetDataStore.setSensorList(uniqueSensorList);
-            return dashboardStore.currentDashboard;
+            return dashboardStore.currentDashboard.dashboardId;
         },
     },
     components: {
