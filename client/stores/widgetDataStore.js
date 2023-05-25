@@ -28,8 +28,9 @@ export const useWidgetDataStore = defineStore("widgetDataStore", {
     setSensorList(sensorList){
       let getSeneorDataListRequestDTOList = []
       for(let sensor of sensorList){
-        //asdf
+        getSeneorDataListRequestDTOList.push(new GetSensorDataRequestDTO(sensor.sensorId, sensor.graph))
       }
+      this.getSeneorDataListRequestDTO = getSeneorDataListRequestDTOList
     }
   },
 });

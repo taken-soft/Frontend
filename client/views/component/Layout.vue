@@ -18,7 +18,16 @@
                 <!--  -->
 
                 <!-- new widget -->
-                <Widget v-if="selected && isEditorMode" :start-pos="newStartPos" :end-pos="newEndPos" :widget-type="newWidgetType"></Widget>
+                <Widget
+                    v-if="selected && isEditorMode"
+                    :start-pos="newStartPos"
+                    :end-pos="newEndPos"
+                    :widget-type="newWidgetType"
+                    :sensor-list="[]"
+                    :color="''"
+                    :event-list="[]"
+                    :property="{}"
+                ></Widget>
                 <!--  -->
             </div>
             <WidgetGrid v-if="selected && isEditorMode"></WidgetGrid>
