@@ -36,7 +36,7 @@ export default {
             for (let layout of dashboardStore.currentDashboard.layoutDtoList) {
                 for (let widget of layout.layoutWidgetDtoList) {
                     let graph = false;
-                    if (widget.widgetId == 3) {
+                    if (widget.widgetId == 3 || widget.widgetId == 4) {
                         graph = true;
                     }
                     for (let sensor of widget.layoutWidgetSensorDtoList) {

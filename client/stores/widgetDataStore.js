@@ -26,11 +26,11 @@ export const useWidgetDataStore = defineStore("widgetDataStore", {
       });
     },
     setSensorList(sensorList){
-      let getSeneorDataListRequestDTOList = []
+      let seneorDataRequestDTOList = []
       for(let sensor of sensorList){
-        getSeneorDataListRequestDTOList.push(new GetSensorDataRequestDTO(sensor.sensorId, sensor.graph))
+        seneorDataRequestDTOList.push(new GetSensorDataRequestDTO(sensor.sensorId, sensor.graph))
       }
-      this.getSeneorDataListRequestDTO = getSeneorDataListRequestDTOList
+      this.getSeneorDataListRequestDTO = new GetSeneorDataListRequestDTO(seneorDataRequestDTOList);
     }
   },
 });
