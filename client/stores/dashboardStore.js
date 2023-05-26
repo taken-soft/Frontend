@@ -22,11 +22,11 @@ export const useDashboardStore = defineStore("dashboardStore", {
       this.selectedDashBoard = dashboardId;
       getDashboard(dashboardId).then((response) => {
         this.currentDashboard = GetDashboardResponseDTO.fromJson(response.data);
-        console.log("setSelectedDashBoard");
-        console.log(this.currentDashboard);
+//        console.log("setSelectedDashBoard");
+//        console.log(this.currentDashboard);
       });
-      console.log("this.currentDashboard.layoutDtoList");
-      console.log(this.currentDashboard.layoutDtoList);
+//      console.log("this.currentDashboard.layoutDtoList");
+//      console.log(this.currentDashboard.layoutDtoList);
     },
     setDashboardList(newDashboardList) {
       this.dashboardList.clear();
@@ -40,14 +40,14 @@ export const useDashboardStore = defineStore("dashboardStore", {
       this.setSelectedDashBoard(Array.from(this.dashboardList.keys())[0]);
     },
     addNewWidget(selectedLayout, layoutWidget) {
-      console.log("this.currentDashboard.layoutDtoList");
-      console.log(this.currentDashboard.layoutDtoList);
-      console.log(selectedLayout);
+//      console.log("this.currentDashboard.layoutDtoList");
+//      console.log(this.currentDashboard.layoutDtoList);
+//      console.log(selectedLayout);
       this.currentDashboard.layoutDtoList[selectedLayout - 1].layoutWidgetDtoList.push(layoutWidget);
     },
     setDashboardTitle(value) {
       this.currentDashboard.dashboardTitle = value;
-      console.log(this.currentDashboard.dashboardTitle);
+//      console.log(this.currentDashboard.dashboardTitle);
     }
   },
 });

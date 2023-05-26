@@ -1,61 +1,106 @@
 <template>
-    <div>
-        <Line class="lineChart" :data="data" :options="options" />
-    </div>
+  <div>
+    <Line class="lineChart" :data="data" :options="options" />
+  </div>
 </template>
 
 <script>
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from "chart.js";
 import { Line } from "vue-chartjs";
 
+import Sensor from "../../../json/CopySensors.json"
+
+import { useWidgetDataStore } from "../../../stores/widgetDataStore";
+
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 export default {
-    name: "App",
-    components: {
-        Line,
-    },
-    props: ["eventList", "color", "property", "sensorList"],
-    data() {
-        return {
-            data: {
-                labels: ["12:56", "12:57", "12:58", "12:59", "13:00"],
-                datasets: [
-                    {
-                        label: "데이터 1",
-                        backgroundColor: "#f87979",
-                        data: [40, 39, 10, 40, 39, 80, 40],
-                    },
-                    {
-                        label: "데이터 2",
-                        backgroundColor: "#79f879",
-                        data: [10, 29, 40, 80, 19, 70, 60],
-                    },
-                    {
-                        label: "데이터 3",
-                        backgroundColor: "#79f879",
-                        data: [12, 14, 70, 50, 99, 30, 10],
-                    },
-                    {
-                        label: "데이터 4",
-                        backgroundColor: "#79f879",
-                        data: [60, 69, 10, 40, 69, 30, 20],
-                    },
-                ],
-            },
+  name: "App",
+  components: {
+    Line,
+  },
+  props: ["eventList", "color", "property", "sensorList"],
+  data() {
+    return {
+      labels: ["4분전", "3분전", "2분전", "1분전", "현재"],
+      datasets: [
+        {
+          label: "데이터 1",
+          backgroundColor: "#f87979",
+          data: [40, 39, 10, 40, 39, 80, 40],
+        },
+        {
+          label: "데이터 2",
+          backgroundColor: "#79f879",
+          data: [10, 29, 40, 80, 19, 70, 60],
+        },
+        {
+          label: "데이터 3",
+          backgroundColor: "#79f879",
+          data: [12, 14, 70, 50, 99, 30, 10],
+        },
+        {
+          label: "데이터 4",
+          backgroundColor: "#79f879",
+          data: [60, 69, 10, 40, 69, 30, 20],
+        },
+      ],
 
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-            },
-        };
+
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+      },
+    };
+  },
+  computed: {
+    data() {
+      let dataListList = [];
+
+      console.log("this.sensorList");
+      console.log(this.sensorList);
+
+      if (this.sensorList.length !== 0) {
+        let widgetDataStore = useWidgetDataStore();
+        console.log("widgetDataStore.getSensorDataListResponseDTO.realtimeSensorDataList");
+        console.log(widgetDataStore.getSensorDataListResponseDTO.realtimeSensorDataList);
+        for (let sensor of this.sensorList) {
+          for (let data of widgetDataStore.getSensorDataListResponseDTO.realtimeSensorDataList) {
+            if (data.sensorId == sensor.sensorId) {
+              let dataList = [];
+              for (let sensorValue of data.sensorValues) {
+                dataList.push(Number(sensorValue.value));
+              }
+              dataListList.push({label: Sensor[sensor.sensorId] , data : dataList});
+            }
+          }
+        }
+      }
+//      this.labels = labelList;
+      this.datasets = dataListList.map(
+        (e) => {
+          return {
+            label: e.label,
+            backgroundColor: "#f87979",
+            data: e.data,
+          }
+        }
+      );
+      console.log(this.labels);
+      console.log(this.datasets);
+      let chartData = {
+        labels: this.labels,
+        datasets: this.datasets
+      };
+      return chartData;
     },
+  }
 };
 </script>
 
 <style scoped>
 .lineChart {
-    background-color: white;
-    border: solid 1px black;
+  background-color: white;
+  border: solid 1px black;
 }
 </style>
