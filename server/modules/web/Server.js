@@ -171,6 +171,32 @@ webServer.get("/img/factory", function (request, response, next) {
 
 /**
  * @author : 나재현
+ * @since : 2023.05.26
+ * @dscription : taken.png 접근용
+ */
+webServer.get("/img/taken", function (request, response, next) {
+  response.sendFile(`${BASE_DIR}/server/img/taken.png`);
+});
+/**
+ * @author : 나재현
+ * @since : 2023.05.26
+ * @dscription : taken.png 접근용
+ */
+webServer.get("/img/taken", function (request, response, next) {
+  response.sendFile(`${BASE_DIR}/server/img/taken.png`);
+});
+
+/**
+ * @author : 나재현
+ * @since : 2023.05.26
+ * @dscription : background.png 접근용
+ */
+webServer.get("/img/background", function (request, response, next) {
+  response.sendFile(`${BASE_DIR}/server/img/background.png`);
+});
+
+/**
+ * @author : 나재현
  * @since : 2023.05.19
  * @dscription : 신규 대시보드 생성
  */

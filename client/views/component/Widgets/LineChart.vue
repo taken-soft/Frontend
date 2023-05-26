@@ -100,7 +100,7 @@ export default {
 
 <style scoped>
 .lineChart {
-  background-color: white;
-  border: solid 1px black;
+    background-color: white;
+    border: solid 1px rgba(0, 0, 0, 0.2);
 }
 </style>

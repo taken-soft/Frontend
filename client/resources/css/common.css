@@ -13,7 +13,7 @@
 .grid2_2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 0rem;
 }
 .grid4_2 {
   display: grid;

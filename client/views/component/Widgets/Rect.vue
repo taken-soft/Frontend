@@ -1,5 +1,5 @@
 <template>
-  <div class="rect" :style="rectStyle">Rect</div>
+  <div class="rect" :style="rectStyle"></div>
 </template>
 <script>
 import { useWidgetDataStore } from '../../../stores/widgetDataStore';
@@ -51,5 +51,6 @@ export default {
 <style scoped>
 .rect {
   background-color: #c0c0c0;
+  border: 1px solid #a0a0a0;
 }
 </style>

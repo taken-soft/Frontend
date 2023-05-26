@@ -1,11 +1,11 @@
 <template>
   <div v-cloak>
-    <Header></Header>
+    <Header :dashboardName="getDashboard()"></Header>
     <div class="navhead flex">
       <svg v-on:click="hide" xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30">
         <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
       </svg>
-      <span :innerHTML="getDashboard()"> </span>
+      <!-- <span :innerHTML="getDashboard()"> </span> -->
     </div>
     <!-- nav inner-->
     <div class="nav flex" v-bind:style="{ display: displayStyle }">
@@ -101,9 +101,20 @@ export default App;
   position: absolute;
   margin: 0px 0px;
   padding: 1.5rem;
+  padding-top: 0rem;
   width: 100%;
   height: calc(100vh - 8.5rem);
-  background: #f3f6ff;
+  background: rgba(0,0,0,0);
+  background-size: 200% 100%;
+  animation: gradientAnimation 5s infinite alternate;
+}
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 .mainwrap.expand {
