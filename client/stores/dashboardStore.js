@@ -25,6 +25,8 @@ export const useDashboardStore = defineStore("dashboardStore", {
         console.log("setSelectedDashBoard");
         console.log(this.currentDashboard);
       });
+      console.log("this.currentDashboard.layoutDtoList");
+      console.log(this.currentDashboard.layoutDtoList);
     },
     setDashboardList(newDashboardList) {
       this.dashboardList.clear();
@@ -38,7 +40,10 @@ export const useDashboardStore = defineStore("dashboardStore", {
       this.setSelectedDashBoard(Array.from(this.dashboardList.keys())[0]);
     },
     addNewWidget(selectedLayout, layoutWidget) {
-      this.currentDashboard.layoutDtoList[selectedLayout].layoutWidgetDtoList.push(layoutWidget);
+      console.log("this.currentDashboard.layoutDtoList");
+      console.log(this.currentDashboard.layoutDtoList);
+      console.log(selectedLayout);
+      this.currentDashboard.layoutDtoList[selectedLayout - 1].layoutWidgetDtoList.push(layoutWidget);
     },
     setDashboardTitle(value) {
       this.currentDashboard.dashboardTitle = value;
