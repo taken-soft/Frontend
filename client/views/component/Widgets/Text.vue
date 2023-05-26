@@ -64,7 +64,7 @@ export default {
                 }
             }
             return {
-                backgroundColor: color,
+                color: color,
             };
         },
     },
@@ -72,7 +72,7 @@ export default {
 </script>
 <style scoped>
 .text {
-    background-color: #c0c0c0;
+    background-color: #F5F5F5;
     overflow-x: clip;
 }
 </style>
