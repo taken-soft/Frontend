@@ -1,5 +1,5 @@
 <template>
-  <div class="circleWidget" :style="circleStyle">Circle</div>
+  <div class="circleWidget" :style="circleStyle"></div>
 </template>
 <script>
 import { useWidgetDataStore } from '../../../stores/widgetDataStore';

@@ -119,6 +119,10 @@ export default {
     min-height: 20rem;
     border-radius: 5px;
     height: calc(50vh - 6rem);
+    border: 1px solid #e0e0e0;
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 .layoutContainer {
     position: relative;
@@ -129,9 +133,7 @@ export default {
 }
 .layoutContent {
     position: absolute;
-    background: #f5f5f5;
-    border-color: #f0f0f0;
-    border-width: 1px;
+    background: #ffffff;
     border-radius: 5px;
     top: 0;
     left: 0;
