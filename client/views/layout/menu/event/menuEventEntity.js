@@ -2,27 +2,28 @@ import MenuColorEntity from "../color/menuColorEntity";
 import MenuDropdownEntity from "../dropdown/menuDropdownEntity";
 import MenuInputEntity from "../input/menuInputEntity";
 import MenuValueEntity from "../menuValueEntity";
+import Event from "../../../../json/Event.json"
 
 export default class MenuEventEntity extends MenuValueEntity {
-  currentValue = ["없음", null, null, null];
+  currentValue = ["배경색 변경", null, null, null];
   type = new MenuDropdownEntity(
-    "장치",
+    "이벤트 종류",
     null,
-    ["없음", "장치1", "장치2", "장치3"],
-    (value) => this.onTypeChange(value),
-    "없음"
+    Event,
+    (event) => this.onTypeChange(event.target.value),
+    "이벤트 종류"
   );
   color = new MenuColorEntity(
     "색상",
     null,
-    (value) => this.onColorChange(value),
+    (event) => this.onColorChange(event.target.value),
     null
   );
-  over = new MenuInputEntity("임계값-초과", null, "초과", (value) =>
-    this.onOverChange(value)
+  over = new MenuInputEntity("임계값-초과", null, "초과", (event) =>
+    this.onOverChange(event.target.value)
   );
-  less = new MenuInputEntity("임계값-이하", null, "이하", (value) =>
-    this.onLessChange(value)
+  less = new MenuInputEntity("임계값-이하", null, "이하", (event) =>
+    this.onLessChange(event.target.value)
   );
   onTypeChange(value) {
     this.currentValue[0] = value;
