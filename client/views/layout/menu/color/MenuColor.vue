@@ -55,11 +55,7 @@ img {
 .colorPicker{
     position: absolute;
     width: 25.5rem;
-}
-
-.colorButton{
-    padding: 1rem;
-    border-radius: 1rem;
+    z-index: 9999;
 }
 
 .colorDiv{
@@ -70,5 +66,6 @@ img {
 .colorWheel{
     position: absolute;
     margin-left: 1.5rem;
+    z-index: 1;
 }
 </style>
