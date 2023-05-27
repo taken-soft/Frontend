@@ -23,6 +23,7 @@
 <script>
 import { useNewWidgetStore } from "../../stores/newWidgetStore";
 import { useDashboardStore } from "../../stores/dashboardStore";
+import { useEditMenuStore } from "../../stores/editMenuStore";
 
 export default {
     data: () => {
@@ -36,6 +37,8 @@ export default {
         let onDrag = false;
         const newWidgetStore = useNewWidgetStore();
         const dashboardStore = useDashboardStore();
+        const editMenuStore = useEditMenuStore();
+
         const gridClick = (startPos) => {
             //console.log(x+ ","+y)
             newWidgetStore.startPos = startPos;
@@ -83,6 +86,8 @@ export default {
 
                             //삭제
                             dashboardStore.currentDashboard.layoutDtoList[newWidgetStore.selectedLayout - 1].layoutWidgetDtoList.splice(index, 1)
+
+                            editMenuStore.moveTo(newWidgetStore.widgetType);
                         }
                     }
                 }
