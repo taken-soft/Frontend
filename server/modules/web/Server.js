@@ -144,19 +144,19 @@ webServer.get("/dashboards/all", function (request, response, next) {
     .get("http://" + SERVER_HOST + "/dashboards/all")
     .then((result) => response.json(result.data))
     .catch((err) => {
-      response.json(err);
-      // response.json(
-      //   [
-      //     {
-      //         "dashboardId": 1,
-      //         "dashboardName": "New Dashboard"
-      //     },
-      //     {
-      //         "dashboardId": 2,
-      //         "dashboardName": "New Dashboard"
-      //     }
-      // ]
-      // )
+      // response.json(err);
+      response.json(
+        [
+          {
+              "dashboardId": 1,
+              "dashboardName": "New Dashboard"
+          },
+          {
+              "dashboardId": 2,
+              "dashboardName": "New Dashboard"
+          }
+      ]
+      )
     });
 });
 
@@ -219,8 +219,8 @@ webServer.get("/dashboards/:dashboardId", function (request, response, next) {
     .get("http://" + SERVER_HOST + `/dashboards/${request.params.dashboardId}`)
     .then((result) => response.json(result.data))
     .catch((err) => {
-       response.json(err);
-      //response.json(dashboardDetail)
+      //  response.json(err);
+      response.json(dashboardDetail)
     });
 });
 

@@ -29,7 +29,7 @@ export default {
         widgetStyle() {
             let startX = (this.startPos - 1) % 23;
             let startY = parseInt((this.startPos - 1) / 23);
-            let endX = this.endPos % 23;
+            let endX = this.endPos % 23 == 0 ? 23 : this.endPos % 23;
             let endY = parseInt(this.endPos / 23);
             return {
                 top: startY * 10 + "%",

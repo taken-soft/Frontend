@@ -14,6 +14,9 @@ export const useNewWidgetStore = defineStore("newWidgetStore", {
         getSelectedLayout() {
             return this.selectedLayout;
         },
+        getWidgetType(){
+          return this.widgetType
+        }
     },
     actions: {
         setSelectedLayout(layoutSeq) {
@@ -27,6 +30,6 @@ export const useNewWidgetStore = defineStore("newWidgetStore", {
             this.startPos = 0
             this.endPos=0
             this.zIndex=0
-        }
+        },  
     },
 });

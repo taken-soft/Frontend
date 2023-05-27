@@ -28,8 +28,8 @@ import { useEditMenuStore } from "../../stores/editMenuStore";
 export default {
     data: () => {
         return {
-            xSize: 23,
-            ySize: 10,
+            xSize: 20,
+            ySize: 15,
             widgetTypes: ["text", "chart", "rectangle"],
         };
     },
@@ -73,7 +73,7 @@ export default {
                     let widget = widgetList[index];
                     // console.log(widget)
                     if (widget.layoutWidgetStartPos <= endPos && widget.layoutWidgetEndPos >= endPos) {
-                        if (endPos % 23 <= widget.layoutWidgetEndPos % 23 && endPos % 23 >= widget.layoutWidgetStartPos % 23) {
+                        if (endPos % 20 <= widget.layoutWidgetEndPos % 20 && endPos % 20 >= widget.layoutWidgetStartPos % 20) {
                             // console.log(widget);
                             // console.log(index);
 
@@ -85,9 +85,9 @@ export default {
 
 
                             //삭제
-                            dashboardStore.currentDashboard.layoutDtoList[newWidgetStore.selectedLayout - 1].layoutWidgetDtoList.splice(index, 1)
+                            dashboardStore.currentDashboard.layoutDtoList[newWidgetStore.selectedLayout - 1].layoutWidgetDtoList.splice(index, 1);
 
-                            editMenuStore.moveTo(newWidgetStore.widgetType);
+                            editMenuStore.moveTo(newWidgetStore.getWidgetType());
                         }
                     }
                 }
@@ -95,10 +95,9 @@ export default {
                 newWidgetStore.endPos = newWidgetStore.startPos;
                 newWidgetStore.startPos = endPos;
             }
-            // console.log(newWidgetStore.startPos, newWidgetStore.endPos);
+            console.log(newWidgetStore.widgetType);
         };
         const deleteWidget = () => {
-            // console.log("deleteButton");
             newWidgetStore.deleteWidget();
         };
         return { gridClick, gridDrag, gridOver, deleteWidget };
@@ -111,11 +110,11 @@ export default {
 
             let startPos = newWidgetStore.startPos;
             let endPos = newWidgetStore.endPos;
-            let startY = parseInt((startPos - 1) / 23);
-            let endX = endPos % 23 == 0 ? 23 : endPos % 23;
+            let startY = parseInt((startPos - 1) / 20);
+            let endX = endPos % 20 == 0 ? 20 : endPos % 20;
             return {
-                top: `calc(${startY * 10 + "%"} - 15px)`,
-                left: `calc(${endX * 100}% / 23 - 10px)`,
+                top: `calc(${(startY * 100) / 15 + "%"} - 15px)`,
+                left: `calc(${endX * 100}% / 20 - 10px)`,
                 position: "absolute",
             };
         },
@@ -136,13 +135,13 @@ export default {
 }
 .gridIn {
     border: 1px solid rgb(180, 180, 180);
-    width: calc(100% / 23);
+    width: calc(100% / 20);
     height: 100%;
 }
 .gridOut {
     position: relative;
     width: 100%;
-    height: calc(100% / 10);
+    height: calc(100% / 15);
     display: flex;
 }
 </style>

@@ -1,7 +1,6 @@
 
 /* nav */
 .nav {
-  background: #172f67;
   height: -webkit-fill-available;
   position: absolute;
   width: 300px;
@@ -11,7 +10,22 @@
   overflow: auto;
   border-radius: 1rem 0 0 1rem;
   color: #cfd5db ;
+  background: linear-gradient(to top, #496197,  #172f67, #102655,  #172f67, #496197);
+  background-size: 100% 500%;
+  animation: navGradientAnimation 15s infinite linear;
 }
+@keyframes navGradientAnimation {
+  0% {
+      background-position: 0% 0%;
+  }
+  50% {
+      background-position: 0% 100%;
+  }
+  100% {
+      background-position: 0% 0%;
+  }
+}
+
 .nav input{
   margin-top: 0.5rem;
   border-radius: 1rem;
