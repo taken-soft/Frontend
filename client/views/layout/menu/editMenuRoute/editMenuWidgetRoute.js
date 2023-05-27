@@ -11,11 +11,6 @@ import MenuSensorEntity from "../sensor/menuSensorEntity";
 import EventDTO from "../../../../model/dto/eventDTO";
 
 export default class EditMenuWidgetRoute extends EditMenuRoute {
-  widget;
-  constructor(widget) {
-    this.widget = widget;
-  }
-
   widgetMap = new Map([
     ["텍스트", [1, "Text"]],
     ["이미지", [2, "Img"]],
@@ -81,7 +76,7 @@ export default class EditMenuWidgetRoute extends EditMenuRoute {
       new LayoutWidgetDTO(
         this.newWidgetStore.startPos,
         this.newWidgetStore.endPos,
-        widget ? widget.layoutWidgetZPos : this.dashboardStore.currentDashboard.layoutDtoList.length,
+        this.newWidgetStore.layoutWidgetZPos != 0 ? this.newWidgetStore.layoutWidgetZPos : this.dashboardStore.currentDashboard.layoutDtoList.layoutWidgetSensorDtoList.length == 0 ? 1 : this.dashboardStore.currentDashboard.layoutDtoList.layoutWidgetSensorDtoList[this.dashboardStore.currentDashboard.layoutDtoList.layoutWidgetSensorDtoList.length - 1].layoutWidgetZPos + 1,
         backgroundColor,
         property,
         eventDtoList,
@@ -94,7 +89,7 @@ export default class EditMenuWidgetRoute extends EditMenuRoute {
       new LayoutWidgetDTO(
         this.newWidgetStore.startPos,
         this.newWidgetStore.endPos,
-        widget ? widget.layoutWidgetZPos : this.dashboardStore.currentDashboard.layoutDtoList.length,
+        this.newWidgetStore.layoutWidgetZPos != 0 ? this.newWidgetStore.layoutWidgetZPos : this.dashboardStore.currentDashboard.layoutDtoList.layoutWidgetSensorDtoList.length == 0 ? 1 : this.dashboardStore.currentDashboard.layoutDtoList.layoutWidgetSensorDtoList[this.dashboardStore.currentDashboard.layoutDtoList.layoutWidgetSensorDtoList.length - 1].layoutWidgetZPos + 1,
         backgroundColor,
         property,
         eventDtoList,

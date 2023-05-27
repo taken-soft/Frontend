@@ -22,7 +22,6 @@ export const useWidgetDataStore = defineStore("widgetDataStore", {
       getSensorData(this.getSeneorDataListRequestDTO).then((response) => {
         this.getSensorDataListResponseDTO =
           GetSensorDataListResponseDTO.fromJson(response.data);
-        console.log(this.getSensorDataListResponseDTO);
       });
     },
     setSensorList(sensorList){

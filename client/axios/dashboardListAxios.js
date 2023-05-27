@@ -23,6 +23,5 @@ export async function deleteDashboard(dashboardId) {
 }
 
 export async function getSensorData(getSeneorDataListRequestDTO) {
-  console.log(getSeneorDataListRequestDTO.toJson());      
   return axios.post("http://" + API_SERVER_HOST + `/sensor/data`, getSeneorDataListRequestDTO.toJson());
 }

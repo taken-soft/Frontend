@@ -21,7 +21,6 @@ export const useNewWidgetStore = defineStore("newWidgetStore", {
         },
         setWidgetType(type) {
           this.widgetType = type;
-          console.log(this.widgetType);
         },
         deleteWidget(){
             this.widgetType =null

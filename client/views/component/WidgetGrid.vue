@@ -23,6 +23,7 @@
 <script>
 import { useNewWidgetStore } from "../../stores/newWidgetStore";
 import { useDashboardStore } from "../../stores/dashboardStore";
+import { useEditMenuStore } from "../../stores/editMenuStore";
 
 export default {
     data: () => {
@@ -36,6 +37,8 @@ export default {
         let onDrag = false;
         const newWidgetStore = useNewWidgetStore();
         const dashboardStore = useDashboardStore();
+        const editMenuStore = useEditMenuStore();
+
         const gridClick = (startPos) => {
             //console.log(x+ ","+y)
             newWidgetStore.startPos = startPos;
@@ -71,8 +74,8 @@ export default {
                     // console.log(widget)
                     if (widget.layoutWidgetStartPos <= endPos && widget.layoutWidgetEndPos >= endPos) {
                         if (endPos % 23 <= widget.layoutWidgetEndPos % 23 && endPos % 23 >= widget.layoutWidgetStartPos % 23) {
-                            console.log(widget);
-                            console.log(index);
+                            // console.log(widget);
+                            // console.log(index);
 
                             // 선택시 new Widget에 가져오는 로직이 필요
                             newWidgetStore.endPos = widget.layoutWidgetEndPos;
@@ -83,6 +86,8 @@ export default {
 
                             //삭제
                             dashboardStore.currentDashboard.layoutDtoList[newWidgetStore.selectedLayout - 1].layoutWidgetDtoList.splice(index, 1)
+
+                            editMenuStore.moveTo(newWidgetStore.widgetType);
                         }
                     }
                 }
