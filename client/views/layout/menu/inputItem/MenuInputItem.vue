@@ -37,7 +37,7 @@ input {
     font-size: 2rem;
     padding: 0.5rem;
     border-radius: 0.5rem;
-    border: 0.1rem solid #9eaab6;
+    border: 0.1rem solid #cfd5db ;
 }
 p {
     margin-top: 0.6rem;
@@ -46,7 +46,7 @@ p {
 }
 .dashboardTitle{
     margin-bottom: 4rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #9eaab6;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #cfd5db;
 }
 </style>
