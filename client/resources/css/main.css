@@ -7,7 +7,7 @@
   width: 300px;
   right: 0;
   top: 0px;
-  padding: 4rem 1.5rem;
+  padding: 6rem 1.5rem;
   overflow: auto;
   border-radius: 1rem 0 0 1rem;
   color: #cfd5db ;
@@ -44,7 +44,7 @@
 .nav > img {
   position: absolute;
   right: 20px;
-  top: 5px;
+  top: 7px;
 }
 [v-cloak] {
   display: none;

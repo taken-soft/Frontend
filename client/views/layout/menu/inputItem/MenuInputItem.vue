@@ -25,8 +25,8 @@ export default {
 </script>
 <style scoped>
 .img-l {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
 }
 img {
     width: 20px;
