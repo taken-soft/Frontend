@@ -22,6 +22,7 @@
 </template>
 <script>
 import { useNewWidgetStore } from "../../stores/newWidgetStore";
+import { useDashboardStore } from "../../stores/dashboardStore";
 
 export default {
     data: () => {
@@ -34,6 +35,7 @@ export default {
     setup() {
         let onDrag = false;
         const newWidgetStore = useNewWidgetStore();
+        const dashboardStore = useDashboardStore();
         const gridClick = (startPos) => {
             //console.log(x+ ","+y)
             newWidgetStore.startPos = startPos;
@@ -48,16 +50,51 @@ export default {
                 // console.log(newWidgetStore.startPos, newWidgetStore.endPos);
             }
         };
+        const widgetName = (widgetId) => {
+            const widgetParser = {
+                1: "Text",
+                2: "Img",
+                3: "LineChart",
+                4: "BarChart",
+                5: "Rect",
+                6: "Circle",
+            };
+            return widgetParser[widgetId];
+        };
         const gridOver = (endPos) => {
             onDrag = false;
-            if (endPos < newWidgetStore.startPos) {
+            if (newWidgetStore.startPos == endPos) {
+                // console.log("hi")
+                let widgetList = dashboardStore.currentDashboard.layoutDtoList[newWidgetStore.selectedLayout - 1].layoutWidgetDtoList;
+                for (let index in widgetList) {
+                    let widget = widgetList[index];
+                    // console.log(widget)
+                    if (widget.layoutWidgetStartPos <= endPos && widget.layoutWidgetEndPos >= endPos) {
+                        if (endPos % 23 <= widget.layoutWidgetEndPos % 23 && endPos % 23 >= widget.layoutWidgetStartPos % 23) {
+                            console.log(widget);
+                            console.log(index);
+
+                            // 선택시 new Widget에 가져오는 로직이 필요
+                            newWidgetStore.endPos = widget.layoutWidgetEndPos;
+                            newWidgetStore.startPos = widget.layoutWidgetStartPos;
+                            newWidgetStore.zIndex = widget.layoutWidgetZPos;
+                            newWidgetStore.setWidgetType(widgetName(widget.widgetId));
+
+
+                            //삭제
+                            dashboardStore.currentDashboard.layoutDtoList[newWidgetStore.selectedLayout - 1].layoutWidgetDtoList.splice(index, 1)
+                        }
+                    }
+                }
+            } else if (endPos < newWidgetStore.startPos) {
                 newWidgetStore.endPos = newWidgetStore.startPos;
                 newWidgetStore.startPos = endPos;
             }
             // console.log(newWidgetStore.startPos, newWidgetStore.endPos);
         };
         const deleteWidget = () => {
-            console.log("deleteButton");
+            // console.log("deleteButton");
+            newWidgetStore.deleteWidget();
         };
         return { gridClick, gridDrag, gridOver, deleteWidget };
     },

@@ -3,10 +3,11 @@ import { defineStore } from "pinia";
 export const useNewWidgetStore = defineStore("newWidgetStore", {
     state: () => {
         return {
-            widgetType: "BarChart",
+            widgetType: null,
             selectedLayout: 0,
             startPos: 0,
             endPos: 0,
+            zIndex:0
         };
     },
     getters: {
@@ -21,6 +22,12 @@ export const useNewWidgetStore = defineStore("newWidgetStore", {
         setWidgetType(type) {
           this.widgetType = type;
           console.log(this.widgetType);
+        },
+        deleteWidget(){
+            this.widgetType =null
+            this.startPos = 0
+            this.endPos=0
+            this.zIndex=0
         }
     },
 });

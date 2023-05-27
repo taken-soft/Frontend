@@ -6,7 +6,7 @@
     "layoutDtoList": [
         {
             "layoutId": 102,
-            "layoutSequence": 2,
+            "layoutSequence": 1,
             "layoutWidgetDtoList": [
                 {
                     "layoutWidgetId": 303,
@@ -56,7 +56,7 @@
         },
         {
             "layoutId": 103,
-            "layoutSequence": 1,
+            "layoutSequence": 2,
             "layoutWidgetDtoList": [
                 {
                     "layoutWidgetId": 305,
