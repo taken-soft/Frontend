@@ -9,9 +9,9 @@
     </div>
     <!-- nav inner-->
     <div class="nav flex" v-bind:style="{ display: displayStyle }">
-      <svg v-on:click="hide" xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30">
+      <svg @click="hide()" xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30">
         <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
-      </svg>
+    </svg>
       <div>
         <Menu></Menu>
       </div>
@@ -32,6 +32,7 @@ import { getDashboardList } from "../../axios/dashboardListAxios";
 
 import { useDashboardStore } from "../../stores/dashboardStore";
 import { useWidgetDataStore } from "../../stores/widgetDataStore";
+import { useModeStore } from "../../stores/modeStore";
 
 const App = {
   data: () => {
@@ -68,8 +69,16 @@ const App = {
   setup() {
     const dashboardStore = useDashboardStore();
     const widgetDataStore = useWidgetDataStore();
+    const modeStore = useModeStore()
 
-    setInterval(widgetDataStore.getSensorDataList, 1000);
+    const getSensorData = setInterval(function(){
+      if(modeStore.isEditMode){
+        clearInterval(getSensorData) 
+      }
+      else{
+        widgetDataStore.getSensorDataList()
+      }
+    }, 1000);
 
     getDashboardList()
       .then((result) => {
@@ -102,6 +111,8 @@ export default App;
   margin: 0px 0px;
   padding: 1.5rem;
   padding-top: 0rem;
+  padding-bottom: 0rem;
+  margin-bottom: 0rem;
   width: 100%;
   height: calc(100vh - 8.5rem);
   background: rgba(0,0,0,0);
@@ -114,6 +125,11 @@ export default App;
   }
   100% {
     background-position: 100% 50%;
+  }
+}
+@media (max-width:700px) {
+  .mainwrap {
+    overflow: auto;
   }
 }
 

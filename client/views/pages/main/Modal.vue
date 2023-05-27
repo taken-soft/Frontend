@@ -4,7 +4,7 @@
       <div class="flex modal_header">
             <h2>{{ modalController.title }}</h2>
             <button @click="() => modalController.close()">
-                <img class="img-l" @click="showDiv = !showDiv" src="../../../resources/images/close.png" alt="" />
+                <!-- <img class="img-l" @click="showDiv = !showDiv" src="../../../resources/images/close.png" alt="" /> -->
                 <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30">
                     <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
                 </svg>
