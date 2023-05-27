@@ -46,10 +46,22 @@ export default {
   /* background-color: rgba(0, 0, 0, 0.5); */
 }
 
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .modal-content {
   background-color: white;
   /* padding: 20px; */
   border-radius: 5px;
   border: 1px solid black;
+  animation: slideUp 1s ease-in-out;
 }
 </style>
