@@ -3,6 +3,9 @@ import ModalController from "../views/pages/main/modalController";
 import CreateDashboardRequestDTO from "../model/dto/createDashboardRequestDTO";
 import CreateDashboardResponseDTO from "../model/dto/createDashboardResponseDTO";
 import { createDashboard } from "../axios/dashboardListAxios";
+import EditMenuRoot from "../views/layout/menu/editMenuRoute/editMenuRoot";
+import EditMenuAdd from "../views/layout/menu/editMenuRoute/editMenuAdd";
+
 
 export const useEditMenuStore = defineStore("editMenuStore", {
   state: () => {
@@ -35,5 +38,8 @@ export const useEditMenuStore = defineStore("editMenuStore", {
     refresh() {
       this.editMenuRouter.push(this.editMenuRouter.pop());
     },
+    moveTo(editMenu) {
+      this.editMenuRouter = [new EditMenuRoot(), new EditMenuAdd(), editMenu];
+    }
   },
 });
