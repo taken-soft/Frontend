@@ -23,6 +23,14 @@ export default {
     return {
       chartLabels: ["1", "2", "3", "4", "5"],
       chartData: [40, 20, 12, 39, 10],
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: {
+          duration: 1000, // 애니메이션 지속 시간 (밀리초)
+          easing: 'easeOutQuart', // 애니메이션 이징 함수
+        },
+      }
     };
   },
   computed: {
@@ -49,7 +57,16 @@ export default {
         datasets: [
           {
             label: "데이터",
-            backgroundColor: "#f87979",
+            backgroundColor: (ctx) => {
+              const canvas = ctx.chart.ctx;
+              const gradient = canvas.createLinearGradient(0, 0, 0, 160);
+
+              gradient.addColorStop(0.6, '#f87938');
+              gradient.addColorStop(0.8, '#f8af55');
+              gradient.addColorStop(1, '#f8f879');
+
+              return gradient;
+            },//"#f87979",
             data: this.chartData,
           },
         ],
