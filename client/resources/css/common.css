@@ -29,7 +29,7 @@
     grid-template-columns: 1fr;
   }
 }
-label,input{font-size: 14px; letter-spacing: -1.5px;     width: 100%;}
+label,input{font-size: 14px; letter-spacing: 0px;     width: 100%;}
 .box {
   background: #f3f3f3;
   min-height: 20rem;

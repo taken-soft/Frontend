@@ -1,7 +1,7 @@
 <template>
   <div class="m-b">
     <label for="" class="m-r" :innerHTML="menuEntity.text"></label>
-    <menu-dropdown :menu-entity=menuEntity.type></menu-dropdown>
+    <menu-dropdown style="margin-top: 1.5rem;" :menu-entity=menuEntity.type></menu-dropdown>
     <menu-color :menu-entity=menuEntity.color></menu-color>
     <menu-input :menu-entity=menuEntity.over></menu-input>
     <menu-input :menu-entity=menuEntity.less></menu-input>

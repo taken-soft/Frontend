@@ -14,9 +14,17 @@
 }
 .nav input{
   margin-top: 0.5rem;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  background-color: #d7d1e3;
 }
 .nav select{width: 100%; 
   margin-top: 0.5rem;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  background-color: #d7d1e3;
 }
 .nav label{margin-bottom: 1rem;}
 .nav p {
