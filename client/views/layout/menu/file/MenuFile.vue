@@ -1,7 +1,7 @@
 <template>
   <div class="m-b">
     <label for="" class="m-r" :innerHTML="menuEntity.text"></label>
-    <input type="file" :accept="menuEntity.accept" @change="menuEntity.onValueChange"/>
+    <input class="imgInput" type="file" :accept="menuEntity.accept" @change="menuEntity.onValueChange"/>
   </div>
 </template>
 <script>
@@ -12,4 +12,9 @@ export default {
   }
 }
 </script>
-<style scoped></style>
+<style scoped>
+.imgInput{
+  background-color: #ffffff00;
+  border: 0px;
+}
+</style>

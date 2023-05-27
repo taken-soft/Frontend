@@ -115,7 +115,7 @@ export default {
 
 <style scoped>
 .layout {
-    background: white;
+    background: #ffffffe8;
     min-height: 20rem;
     border-radius: 5px;
     height: calc(50vh - 6rem);
@@ -133,7 +133,6 @@ export default {
 }
 .layoutContent {
     position: absolute;
-    background: #ffffff;
     border-radius: 5px;
     top: 0;
     left: 0;
