@@ -46,7 +46,6 @@ export default {
                     }
                 }
             }
-            console.log("asdf");
             const uniqueSensorList = sensorList.filter(
                 (obj, index, self) => index === self.findIndex((t) => t.sensorId === obj.sensorId && t.graph === obj.graph)
             );

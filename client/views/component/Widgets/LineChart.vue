@@ -57,13 +57,8 @@ export default {
     data() {
       let dataListList = [];
 
-      console.log("this.sensorList");
-      console.log(this.sensorList);
-
       if (this.sensorList.length !== 0) {
         let widgetDataStore = useWidgetDataStore();
-        console.log("widgetDataStore.getSensorDataListResponseDTO.realtimeSensorDataList");
-        console.log(widgetDataStore.getSensorDataListResponseDTO.realtimeSensorDataList);
         for (let sensor of this.sensorList) {
           for (let data of widgetDataStore.getSensorDataListResponseDTO.realtimeSensorDataList) {
             if (data.sensorId == sensor.sensorId) {
@@ -86,8 +81,6 @@ export default {
           }
         }
       );
-      console.log(this.labels);
-      console.log(this.datasets);
       let chartData = {
         labels: this.labels,
         datasets: this.datasets

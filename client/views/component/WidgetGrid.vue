@@ -74,8 +74,8 @@ export default {
                     // console.log(widget)
                     if (widget.layoutWidgetStartPos <= endPos && widget.layoutWidgetEndPos >= endPos) {
                         if (endPos % 23 <= widget.layoutWidgetEndPos % 23 && endPos % 23 >= widget.layoutWidgetStartPos % 23) {
-                            console.log(widget);
-                            console.log(index);
+                            // console.log(widget);
+                            // console.log(index);
 
                             // 선택시 new Widget에 가져오는 로직이 필요
                             newWidgetStore.endPos = widget.layoutWidgetEndPos;
