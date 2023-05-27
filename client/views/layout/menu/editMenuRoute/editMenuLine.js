@@ -13,7 +13,6 @@ export default class EditMenuLine extends EditMenuWidgetRoute {
   }
   sensorList = [
     new MenuSensorEntity("센서", null),
-    new MenuColorEntity("꺾은선 색상", null),
   ];
   route = () => {
     return [
@@ -30,7 +29,6 @@ export default class EditMenuLine extends EditMenuWidgetRoute {
   addSensor() {
     this.sensorList.push(
       new MenuSensorEntity("센서", null),
-      new MenuColorEntity("꺾은선 색상", null)
     );
     this.editMenuStore.refresh();
   }

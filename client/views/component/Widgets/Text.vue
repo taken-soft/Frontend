@@ -17,15 +17,15 @@ export default {
                     for (let data of widgetDataStore.getSensorDataListResponseDTO.realtimeSensorDataList) {
                         if (data.sensorId == sensor.sensorId) {
                             sensorData += Number(data.sensorValues[0].value);
-                            console.log("data.sensorValues[0]");
-                            console.log(data.sensorValues[0].value);
+//                            console.log("data.sensorValues[0]");
+//                            console.log(data.sensorValues[0].value);
                             break;
                         }
                     }
                 }
                 sensorData /= this.sensorList.length;
             } else {
-                console.log(this.property);
+//                console.log(this.property);
                 sensorData = this.property ?? "Text";
             }
             return `${sensorData}${this.sensorList === [] ? unit[this.sensorList[0].sensorId] : ""}`;
@@ -39,8 +39,8 @@ export default {
                     for (let data of widgetDataStore.getSensorDataListResponseDTO.realtimeSensorDataList) {
                         if (data.sensorId == sensor.sensorId) {
                             sensorData += Number(data.sensorValues[0].value);
-                            console.log("data.sensorValues[0]");
-                            console.log(data.sensorValues[0].value);
+//                            console.log("data.sensorValues[0]");
+//                            console.log(data.sensorValues[0].value);
                             break;
                         }
                     }
