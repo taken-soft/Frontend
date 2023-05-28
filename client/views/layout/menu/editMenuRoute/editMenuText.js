@@ -4,6 +4,7 @@ import MenuInputEntity from "../input/menuInputEntity";
 import MenuDropdownEntity from "../dropdown/menuDropdownEntity";
 import MenuSensorEntity from "../sensor/menuSensorEntity";
 import MenuEventEntity from "../event/menuEventEntity";
+import MenuColorEntity from "../color/menuColorEntity";
 
 import EditMenuWidgetRoute from "./editMenuWidgetRoute";
 
@@ -15,6 +16,7 @@ export default class EditMenuText extends EditMenuWidgetRoute {
     super();
     this.title = "텍스트";
     this.newWidgetStore.setWidgetType(this.widgetMap.get(this.title)[1]);
+    this.colorInput = new MenuColorEntity("텍스트 색상", null);
   }
   sensorList = [new MenuSensorEntity("센서", null)];
   eventList = [];

@@ -37,6 +37,7 @@ export default {
     methods: {
         updateColor(eventData) {
             this.color = (eventData.colors.hex)
+            this.menuEntity.currentValue = this.color
         },
     },
 };

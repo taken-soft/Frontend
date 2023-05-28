@@ -76,7 +76,19 @@ export default class EditMenuWidgetRoute extends EditMenuRoute {
       new LayoutWidgetDTO(
         this.newWidgetStore.startPos,
         this.newWidgetStore.endPos,
-        this.newWidgetStore.layoutWidgetZPos != 0 ? this.newWidgetStore.layoutWidgetZPos : this.dashboardStore.currentDashboard.layoutDtoList.layoutWidgetSensorDtoList.length == 0 ? 1 : this.dashboardStore.currentDashboard.layoutDtoList.layoutWidgetSensorDtoList[this.dashboardStore.currentDashboard.layoutDtoList.layoutWidgetSensorDtoList.length - 1].layoutWidgetZPos + 1,
+        this.newWidgetStore.zIndex != 0
+          ? this.newWidgetStore.zIndex
+          : this.dashboardStore.currentDashboard.layoutDtoList[
+              this.newWidgetStore.selectedLayout - 1
+            ].layoutWidgetDtoList.length == 0
+          ? 1
+          : this.dashboardStore.currentDashboard.layoutDtoList[
+              this.newWidgetStore.selectedLayout - 1
+            ].layoutWidgetDtoList[
+              this.dashboardStore.currentDashboard.layoutDtoList[
+                this.newWidgetStore.selectedLayout - 1
+              ].layoutWidgetDtoList.length - 1
+            ].layoutWidgetZPos + 1,
         backgroundColor,
         property,
         eventDtoList,
@@ -89,7 +101,19 @@ export default class EditMenuWidgetRoute extends EditMenuRoute {
       new LayoutWidgetDTO(
         this.newWidgetStore.startPos,
         this.newWidgetStore.endPos,
-        this.newWidgetStore.layoutWidgetZPos != 0 ? this.newWidgetStore.layoutWidgetZPos : this.dashboardStore.currentDashboard.layoutDtoList.layoutWidgetSensorDtoList.length == 0 ? 1 : this.dashboardStore.currentDashboard.layoutDtoList.layoutWidgetSensorDtoList[this.dashboardStore.currentDashboard.layoutDtoList.layoutWidgetSensorDtoList.length - 1].layoutWidgetZPos + 1,
+        this.newWidgetStore.zIndex != 0
+          ? this.newWidgetStore.zIndex
+          : this.dashboardStore.currentDashboard.layoutDtoList[
+              this.newWidgetStore.selectedLayout - 1
+            ].layoutWidgetDtoList.length == 0
+          ? 1
+          : this.dashboardStore.currentDashboard.layoutDtoList[
+              this.newWidgetStore.selectedLayout - 1
+            ].layoutWidgetDtoList[
+              this.dashboardStore.currentDashboard.layoutDtoList[
+                this.newWidgetStore.selectedLayout - 1
+              ].layoutWidgetDtoList.length - 1
+            ].layoutWidgetZPos + 1,
         backgroundColor,
         property,
         eventDtoList,
