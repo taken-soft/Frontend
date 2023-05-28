@@ -41,7 +41,7 @@ export default {
         let widgetDataStore = useWidgetDataStore();
         for (let sensor of this.sensorList) {
           for (let data of widgetDataStore.getSensorDataListResponseDTO.realtimeSensorDataList) {
-            if (data.sensorId == sensor.sensorId) {
+            if (data.sensorId == sensor.sensorId  && !(data.sensorValues.length == 5)) {
               labelList.push(Sensor[sensor.sensorId]);
               dataList.push(Number(data.sensorValues[0].value));
 //              console.log("Sensor[sensor.sensorId], data.sensorValues[0].value");

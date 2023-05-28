@@ -88,6 +88,7 @@ export default {
                             //삭제
                             dashboardStore.currentDashboard.layoutDtoList[newWidgetStore.selectedLayout - 1].layoutWidgetDtoList.splice(index, 1)
                             editMenuStore.moveTo(newWidgetStore.getWidgetType);
+                            break;
                         }
                     }
                 }

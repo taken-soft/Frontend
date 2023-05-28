@@ -51,6 +51,6 @@ export default {
 <style scoped>
 .rect {
   background-color: #c0c0c0;
-  border: 1px solid #a0a0a0;
+  border: 1px solid #ffffff;
 }
 </style>

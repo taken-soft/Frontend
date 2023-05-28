@@ -72,6 +72,20 @@ export default class EditMenuWidgetRoute extends EditMenuRoute {
         property = route[i].currentValue;
     }
 
+    console.log(this.newWidgetStore.zIndex != 0
+      ? this.newWidgetStore.zIndex
+      : this.dashboardStore.currentDashboard.layoutDtoList[
+          this.newWidgetStore.selectedLayout - 1
+        ].layoutWidgetDtoList.length == 0
+      ? 1
+      : this.dashboardStore.currentDashboard.layoutDtoList[
+          this.newWidgetStore.selectedLayout - 1
+        ].layoutWidgetDtoList[
+          this.dashboardStore.currentDashboard.layoutDtoList[
+            this.newWidgetStore.selectedLayout - 1
+          ].layoutWidgetDtoList.length - 1
+        ].layoutWidgetZPos + 1);
+
     this.dashboardStore.addNewWidget(
       this.newWidgetStore.selectedLayout,
       new LayoutWidgetDTO(
@@ -97,6 +111,8 @@ export default class EditMenuWidgetRoute extends EditMenuRoute {
         widgetId
       )
     );
+
+    this.newWidgetStore.zIndex = 0;
 
     console.log(
       new LayoutWidgetDTO(

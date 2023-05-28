@@ -6,8 +6,9 @@
     <img src="../../resources/images/humidity.png" alt="" width="27" height="27">
     <p>27%</p>
     <img src="../../resources/images/ozone.png" alt="" width="27" height="27">
-    <p>나쁨</p>
-    <img src="../../resources/images/dust.png" alt="" width="27" height="27">
+    <p style="margin-right: 5px;">나쁨</p>
+    <img src="../../resources/images/sad.png" alt="" width="24" height="24">
+    <img src="../../resources/images/dust.png" alt="" width="27" height="27" style="margin-left: 3rem;">
     <p style="margin-right: 0px;">좋음</p>
     <img src="../../resources/images/happy.png" alt="" width="27" height="27">
     </div>

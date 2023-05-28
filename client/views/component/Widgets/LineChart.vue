@@ -56,12 +56,19 @@ export default {
   computed: {
     data() {
       let dataListList = [];
+      let colorList = [
+        "#f87979",
+        "#f8aa79",
+        "#f879aa",
+        "#aa7979",
+        "#aa7979",
+      ];
 
       if (this.sensorList.length !== 0) {
         let widgetDataStore = useWidgetDataStore();
         for (let sensor of this.sensorList) {
           for (let data of widgetDataStore.getSensorDataListResponseDTO.realtimeSensorDataList) {
-            if (data.sensorId == sensor.sensorId) {
+            if (data.sensorId == sensor.sensorId && (data.sensorValues.length == 5)) {
               let dataList = [];
               for (let sensorValue of data.sensorValues) {
                 dataList.push(Number(sensorValue.value));
@@ -71,12 +78,14 @@ export default {
           }
         }
       }
-//      this.labels = labelList;
+
+      let index = 0;
+
       this.datasets = dataListList.map(
         (e) => {
           return {
             label: e.label,
-            backgroundColor: "#f87979",
+            borderColor: colorList[index++],
             data: e.data,
           }
         }
