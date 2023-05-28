@@ -23,6 +23,7 @@ export const useEditMenuStore = defineStore("editMenuStore", {
   },
   getters: {
     curruentRoute() {
+      if(!this.editMenuRouter[this.editMenuRouter.length - 1]) this.pop();
       return this.editMenuRouter[this.editMenuRouter.length - 1].route();
     },
   },

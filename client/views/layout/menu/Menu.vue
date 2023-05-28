@@ -80,6 +80,7 @@ export default {
       dashboardStore.setSelectedDashBoard(dashboardId);
       editMenuStore.push(new EditMenuRoot());
       modeStore.changeMode();
+      modeStore.endInterval();
     }
 
     const saveModalController = editMenuStore.saveModalController;

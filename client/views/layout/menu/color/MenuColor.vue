@@ -1,6 +1,6 @@
 <template>
     <div class="m-b">
-        <label for="" class="m-r" :innerHTML="menuEntity.text"></label>
+        <label class="m-r" :innerHTML="menuEntity.text"></label>
         <img src="../../../../resources/images/color-wheel.png" class="colorWheel" @click="()=>{onColorPicker = !onColorPicker}" width="27">
         <div class="colorDiv">
             <!-- <img src="../../../../resources/images/color-wheel.png" @click="()=>{onColorPicker = !onColorPicker}"> -->

@@ -83,13 +83,7 @@ const App = {
         const widgetDataStore = useWidgetDataStore();
         const modeStore = useModeStore();
 
-        const getSensorData = setInterval(function () {
-            if (modeStore.isEditMode) {
-                clearInterval(getSensorData);
-            } else {
-                widgetDataStore.getSensorDataList();
-            }
-        }, 1000);
+    modeStore.startInterval(setInterval(widgetDataStore.getSensorDataList, 1000));
 
         getDashboardList()
             .then((result) => {
