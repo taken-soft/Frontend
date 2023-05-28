@@ -38,7 +38,7 @@ export default {
                 left: `calc(100% / 23 * ${startX})`,
                 width: `calc(100% / 23 * ${endX - startX})`,
                 height: (endY - startY + 1) * 10 + "%",
-                fontSize: (endY - startY) * 2 + 1.8 + "em",
+                fontSize: 1 + "rem",
             };
         },
         isVisible() {
