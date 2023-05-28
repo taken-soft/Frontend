@@ -15,7 +15,6 @@ import { useWidgetDataStore } from "../../../stores/widgetDataStore";
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 export default {
-  name: "App",
   components: {
     Line,
   },
