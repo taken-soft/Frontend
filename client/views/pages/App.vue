@@ -16,6 +16,7 @@
         </div>
         <div :class="divClass">
             <router-view />
+            <Footer></Footer>
         </div>
     </div>
 </template>

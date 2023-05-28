@@ -119,7 +119,7 @@ export default {
     background: #ffffffe8;
     min-height: 20rem;
     border-radius: 5px;
-    height: calc(50vh - 6rem);
+    height: fit-content;
     border: 1px solid #e0e0e0;
     margin-bottom: 2rem;
     margin-left: 1rem;
@@ -128,7 +128,7 @@ export default {
 .layoutContainer {
     position: relative;
     width: 100%;
-    padding-bottom: calc(100% * 10 / 23);
+    padding-bottom: calc(1000% / 23);
     top: -100%;
     z-index: 1;
 }
