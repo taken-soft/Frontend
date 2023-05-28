@@ -34,7 +34,7 @@ export const useEditMenuStore = defineStore("editMenuStore", {
   },
   getters: {
     curruentRoute() {
-      if (!this.editMenuRouter[this.editMenuRouter.length - 1]) this.pop();
+      if (!this.editMenuRouter[this.editMenuRouter.length - 1]) return;
       return this.editMenuRouter[this.editMenuRouter.length - 1].route();
     },
   },
