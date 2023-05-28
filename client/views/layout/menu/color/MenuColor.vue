@@ -7,7 +7,7 @@
             <input type="text" :placeholder="menuEntity.placeholder" :value="color" @change="menuEntity.onValueChange" :style="{backgroundColor:color}"/>
         </div>
         <div class="colorPicker" v-if="onColorPicker">
-            <ColorPicker color="hsl(270 100% 50% / 1)" @color-change="updateColor"></ColorPicker>
+            <ColorPicker color="hsl(120 100% 50% / 1)" @color-change="updateColor"></ColorPicker>
         </div>
     </div>
 </template>
@@ -19,7 +19,7 @@ import { ColorPicker } from "vue-accessible-color-picker";
 export default {
     data() {
         return {
-            color: "#ffffff",
+            color: "#00ff00ff",
             onColorPicker: false
         };
     },
