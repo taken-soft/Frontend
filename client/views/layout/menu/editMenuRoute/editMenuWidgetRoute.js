@@ -18,6 +18,7 @@ export default class EditMenuWidgetRoute extends EditMenuRoute {
     ["막대 그래프", [4, "BarChar"]],
     ["사각형", [5, "Rect"]],
     ["원", [6, "Circle"]],
+    ["원 그래프", [7, "CircleChart"]],
   ]);
 
   isVanilla = true;

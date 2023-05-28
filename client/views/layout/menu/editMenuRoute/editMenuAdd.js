@@ -10,6 +10,7 @@ import MenuButtonEntity from "../button/menuButtonEntity";
 import MenuInputEntity from "../input/menuInputEntity";
 import MenuDropdownEntity from "../dropdown/menuDropdownEntity";
 import EditMenuRoute from "./editMenuRoute";
+import EditMenuCircleChart from "./editMenuCircleChart";
 
 export default class EditMenuAdd extends EditMenuRoute {
   title = "위젯 추가"
@@ -54,6 +55,12 @@ export default class EditMenuAdd extends EditMenuRoute {
         () => this.editMenuStore.push(new EditMenuLine()),
         null
       ),
+      new MenuItemEntity(
+        "원 그래프",
+        "app",
+        () => this.editMenuStore.push(new EditMenuCircleChart()),
+        null
+      )
     ];
   };
 }
