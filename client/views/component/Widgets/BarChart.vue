@@ -41,7 +41,7 @@ export default {
         let widgetDataStore = useWidgetDataStore();
         for (let sensor of this.sensorList) {
           for (let data of widgetDataStore.getSensorDataListResponseDTO.realtimeSensorDataList) {
-            if (data.sensorId == sensor.sensorId) {
+            if (data.sensorId == sensor.sensorId && !(data.sensorValues.length == 5)) {
               labelList.push(Sensor[sensor.sensorId]);
               dataList.push(Number(data.sensorValues[0].value));
               console.log("Sensor[sensor.sensorId], data.sensorValues[0].value");
@@ -59,7 +59,7 @@ export default {
             label: "데이터",
             backgroundColor: (ctx) => {
               const canvas = ctx.chart.ctx;
-              const gradient = canvas.createLinearGradient(0, 0, 0, 160);
+              const gradient = canvas.createLinearGradient(0, 0, 50, 250);
 
               gradient.addColorStop(0.6, '#f87938');
               gradient.addColorStop(0.8, '#f8af55');

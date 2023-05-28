@@ -55,27 +55,36 @@ export default {
   computed: {
     data() {
       let dataListList = [];
+      let colorList = [
+        "#9ADCFF",
+        "#FFF89A",
+        "#FFB2A6",
+        "#FF8AAE"
+      ];
 
       if (this.sensorList.length !== 0) {
         let widgetDataStore = useWidgetDataStore();
         for (let sensor of this.sensorList) {
           for (let data of widgetDataStore.getSensorDataListResponseDTO.realtimeSensorDataList) {
-            if (data.sensorId == sensor.sensorId) {
+            if (data.sensorId == sensor.sensorId && (data.sensorValues.length == 5)) {
               let dataList = [];
               for (let sensorValue of data.sensorValues) {
                 dataList.push(Number(sensorValue.value));
               }
-              dataListList.push({label: Sensor[sensor.sensorId] , data : dataList});
+              dataListList.push({ label: Sensor[sensor.sensorId], data: dataList });
             }
           }
         }
       }
-//      this.labels = labelList;
+
+      let index = 0;
+
       this.datasets = dataListList.map(
         (e) => {
           return {
             label: e.label,
-            backgroundColor: "#f87979",
+            borderColor: colorList[index],
+            backgroundColor: colorList[index++],
             data: e.data,
           }
         }
@@ -92,7 +101,7 @@ export default {
 
 <style scoped>
 .lineChart {
-    background-color: white;
-    border: solid 1px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  border: solid 1px rgba(0, 0, 0, 0.2);
 }
 </style>
