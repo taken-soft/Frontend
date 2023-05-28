@@ -18,13 +18,13 @@ export const useEditMenuStore = defineStore("editMenuStore", {
     let editMenuRouter = [];
     let saveModalController = new ModalController("대시보드 생성");
     let widgetParser = {
-      Text: new EditMenuText(),
-      Img: new EditMenuImage(),
-      LineChart: new EditMenuLine(),
-      BarChart: new EditMenuBar(),
-      Rect: new EditMenuSquare(),
-      Circle: new EditMenuCircle(),
-      CircleChart: new EditMenuCircleChart(),
+      Text: () => new EditMenuText(),
+      Img: () => new EditMenuImage(),
+      LineChart: () => new EditMenuLine(),
+      BarChart: () => new EditMenuBar(),
+      Rect: () => new EditMenuSquare(),
+      Circle: () => new EditMenuCircle(),
+      CircleChart: () => new EditMenuCircleChart(),
     };
     return {
       editMenuRouter,
@@ -59,7 +59,7 @@ export const useEditMenuStore = defineStore("editMenuStore", {
       this.editMenuRouter = [
         new EditMenuRoot(),
         new EditMenuAdd(),
-        this.widgetParser[widgetType],
+        this.widgetParser[widgetType](),
       ];
     },
   },

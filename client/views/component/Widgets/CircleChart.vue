@@ -44,8 +44,8 @@ export default {
             if (data.sensorId == sensor.sensorId) {
               labelList.push(Sensor[sensor.sensorId]);
               dataList.push(Number(data.sensorValues[0].value));
-              console.log("Sensor[sensor.sensorId], data.sensorValues[0].value");
-              console.log(Sensor[sensor.sensorId], data.sensorValues[0].value);
+//              console.log("Sensor[sensor.sensorId], data.sensorValues[0].value");
+//              console.log(Sensor[sensor.sensorId], data.sensorValues[0].value);
             }
           }
         }

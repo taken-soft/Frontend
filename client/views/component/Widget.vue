@@ -54,5 +54,6 @@ export default {
 <style scoped>
 .widget {
     position: absolute;
+    user-select: "none"
 }
 </style>
