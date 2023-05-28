@@ -19,6 +19,7 @@ export default class EditMenuRoot extends EditMenuRoute {
       this.dashboardStore.setDashboardList(result.data);
     });
     this.modeStore.changeMode();
+    this.modeStore.startInterval(setInterval(this.widgetDataStore.getSensorDataList, 1000));
     this.editMenuStore.clear();
   };
 

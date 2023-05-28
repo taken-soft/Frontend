@@ -21,6 +21,7 @@ export default {
         dashboardStyle() {
             const dashboardStore = useDashboardStore();
             let componentName = "div";
+            if(!dashboardStore.currentDashboard) return;
             if (dashboardStore.currentDashboard.dashboardType === "2x2") {
                 componentName = "Dashboard1";
             }
@@ -33,6 +34,7 @@ export default {
             const dashboardStore = useDashboardStore();
             const widgetDataStore = useWidgetDataStore();
             let sensorList = [];
+            if(!dashboardStore.currentDashboard) return;
             for (let layout of dashboardStore.currentDashboard.layoutDtoList) {
                 for (let widget of layout.layoutWidgetDtoList) {
                     let graph = false;
