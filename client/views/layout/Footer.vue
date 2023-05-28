@@ -1,15 +1,19 @@
 <template>
   <div class="weather-widget">
-    <img src="../../resources/images/sun.png" alt="" width="30" height="30">
-    22.8°C
-    <img src="../../resources/images/humidity.png" alt="" width="30" height="30">
-    20%
-    <img src="../../resources/images/ozone.png" alt="" width="30" height="30">
-    나쁨
-    <img src="../../resources/images/dust.png" alt="" width="30" height="30">
-    좋음
-    <img src="../../resources/images/happy.png" alt="" width="30" height="30">
-    {{ Time }}
+    <div>
+      <img src="../../resources/images/sun.png" alt="" width="27" height="27">
+    <p>22.8°C</p>
+    <img src="../../resources/images/humidity.png" alt="" width="27" height="27">
+    <p>27%</p>
+    <img src="../../resources/images/ozone.png" alt="" width="27" height="27">
+    <p>나쁨</p>
+    <img src="../../resources/images/dust.png" alt="" width="27" height="27">
+    <p style="margin-right: 0px;">좋음</p>
+    <img src="../../resources/images/happy.png" alt="" width="27" height="27">
+    </div>
+    <div>
+      <p>{{ Time }}</p>
+    </div>
   </div>
 </template>
 
@@ -52,9 +56,23 @@ export default {
 </script>
 <style scoped>
 .weather-widget {
-  background-color: black;
+  margin-top: 20px;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 3rem);
+  background-color: #000000c0;
+  border-radius: 2rem;
   color: white;
   padding: 15px;
+  padding-left: 3rem;
+  font-size: 2rem;
 }
-
+p{
+  margin-left: 1rem;
+  margin-right: 4rem;
+}
+.weather-widget > div {
+  display: flex;
+}
 </style>

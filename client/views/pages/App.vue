@@ -144,7 +144,7 @@ export default App;
 }
 
 .menuCreate {
-    animation: slideLeft 0.2s ease-in-out;
+    animation: slideLeft 0.2s ease-in-out, navGradientAnimation 15s infinite linear;
 }
 
 @keyframes slideLeft {
@@ -159,7 +159,7 @@ export default App;
 }
 
 .menuClose {
-    animation: slideRight 0.2s ease-in-out;
+    animation: slideRight 0.2s ease-in-out, navGradientAnimation 15s infinite linear;
 }
 
 @keyframes slideRight {
@@ -171,5 +171,17 @@ export default App;
         transform: translateX(100%);
         opacity: 1;
     }
+}
+
+@keyframes navGradientAnimation {
+  0% {
+      background-position: 0% 0%;
+  }
+  50% {
+      background-position: 0% 100%;
+  }
+  100% {
+      background-position: 0% 0%;
+  }
 }
 </style>
