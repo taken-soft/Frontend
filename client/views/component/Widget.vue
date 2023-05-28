@@ -11,6 +11,7 @@ import Circle from "./Widgets/Circle.vue";
 import Img from "./Widgets/Img.vue";
 import BarChart from "./Widgets/BarChart.vue";
 import LineChart from "./Widgets/LineChart.vue";
+import CircleChart from "./Widgets/CircleChart.vue";
 
 export default {
     data() {
@@ -24,6 +25,7 @@ export default {
         Img,
         BarChart,
         LineChart,
+        CircleChart
     },
     computed: {
         widgetStyle() {
