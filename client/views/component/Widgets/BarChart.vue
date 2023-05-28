@@ -30,6 +30,16 @@ export default {
           duration: 1000, // 애니메이션 지속 시간 (밀리초)
           easing: 'easeOutQuart', // 애니메이션 이징 함수
         },
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
+        layout: {
+          padding: {
+            top: 20 // 위쪽 여백 설정 (10px)
+          }
+        },
       }
     };
   },
@@ -59,11 +69,11 @@ export default {
             label: "데이터",
             backgroundColor: (ctx) => {
               const canvas = ctx.chart.ctx;
-              const gradient = canvas.createLinearGradient(0, 0, 50, 250);
+              const gradient = canvas.createLinearGradient(0, 0, 0, 200);
 
-              gradient.addColorStop(0.6, '#f87938');
-              gradient.addColorStop(0.8, '#f8af55');
-              gradient.addColorStop(1, '#f8f879');
+              gradient.addColorStop(0.6, '#24abff');
+              gradient.addColorStop(0.8, '#6dc6ff');
+              gradient.addColorStop(1, '#bfe6ff');
 
               return gradient;
             },//"#f87979",

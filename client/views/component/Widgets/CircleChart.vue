@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <Pie class="barChart" :data="data" :options="options" />
-    </div>
+  <div>
+    <Pie class="barChart" :data="data" :options="options" />
+  </div>
 </template>
 
 <script>
@@ -32,7 +32,10 @@ export default {
                 },
                 plugins: {
                     datalabels: {
-                        display: true,
+                        formatter: (value, ctx) => {
+                            return value;
+                        },
+                        color: "#fff",
                     },
                 },
             },
@@ -46,11 +49,11 @@ export default {
         let widgetDataStore = useWidgetDataStore();
         for (let sensor of this.sensorList) {
           for (let data of widgetDataStore.getSensorDataListResponseDTO.realtimeSensorDataList) {
-            if (data.sensorId == sensor.sensorId  && !(data.sensorValues.length == 5)) {
+            if (data.sensorId == sensor.sensorId && !(data.sensorValues.length == 5)) {
               labelList.push(Sensor[sensor.sensorId]);
               dataList.push(Number(data.sensorValues[0].value));
-//              console.log("Sensor[sensor.sensorId], data.sensorValues[0].value");
-//              console.log(Sensor[sensor.sensorId], data.sensorValues[0].value);
+              //              console.log("Sensor[sensor.sensorId], data.sensorValues[0].value");
+              //              console.log(Sensor[sensor.sensorId], data.sensorValues[0].value);
             }
           }
         }
@@ -62,20 +65,26 @@ export default {
         datasets: [
           {
             label: "데이터",
-            backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+            backgroundColor: ["#ff8585",
+              "#ffd243",
+              "#5ee195",
+              "#c47ec8",
+            ],
             data: this.chartData,
           },
         ],
       };
       return chartData;
     },
-},
+  },
+}
 </script>
 <style scoped>
 .barChart {
-    background-color: white;
-    border: solid 1px black;
-    width: full;
-    height: full;
+  background-color: rgb(233, 118, 118);
+  background-color: white;
+  border: solid 1px black;
+  width: full;
+  height: full;
 }
 </style>
