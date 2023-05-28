@@ -69,7 +69,7 @@ export default {
             onDrag = false;
             if (newWidgetStore.startPos == endPos) {
                 // console.log("hi")
-                const widgetList = dashboardStore.currentDashboard.layoutDtoList[newWidgetStore.selectedLayout - 1].layoutWidgetDtoList;
+                const widgetList = [...dashboardStore.currentDashboard.layoutDtoList[newWidgetStore.selectedLayout - 1].layoutWidgetDtoList];
                 widgetList.reverse()
                 for (let index in widgetList) {
                     let widget = widgetList[index];
