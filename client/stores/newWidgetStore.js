@@ -30,6 +30,6 @@ export const useNewWidgetStore = defineStore("newWidgetStore", {
             this.startPos = 0
             this.endPos=0
             this.zIndex=0
-        },  
+        }
     },
 });

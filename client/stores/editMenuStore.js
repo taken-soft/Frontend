@@ -11,19 +11,30 @@ import EditMenuLine from "../views/layout/menu/editMenuRoute/editMenuLine";
 import EditMenuBar from "../views/layout/menu/editMenuRoute/editMenuBar";
 import EditMenuSquare from "../views/layout/menu/editMenuRoute/editMenuSquare";
 import EditMenuCircle from "../views/layout/menu/editMenuRoute/editMenuCircle";
+import EditMenuCircleChart from "../views/layout/menu/editMenuRoute/editMenuCircleChart";
 
 export const useEditMenuStore = defineStore("editMenuStore", {
   state: () => {
     let editMenuRouter = [];
     let saveModalController = new ModalController("대시보드 생성");
+    let widgetParser = {
+      Text: new EditMenuText(),
+      Img: new EditMenuImage(),
+      LineChart: new EditMenuLine(),
+      BarChart: new EditMenuBar(),
+      Rect: new EditMenuSquare(),
+      Circle: new EditMenuCircle(),
+      CircleChart: new EditMenuCircleChart(),
+    };
     return {
       editMenuRouter,
       saveModalController,
+      widgetParser,
     };
   },
   getters: {
     curruentRoute() {
-      if(!this.editMenuRouter[this.editMenuRouter.length - 1]) this.pop();
+      if (!this.editMenuRouter[this.editMenuRouter.length - 1]) this.pop();
       return this.editMenuRouter[this.editMenuRouter.length - 1].route();
     },
   },
@@ -45,18 +56,10 @@ export const useEditMenuStore = defineStore("editMenuStore", {
       this.editMenuRouter.push(this.editMenuRouter.pop());
     },
     moveTo(widgetType) {
-      const widgetParser = {
-        Text: new EditMenuText(),
-        Img: new EditMenuImage(),
-        LineChart: new EditMenuLine(),
-        BarChart: new EditMenuBar(),
-        Rect: new EditMenuSquare(),
-        Circle: new EditMenuCircle(),
-      };
       this.editMenuRouter = [
         new EditMenuRoot(),
         new EditMenuAdd(),
-        widgetParser[widgetType],
+        this.widgetParser[widgetType],
       ];
     },
   },

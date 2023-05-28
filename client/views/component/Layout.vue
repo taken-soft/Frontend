@@ -106,6 +106,7 @@ export default {
                 4: "BarChart",
                 5: "Rect",
                 6: "Circle",
+                7: "CircleChart",
             };
             return widgetParser[widgetId];
         },
