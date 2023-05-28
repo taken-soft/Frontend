@@ -81,5 +81,6 @@ export default {
     overflow-x: clip;
     transition: color 0.5s ease;
     text-align: center;
+    font-weight: bold;
 }
 </style>
