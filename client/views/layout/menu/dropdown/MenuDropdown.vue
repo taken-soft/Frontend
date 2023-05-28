@@ -1,6 +1,6 @@
 <template>
     <div class="m-b">
-        <label for="" class="m-r" :innerHTML="menuEntity.text"></label>
+        <label class="m-r" :innerHTML="menuEntity.text"></label>
         <select :class="selectClass" name="" id="" @change="onChangeEvent">
             <option value="없음">없음</option>
             <option

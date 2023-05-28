@@ -1,7 +1,7 @@
 <template>
     <div class="m-b">
-        <label for="" class="m-r" :innerHTML="menuEntity.text"></label>
-        <label for="" class="m-r" :innerHTML="장치"></label>
+        <label class="m-r" :innerHTML="menuEntity.text"></label>
+        <label class="m-r" :innerHTML="장치"></label>
         <select
             :class="selectClass"
             name=""
@@ -20,7 +20,7 @@
                 :selected="menuEntity.currentValue[0] == key"
             ></option>
         </select>
-        <label for="" class="m-r" :innerHTML="센서"></label>
+        <label class="m-r" :innerHTML="센서"></label>
         <select
             :class="selectClass"
             name=""
