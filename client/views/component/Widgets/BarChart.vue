@@ -59,7 +59,7 @@ export default {
             label: "데이터",
             backgroundColor: (ctx) => {
               const canvas = ctx.chart.ctx;
-              const gradient = canvas.createLinearGradient(0, 0, 0, 160);
+              const gradient = canvas.createLinearGradient(0, 0, 50, 250);
 
               gradient.addColorStop(0.6, '#f87938');
               gradient.addColorStop(0.8, '#f8af55');

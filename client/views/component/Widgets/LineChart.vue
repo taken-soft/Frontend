@@ -57,11 +57,10 @@ export default {
     data() {
       let dataListList = [];
       let colorList = [
-        "#f87979",
-        "#f8aa79",
-        "#f879aa",
-        "#aa7979",
-        "#aa7979",
+        "#9ADCFF",
+        "#FFF89A",
+        "#FFB2A6",
+        "#FF8AAE"
       ];
 
       if (this.sensorList.length !== 0) {
@@ -73,7 +72,7 @@ export default {
               for (let sensorValue of data.sensorValues) {
                 dataList.push(Number(sensorValue.value));
               }
-              dataListList.push({label: Sensor[sensor.sensorId] , data : dataList});
+              dataListList.push({ label: Sensor[sensor.sensorId], data: dataList });
             }
           }
         }
@@ -85,7 +84,8 @@ export default {
         (e) => {
           return {
             label: e.label,
-            borderColor: colorList[index++],
+            borderColor: colorList[index],
+            backgroundColor: colorList[index++],
             data: e.data,
           }
         }
@@ -102,7 +102,7 @@ export default {
 
 <style scoped>
 .lineChart {
-    background-color: white;
-    border: solid 1px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  border: solid 1px rgba(0, 0, 0, 0.2);
 }
 </style>
