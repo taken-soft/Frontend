@@ -82,5 +82,8 @@ export default {
     transition: color 0.5s ease;
     text-align: center;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 </style>
