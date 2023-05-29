@@ -53,6 +53,7 @@ import EditMenuRoot from "../menu/editMenuRoute/editMenuRoot";
 import { useDashboardStore } from "../../../stores/dashboardStore";
 import { useEditMenuStore } from "../../../stores/editMenuStore";
 import { useModeStore } from '../../../stores/modeStore';
+import { useNewWidgetStore } from '../../../stores/newWidgetStore';
 
 import { createDashboard } from "../../../axios/dashboardListAxios";
 
@@ -63,6 +64,7 @@ export default {
     const dashboardStore = useDashboardStore();
     const editMenuStore = useEditMenuStore();
     const modeStore = useModeStore();
+    const newWidgetStore = useNewWidgetStore();
 
     const dashboardList = dashboardStore.dashboardList;
     const selectDashboard = (dashboardId) => {
@@ -81,6 +83,7 @@ export default {
       editMenuStore.push(new EditMenuRoot());
       modeStore.changeMode();
       modeStore.endInterval();
+      newWidgetStore.deleteWidget();
     }
 
     const saveModalController = editMenuStore.saveModalController;
