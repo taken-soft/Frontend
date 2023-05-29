@@ -56,10 +56,10 @@ export default {
     data() {
       let dataListList = [];
       let colorList = [
-        "#9ADCFF",
-        "#FFF89A",
-        "#FFB2A6",
-        "#FF8AAE"
+        "#4636FC",
+        "#5170FD",
+        "#60ABFB",
+        "#AEE1FC",
       ];
 
       if (this.sensorList.length !== 0) {
@@ -102,6 +102,6 @@ export default {
 <style scoped>
 .lineChart {
   background-color: white;
-  border: solid 1px rgba(0, 0, 0, 0.2);
+  border: solid 1px white;
 }
 </style>

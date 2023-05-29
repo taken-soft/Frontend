@@ -24,21 +24,21 @@ export default {
       chartLabels: ["1", "2", "3", "4", "5"],
       chartData: [40, 20, 12, 39, 10],
       options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                animation: {
-                    duration: 1000, // 애니메이션 지속 시간 (밀리초)
-                    easing: "easeOutQuart", // 애니메이션 이징 함수
-                },
-                plugins: {
-                    datalabels: {
-                        formatter: (value, ctx) => {
-                            return value;
-                        },
-                        color: "#fff",
-                    },
-                },
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: {
+          duration: 1000, // 애니메이션 지속 시간 (밀리초)
+          easing: "easeOutQuart", // 애니메이션 이징 함수
+        },
+        plugins: {
+          datalabels: {
+            formatter: (value, ctx) => {
+              return value;
             },
+            color: "#fff",
+          },
+        },
+      },
     };
   },
   computed: {
@@ -65,10 +65,11 @@ export default {
         datasets: [
           {
             label: "데이터",
-            backgroundColor: ["#ff8585",
-              "#ffd243",
-              "#5ee195",
-              "#c47ec8",
+            backgroundColor: [
+              "#4636FC",
+              "#5170FD",
+              "#60ABFB",
+              "#AEE1FC",
             ],
             data: this.chartData,
           },
@@ -83,7 +84,7 @@ export default {
 .barChart {
   background-color: rgb(233, 118, 118);
   background-color: white;
-  border: solid 1px black;
+  border: solid 1px white;
   width: full;
   height: full;
 }

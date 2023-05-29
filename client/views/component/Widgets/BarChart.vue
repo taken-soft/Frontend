@@ -24,6 +24,7 @@ export default {
       chartLabels: ["1", "2", "3", "4", "5"],
       chartData: [40, 20, 12, 39, 10],
       options: {
+        maxBarThickness: 30,
         responsive: true,
         maintainAspectRatio: false,
         animation: {
@@ -69,12 +70,11 @@ export default {
             label: "데이터",
             backgroundColor: (ctx) => {
               const canvas = ctx.chart.ctx;
-              const gradient = canvas.createLinearGradient(0, 0, 0, 200);
+              const gradient = canvas.createLinearGradient(0, 0, 0, 180);
 
-              gradient.addColorStop(0.6, '#24abff');
-              gradient.addColorStop(0.8, '#6dc6ff');
-              gradient.addColorStop(1, '#bfe6ff');
-
+              gradient.addColorStop(0.3, '#4636FC');
+              gradient.addColorStop(0.6, '#5170FD');
+              gradient.addColorStop(1, '#60ABFB');
               return gradient;
             },//"#f87979",
             data: this.chartData,
@@ -89,7 +89,7 @@ export default {
 <style scoped>
 .barChart {
   background-color: white;
-  border: solid 1px black;
+  border: solid 1px white;
   width: full;
   height: full;
 }

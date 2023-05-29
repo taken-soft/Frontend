@@ -139,5 +139,6 @@ export default class EditMenuWidgetRoute extends EditMenuRoute {
       )
     );
     this.editMenuStore.pop();
+    this.newWidgetStore.deleteWidget();
   };
 }
