@@ -84,5 +84,6 @@ export default {
     font-weight: bold;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 </style>

@@ -14,6 +14,7 @@
                     :color="item.layoutWidgetColor"
                     :event-list="item.eventDtoList"
                     :property="item.layoutWidgetProperty"
+                    :layoutSeq="layoutSeq"
                 ></Widget>
                 <!--  -->
 
@@ -27,6 +28,7 @@
                     :color="''"
                     :event-list="[]"
                     :property="null"
+                    :layoutSeq="layoutSeq"
                 ></Widget>
                 <!--  -->
             </div>

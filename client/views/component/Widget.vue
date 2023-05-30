@@ -1,6 +1,6 @@
 <template>
     <div>
-        <component class="widget" :is="widgetType" v-if="isVisible" :style="widgetStyle" :eventList="eventList" :color="color" :property="property" :sensorList="sensorList" />
+        <component class="widget" :is="widgetType" v-if="isVisible" :style="widgetStyle" :eventList="eventList" :color="color" :property="property" :sensorList="sensorList" :layoutSeq="layoutSeq"/>
     </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
     data() {
         return {};
     },
-    props: ["startPos", "endPos", "widgetType", "eventList", "color", "property", "sensorList"],
+    props: ["startPos", "endPos", "widgetType", "eventList", "color", "property", "sensorList", "layoutSeq"],
     components: {
         Text,
         Rect,
